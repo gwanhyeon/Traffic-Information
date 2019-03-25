@@ -17,7 +17,7 @@ class App extends Component {
                 <Route exact path="/register" component={ Register } />
                 <Route exact path="/login" component={ Login } />
 
-                <p> 깃허브 테스트 준석s </p>
+                <p> 깃허브 테스트 준석s edit</p>
               </div>
           </div>
         </Router>
