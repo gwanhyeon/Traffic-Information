@@ -1,1 +1,1 @@
-# knut-database-project
+# 한국교통대학교 데이터베이스 실습
