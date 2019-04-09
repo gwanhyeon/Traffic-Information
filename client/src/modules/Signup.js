@@ -1,4 +1,4 @@
-Signupimport {Map} from 'immutable';
+import {Map} from 'immutable';
 import {handleActions,createAction} from 'redux-actions';
 
 
