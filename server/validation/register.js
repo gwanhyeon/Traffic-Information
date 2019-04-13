@@ -6,7 +6,7 @@ module.exports = validateRegisterInput() = (data) => {
     data.name = !isEmpty(data.name) ? data.name : '';
     data.email = !isEmpty(data.email) ? data.email : '';
     data.password = !isEmpty(data.password) ? data.password: '';
-    data.password_confirm = !isEmpty(data..password_confirm) ? data.password_confirm : '';
+    data.password_confirm = !isEmpty(data.password_confirm) ? data.password_confirm : '';
 
     // 이름 유효성 검사
     if(!validator.isLength(data.name, {min: 20, max:30})){
