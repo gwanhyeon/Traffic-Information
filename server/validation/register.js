@@ -1,7 +1,7 @@
 const validator = require('validator');     // request 유효값 검사 모듈 
 const isEmpty = require('./is-empty');
 
-module.exports = validateRegisterInput() = (data) => {
+module.exports = validateRegisterInput = (data) => {
     let errors= {};
     data.name = !isEmpty(data.name) ? data.name : '';
     data.email = !isEmpty(data.email) ? data.email : '';
