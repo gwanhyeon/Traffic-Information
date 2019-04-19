@@ -1,23 +1,23 @@
-const JWTStrategy = require('passport-jwt').Strategy;
+// passport 전략만 세워놓음.
+
+const JWTStrategy = require('passport-jwt');
 const ExtractJWT = require('passport-jwt').ExtractJwt;
 const mongoose = require('mongoose');
-const UserSchema = require('../model/User');
-const User = mongoose.model('users',UserSchema);
+const User = mongoose.model('users');
 const opts = {};
 
-opts.jwtFromRequest = ExtractJWT.fromAuthHeaderAsBearerToken();
+opts.jwtFromRequest =ExtractJWT.fromAuthHeaderAsBearerToken();
 opts.secretOrKey = 'secret';
-
-// JWT 전략세우기 !
+// 전략세우기
 module.exports = (passport) =>{
     passport.use(new JWTStrategy(opts, (jwt_payload,done) =>{
         User.findById(jwt_payload.id)
         .then(user =>{
-            if(user){
+            if(user) {
                 return done(null,user);
             }
-            return done(null,false);
+            return done(null, false);
         })
-        .catch(err=> console.error(err));
-    }));
+        .catch(err => console.error(err));
+    }))
 }
