@@ -4,11 +4,13 @@ import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as signinActions from '../modules/Signin';
-
+import axios from 'axios';
 
 
 class Signin extends Component {
-
+    componentDidMount() {
+           
+    }
     handleChange = (e) =>{
         const {signinActions} = this.props;
         const {user_id, user_password, user_auth} = this.props;
