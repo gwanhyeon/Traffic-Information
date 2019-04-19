@@ -13,7 +13,8 @@ const db = require('./dbs/db');
 //todo Rotuer Connection to module
 const route_signin = require('./routes/route_signin');
 const route_signup = require('./routes/route_signup');
-
+const route_mail = require('./routes/route_mail');
+const route_mail_auth = require('./routes/route_mail_auth');
 //todo database 연결 및 설정
 db.db_connect;
 
@@ -21,10 +22,10 @@ db.db_connect;
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 //todo route signup, signin router connect to and then using exporess moduel 
-
+app.use('/user',route_mail);
 app.use('/user',route_signin);
 app.use('/user',route_signup);;
-
+app.use('/user',route_mail_auth);
 app.post('/', (req,res) =>{
     console.log(req.query.hello);
     console.log(req.params.name)
