@@ -3,14 +3,20 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "axios": "^0.18.0",
+    "fs": "^0.0.1-security",
     "immutable": "^4.0.0-rc.12",
     "react": "^16.8.4",
     "react-dom": "^16.8.4",
     "react-redux": "^7.0.1",
     "react-router-dom": "^5.0.0",
     "react-scripts": "2.1.8",
+    "react-xml-parser": "^1.1.2",
     "redux": "^4.0.1",
-    "redux-actions": "^2.6.5"
+    "redux-actions": "^2.6.5",
+    "xml-stream": "^0.4.5",
+    "xml2js": "^0.4.19",
+    "xmldom": "^0.1.27"
   },
   "scripts": {
     "start": "react-scripts start",

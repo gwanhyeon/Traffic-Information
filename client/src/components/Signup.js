@@ -3,12 +3,49 @@ import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as signupActions from '../modules/Signup'
-
+import axios from 'axios';
 
 class Signup extends Component {
 
     // 1. 값의 변화 상태 감지 핸들
+    componentDidMount(){
+        const url = 'http://swopenAPI.seoul.go.kr/api/subway/6a7644634e6b67683739434e557a61/xml/realtimeStationArrival'
+        let location = "의왕";
+        const subway_id='1';
+        const stain_id = '52';
+        const attribute_length = 22;
+        let row_length = null;
+        location = encodeURIComponent(location);        //인코딩한 값 넣어주기
 
+        // ,{responseType : 'xml'}
+        axios.get(`${url}/${subway_id}/${stain_id}/${location}`)
+        .then(res =>{
+
+
+            console.log('res data =>',res.data);
+
+            var parser = new DOMParser(),
+            xmlDoc = parser.parseFromString(res.data,'text/xml');
+            
+            row_length = xmlDoc.getElementsByTagName('row').length;
+            // console.log("row 개수 ", xmlDoc.getElementsByTagName('row')[0].getAttribute.length);
+            
+            for(var i=0; i< row_length; i++){
+                for(var j=0; j<attribute_length; j++){
+                console.log("hello xml",xmlDoc.getElementsByTagName('row')[i]
+                .childNodes[j].childNodes[0])
+                }
+                console.log("여기잠시대기")
+            }
+           
+            
+            //todo firstChild -> 해당 태그를 가져온다.
+            //todo 
+        
+        })
+        
+    
+    }
     handleChange = (e) =>{
         const {signupActions} = this.props;
         const {user_id,user_password,user_name, result} = this.props;
