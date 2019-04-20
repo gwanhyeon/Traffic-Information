@@ -4,8 +4,11 @@
   "private": true,
   "dependencies": {
     "axios": "^0.18.0",
+    "bootstrap": "^4.3.1",
+    "classnames": "^2.2.6",
     "fs": "^0.0.1-security",
     "immutable": "^4.0.0-rc.12",
+    "jwt-decode": "^2.2.0",
     "react": "^16.8.4",
     "react-dom": "^16.8.4",
     "react-redux": "^7.0.1",
@@ -14,6 +17,7 @@
     "react-xml-parser": "^1.1.2",
     "redux": "^4.0.1",
     "redux-actions": "^2.6.5",
+    "redux-logger": "^3.0.6",
     "redux-thunk": "^2.3.0",
     "xml-stream": "^0.4.5",
     "xml2js": "^0.4.19",
@@ -33,5 +37,6 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "proxy": "http://localhost:3002"
 }

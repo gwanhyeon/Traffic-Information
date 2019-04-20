@@ -6,7 +6,7 @@ import * as serviceWorker from './serviceWorker';
 
 // 스토어 생성 리덕스
 
-import modules from './modules';
+import modules from './reducers';
 import {createStore, applyMiddleware, compose} from 'redux';
 import {Provider} from 'react-redux';
 import ReduxThunk from 'redux-thunk';
