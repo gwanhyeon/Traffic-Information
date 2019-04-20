@@ -1,25 +1,29 @@
-const validator = require('validator');
+const Validator = require('validator');
 const isEmpty = require('./is-empty');
 
-module.exports = validateLoginInput = (data) =>{
+module.exports = function validateSigninInput(data) {
     let errors = {};
-    data.email = !isEmpty(data.email) ? data.email : '';
-    data.password = !isEmpty(data.password) ? data.password : '';
+    data.user_id = !isEmpty(data.user_id) ? data.user_id : '';
+    data.user_password = !isEmpty(data.user_password) ? data.user_password : '';
 
-    if(!validator.isEmail(data.email)){
-        errors.email = '이메일형식에 맞지 않습니다.';
+    if(!Validator.isEmail(data.user_id)) {
+        errors.user_id = 'Email is invalid';
     }
-    if(validator.isEmpty(data.email)){
-        errors.email = '이메일을 입력해주세요.'
+
+    if(Validator.isEmpty(data.user_id)) {
+        errors.user_id = 'Email is required';
     }
-    if(!validator.isLength(data.password,{min:6, max:30})){
-        errors.password = '패스워드 6자 이상 입력해주세요.';
+
+    if(!Validator.isLength(data.user_password, {min: 6, max: 30})) {
+        errors.user_password = 'Password must have 6 chars';
     }
-    if(validator.isEmpty(data.password)){
-        errors.password = "패스워드를 입력해주세요.";
+
+    if(Validator.isEmpty(data.user_password)) {
+        errors.user_password = 'Password is required';
     }
+
     return {
         errors,
-        inValid: isEmpty(errors)
+        isValid: isEmpty(errors)
     }
 }

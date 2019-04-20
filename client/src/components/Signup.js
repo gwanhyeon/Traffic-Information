@@ -1,122 +1,153 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import { withRouter,Link } from 'react-router-dom';
+import { registerUser } from '../actions/authentication';
 
-import {connect} from 'react-redux';
-import {bindActionCreators} from 'redux';
-import * as signupActions from '../modules/Signup'
-import axios from 'axios';
+import classnames from 'classnames';
 
 class Signup extends Component {
 
-    // 1. 값의 변화 상태 감지 핸들
-    componentDidMount(){
-        const url = 'http://swopenAPI.seoul.go.kr/api/subway/6a7644634e6b67683739434e557a61/xml/realtimeStationArrival'
-        let location = "의왕";
-        const subway_id='1';
-        const stain_id = '52';
-        const attribute_length = 22;
-        let row_length = null;
-        location = encodeURIComponent(location);        //인코딩한 값 넣어주기
 
-        // ,{responseType : 'xml'}
-        axios.get(`${url}/${subway_id}/${stain_id}/${location}`)
-        .then(res =>{
+    state = {
+        user_name: '',
+        user_id: '',
+        user_password: '',
+        user_password_confirm: '',
+        errors: {}
+    }
 
-
-            console.log('res data =>',res.data);
-
-            var parser = new DOMParser(),
-            xmlDoc = parser.parseFromString(res.data,'text/xml');
-            
-            row_length = xmlDoc.getElementsByTagName('row').length;
-            // console.log("row 개수 ", xmlDoc.getElementsByTagName('row')[0].getAttribute.length);
-            
-            for(var i=0; i< row_length; i++){
-                for(var j=0; j<attribute_length; j++){
-                console.log("hello xml",xmlDoc.getElementsByTagName('row')[i]
-                .childNodes[j].childNodes[0])
-                }
-                console.log("여기잠시대기")
-            }
-           
-            
-            //todo firstChild -> 해당 태그를 가져온다.
-            //todo 
-        
+    // 상태 값 변화 
+    handleInputChange = (e) => {
+        this.setState({
+            [e.target.name]: e.target.value
         })
-        
-    
     }
-    handleChange = (e) =>{
-        const {signupActions} = this.props;
-        const {user_id,user_password,user_name, result} = this.props;
-        console.log("SignupHandle");
-        console.log(user_id);
-        console.log(user_password);
-        console.log(user_name);
-        console.log(result);
-        signupActions.showSignup({
-            'user_id':e.target.name,
-            'user_password':e.target.value,
-            'user_name' : e.target.user_name,
-            'result': ''
-
-    })
-        // signupActions.showSignup({'property':e.target.name,'value':e.target.value});
-    }
-
-    // 2. 회원가입 제출 핸들
-    handleSubmit = (e) =>{
+    // 회원가입 등록
+    handleSubmit = (e) => {
+        console.log("순서 알아보기 1")
+        const {registerUser,history} = this.props;
+        const {user_name,user_id,user_password,user_password_confirm}=this.state;
         e.preventDefault();
-        const {signupActions} = this.props;
-        const {user_id,user_password,user_name, result} = this.props;
-        const user = {
-            user_id : user_id,
-            user_password: user_password,
-            user_name : user_name,
-            result : "200 OK"
-        }
-        console.log("user=>" + user);
-        signupActions.setSignup(user);
-    }
-    render() {
-        const {handleSubmit, handleChange} = this; 
-        const {signupActions} = this.props;
-        const {user_id, user_password, user_name, result} = this.props;
-        return (
-            <div>
-            <form onSubmit={handleSubmit} >
-            <p>회원가입</p>
-
-            <div className="form-group">
-              <label htmlFor="user_id">ID</label>
-              <input type="text" id="user_id" className="form-control" name="user_id" placeholder="Enter ID" onChange={handleChange} defaultValue={user_id} />
-            </div>
-            <div className="form-group">
-              <label htmlFor="user_password">Password</label>
-              <input type="password" className="form-control" name="user_password" placeholder="Enter Password" onChange={handleChange} defaultValue={user_password}/>
-            </div>
-            <div className="form-group">
-              <label htmlFor="user_name">Name</label>
-              <input type="text" className="form-control" name="user_name" placeholder="Enter your name" onChange={handleChange} defaultValue={user_name}/>
-            </div>
-            
-            <button type="submit" className="btn btn-success">Submit</button>
-          </form>
         
-            </div>
-        );
+        const user = {
+            user_name: user_name,
+            user_id: user_id,
+            user_password: user_password,
+            user_password_confirm: user_password_confirm
+        }
+        registerUser(user,history);
+    }
+    // todo 컴포넌트가 prop 을 새로 받았을 때 실행됩니다.
+    // tree structure auth-istAuthenticated(false)
+    componentWillReceiveProps(nextProps) {
+        console.log("순서 알아보기 2")
+        const {history} = this.props;
+        console.log(nextProps)
+        console.log(history)
+
+        // 인증이 된 상태라면!
+        if(nextProps.auth.isAuthenticated) {
+            history.push('/');
+        }
+        // 인증이 되지 않은 상태라면!
+        if(nextProps.errors) {
+            this.setState({
+                errors: nextProps.errors
+            });
+        }
+    }
+
+    componentDidMount() {
+        console.log("this.props=>",this.props);
+        const {auth,history} = this.props;
+        
+        
+        console.log("this.props=>",this.props);
+        console.log("auth=> ",auth)
+        console.log("auth.isAuthenticated=>",auth.isAuthenticated)
+        console.log("순서 알아보기 3")
+        if(auth.isAuthenticated) {
+            // <Link to='/'></Link>
+            history.push('/');
+        }
+    }
+
+    render() {
+        const {handleInputChange,handleSubmit} = this;
+        const {user_name,user_id,user_password,user_password_confirm,errors } = this.state;
+        return(
+        <div className="container" style={{ marginTop: '50px', width: '700px'}}>
+            <h2 style={{marginBottom: '40px'}}>Registration</h2>
+            <form onSubmit={ handleSubmit }>
+                <div className="form-group">
+                    <input
+                    type="text"
+                    placeholder="Name"
+                    className={classnames('form-control form-control-lg', {
+                        'is-invalid': errors.user_name
+                    })}
+                    name="user_name"
+                    onChange={ handleInputChange }
+                    value={ user_name }
+                    />
+                    {errors.user_name && (<div className="invalid-feedback">{errors.user_name}</div>)}
+                </div>
+                <div className="form-group">
+                    <input
+                    type="email"
+                    placeholder="user_id"
+                    className={classnames('form-control form-control-lg', {
+                        'is-invalid': errors.user_id
+                    })}
+                    name="user_id"
+                    onChange={handleInputChange }
+                    value={ user_id }
+                    />
+                    {errors.user_id && (<div className="invalid-feedback">{user_id}</div>)}
+                </div>
+                <div className="form-group">
+                    <input
+                    type="password"
+                    placeholder="user_password"
+                    className={classnames('form-control form-control-lg', {
+                        'is-invalid': errors.user_password
+                    })}
+                    name="user_password"
+                    onChange={ handleInputChange }
+                    value={ user_password }
+                    />
+                    {errors.user_password && (<div className="invalid-feedback">{errors.user_password}</div>)}
+                </div>
+                <div className="form-group">
+                    <input
+                    type="password"
+                    placeholder="Confirm Password"
+                    className={classnames('form-control form-control-lg', {
+                        'is-invalid': errors.user_password_confirm
+                    })}
+                    name="user_password_confirm"
+                    onChange={ handleInputChange }
+                    value={ user_password_confirm }
+                    />
+                    {errors.user_password_confirm && (<div className="invalid-feedback">{errors.user_password_confirm}</div>)}
+                </div>
+                <div className="form-group">
+                    <button type="submit" className="btn btn-primary">
+                        Register User
+                    </button>
+                </div>
+            </form>
+        </div>
+        )
     }
 }
-export default connect(
-    // 리덕스랑 연결이 되면 그 값들을 
-    // user_id , user_password, user_name , result 값으로 세팅을 한다
-    (state) => ({
-        user_id : state.Signup.get('user_id'),
-        user_password : state.Signup.get('user_password'),
-        user_name : state.Signup.get('user_name'),
-        result : state.Signup.get('result')
-    }),
-    (dispatch) =>({
-        signupActions: bindActionCreators(signupActions,dispatch)
-    })
-)(Signup);
+
+// state to props mapping
+const mapStateToProps = state => ({
+    auth: state.auth,
+    errors: state.errors
+});
+
+
+export default connect(mapStateToProps,{ registerUser })(withRouter(Signup))

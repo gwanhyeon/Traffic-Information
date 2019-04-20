@@ -1,71 +1,112 @@
-
 import React, { Component } from 'react';
-
-import {connect} from 'react-redux';
-import {bindActionCreators} from 'redux';
-import * as signinActions from '../modules/Signin';
-import axios from 'axios';
-
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { withRouter,Link } from 'react-router-dom';
+import { loginUser } from '../actions/authentication';
+import classnames from 'classnames';
 
 class Signin extends Component {
-    componentDidMount() {
-           
+
+    
+    state = {
+        user_id: '',
+        user_password: '',
+        errors: {}
     }
-    handleChange = (e) =>{
-        const {signinActions} = this.props;
-        const {user_id, user_password, user_auth} = this.props;
-        console.log(user_id);
-        console.log(user_password);
-        console.log(user_auth);
-        signinActions.showSignin({
-            'user_id':e.target.name,
-        'user_password':e.target.value,
-        'user_auth' : ''
-    })
-        // signinActions.showSignin({'user_id':e.target.name,'user_password':e.target.value})
+     
+
+    handleInputChange = (e) => {
+        this.setState({
+            [e.target.name]: e.target.value
+        })
     }
-    handleSubmit = (e) =>{
+
+    handleSubmit = (e) => {
+
         e.preventDefault();
-        const {signinActions} = this.props;
-        const {user_id, user_password, user_auth} = this.props;
-
+        const {loginUser} = this.props;
+        const {user_id,user_password} = this.state;
         const user = {
-            user_id : user_id,
-            user_password : user_password,
-            user_auth : user_auth
+            user_id: user_id,
+            user_password: user_password,
         }
-        signinActions.setSignin(user)
+        loginUser(user);
     }
-    render() {
-        const {handleSubmit,handleChange} = this;
-        const {user_id, user_password, user_auth} = this.props;
 
-        return (
-            <div>
-            <form onSubmit={handleSubmit} >
-            <p>로그인</p>
-            <div className="form-group">
-              <label htmlFor="user_id">ID</label>
-              <input type="text" id="user_id" className="form-control" name="user_id" placeholder="Enter ID" onChange={handleChange} defaultValue={user_id} />
-            </div>
-            <div className="form-group">
-              <label htmlFor="user_password">Password</label>
-              <input type="password" className="form-control" name="user_password" placeholder="Enter Password" onChange={handleChange} defaultValue={user_password}/>
-            </div>
+    componentDidMount = () => {
+        const {auth,history} = this.props;
+        if(auth.isAuthenticated) {
             
-            <button type="submit" className="btn btn-success">Submit</button>
-          </form>
-            </div>
-        );
+            history.push('/');
+        }
+    }
+
+    componentWillReceiveProps(nextProps) {
+        const {auth,history} = this.props;
+        if(nextProps.auth.isAuthenticated) {
+            history.push('/')
+        }
+        if(nextProps.errors) {
+            this.setState({
+                errors: nextProps.errors
+            });
+        }
+    }
+
+    render() {
+        const {errors,user_id,user_password} = this.state;
+        const {handleInputChange,handleSubmit} = this;
+        
+        return(
+        <div className="container" style={{ marginTop: '50px', width: '700px'}}>
+            <h2 style={{marginBottom: '40px'}}>Login</h2>
+            <form onSubmit={ handleSubmit }>
+                <div className="form-group">
+                    <input
+                    type="email"
+                    placeholder="user_id"
+                    className={classnames('form-control form-control-lg', {
+                        'is-invalid': errors.user_id
+                    })}
+                    name="user_id"
+                    onChange={ handleInputChange }
+                    value={ user_id }
+                    />
+                    {errors.user_id && (<div className="invalid-feedback">{user_id}</div>)}
+                </div>
+                <div className="form-group">
+                    <input
+                    type="password"
+                    placeholder="user_password"
+                    className={classnames('form-control form-control-lg', {
+                        'is-invalid': errors.user_password
+                    })} 
+                    name="user_password"
+                    onChange={ handleInputChange }
+                    value={ user_password }
+                    />
+                    {errors.user_password && (<div className="invalid-feedback">{errors.user_password}</div>)}
+                </div>
+                <div className="form-group">
+                    <button type="submit" className="btn btn-primary">
+                        Login User
+                    </button>
+                </div>
+            </form>
+        </div>
+        )
     }
 }
-export default connect(
-    (state) =>({
-        user_id : state.Signin.get('user_id'),
-        user_password : state.Signin.get('user_password'),
-        user_auth: state.Signin.get('user_auth')
-    }),
-    (dispatch) =>({
-        signinActions : bindActionCreators(signinActions,dispatch)
-    })
-)(Signin);
+
+// Login.propTypes = {
+//     loginUser: PropTypes.func.isRequired,
+//     auth: PropTypes.object.isRequired,
+//     errors: PropTypes.object.isRequired
+// }
+
+const mapStateToProps = (state) => ({
+    auth: state.auth,
+    errors: state.errors
+})
+
+export  default connect(mapStateToProps, { loginUser })(Signin)
