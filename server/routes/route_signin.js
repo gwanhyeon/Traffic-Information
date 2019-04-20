@@ -5,43 +5,54 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const User = require('../models/model_user');
 
-router.post('/signin',(req,res) =>{
-    User.findOne({user_id: req.body.user_id})
-    .exec()
-    .then((user) =>{            //todo 현재 모델 값들 exec() 시킨후 찾은 이메일 값으로 -> all json data -> user
-        bcrypt.compare(req.body.user_password, user.user_password, (err,result) =>{
-            user.auth = result;
-            console.log(user);
-            if(err){
-                return res.status(401).json({
-                    failed : "unauthorzied Access1"
-                })
-            }
-            //todo input user data value validation(result == true 일경우 회원가입된 사람)
-            if(result){
-                const JWTToekn = jwt.sign({
-                    user_id: user.user_id,
-                    user_name: user.user_name
-                },
-                'secret',
-                {
-                    expiresIn: '2h'
-                });
-                return res.status(200).json({
-                    success: 'welcome to the JWT AUTH',
-                    token: JWTToekn
-                });
-            }
-            return res.status(401).json({
-                failed : "Unauthorized Access2"
-            })
-        })
 
-    }).catch(error =>{
-        res.status(500).json({
-            error : error
+
+router.post('/signin', (req, res) => {
+
+    const { errors, isValid } = validateLoginInput(req.body);
+
+    if(!isValid) {
+        return res.status(400).json(errors);
+    }
+
+    const user_id = req.body.user_id;
+    const user_password = req.body.user_password;
+    const user_name = req.body.user_name;
+
+    User.findOne({user_id})
+        .then(user => {
+            if(!user) {
+                errors.user_id = 'User not found'
+                return res.status(404).json(errors);
+            }
+            bcrypt.compare(user_password, user.user_password)
+                    .then(isMatch => {
+                        if(isMatch) {
+                            const payload = {
+                                user_id: user.user_id,
+                                user_name: user.user_name,
+                                // avatar: user.avatar
+                            }
+                            jwt.sign(payload, 'secret', {
+                                expiresIn: 3600
+                            }, (err, token) => {
+                                if(err) console.error('There is some error in token', err);
+                                else {
+                                    res.json({
+                                        success: true,
+                                        token: `Bearer ${token}`
+                                    });
+                                }
+                            });
+                        }
+                        else {
+                            errors.user_password = 'Incorrect Password';
+                            return res.status(400).json(errors);
+                        }
+                    });
         });
-    });
 });
+
+
 module.exports = router;
 

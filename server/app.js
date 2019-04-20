@@ -2,7 +2,7 @@
 //todo Express Engine Using 
 const express = require('express');
 const app = express();
-
+const cors = require('cors');
 
 //todo POST 방식 body-Parser 
 const bodyParser = require('body-parser');
@@ -18,6 +18,9 @@ const route_mail_auth = require('./routes/route_mail_auth');
 //todo database 연결 및 설정
 db.db_connect;
 
+
+//todo cors 처리
+app.use(cors())
 //todo bodyparser(인코딩 설정, JSON 설정)
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
@@ -46,3 +49,12 @@ app.get('/test',(req,res) =>{
 app.listen(PORT, ()=>{
     console.log(`Server is running on PORT ${PORT}`);
 })
+
+
+
+
+
+
+
+console.log(__dirname);
+console.log(__filename);
