@@ -9,7 +9,7 @@ export const registerUser = (user, history) => dispatch => {
     console.log("Signup actions history=>",history);
     console.log("순서 알아보기 4")
     axios.post('/user/signup', user)
-            .then(res => history.push('/login'))
+            .then(res => history.push('/signin'))
             .catch(err => {
                 // console.log("signup err => ",err);
                 // console.log("signup err.response =>",err.response);
