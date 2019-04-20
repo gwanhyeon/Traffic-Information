@@ -1,44 +1,51 @@
-const validator = require('validator');     // request 유효값 검사 모듈 
+const Validator = require('validator');
 const isEmpty = require('./is-empty');
 
-module.exports = validateRegisterInput = (data) => {
-    let errors= {};
-    data.name = !isEmpty(data.name) ? data.name : '';
-    data.email = !isEmpty(data.email) ? data.email : '';
-    data.password = !isEmpty(data.password) ? data.password: '';
-    data.password_confirm = !isEmpty(data.password_confirm) ? data.password_confirm : '';
+module.exports = function validateSignupInput(data) {
+    let errors = {};
+    data.user_name = !isEmpty(data.user_name) ? data.user_name : '';
+    data.user_id = !isEmpty(data.user_id) ? data.user_id : '';
+    data.user_password = !isEmpty(data.user_password) ? data.user_password : '';
+    data.user_password_confirm = !isEmpty(data.user_password_confirm) ? data.user_password_confirm : '';
 
-    // 이름 유효성 검사
-    if(!validator.isLength(data.name, {min: 20, max:30})){
-        error.name = "이름 2-30자 입력하세요.";
+    if(!Validator.isLength(data.user_name, { min: 2, max: 30 })) {
+        errors.user_name = 'Name must be between 2 to 30 chars';
     }
-    if(!validator.isEmpty(data.name)){
-        errors.name = "이름값 입력 실패하였습니다."
+    
+    if(Validator.isEmpty(data.user_name)) {
+        errors.user_name = 'Name field is required';
     }
-    // 이메일 유효성 검사
-    if(!validator.isEmail(data.email)){
-        error.email = "이메일이 부정확합니다.";
+
+    if(!Validator.isEmail(data.user_id)) {
+        errors.user_id = 'Email is invalid';
     }
-    if(!validator.isEmpty(data.email)){
-        error.email = '이메일을 입력하세요.';
+
+    if(Validator.isEmpty(data.user_id)) {
+        errors.user_id = 'Email is required';
     }
-    // 패스워드 유효성 검사
-    if(!validator.isLength(data.password,{min:6, max:30})){
-        error.password = "패스워드 6자이상 입력하세요.";
+
+    if(!Validator.isLength(data.user_password, {min: 6, max: 30})) {
+        errors.user_password = 'Password must have 6 chars';
     }
-    if(!validator.isEmpty(data.password)){
-        error.password = "패스워드를 입력하세요.";
+
+    if(Validator.isEmpty(data.user_password)) {
+        errors.user_password = 'Password is required';
     }
-    // 패스워드 확인 유효성 검사
-    if(!validator.isLength(data.password_confirm,{min:6, max:30})){
-        error.password_confirm = "패스워드 확인 6자이상 입력하세요.";
+
+    if(!Validator.isLength(data.user_password_confirm, {min: 6, max: 30})) {
+        errors.user_password_confirm = 'Password must have 6 chars';
     }
-    if(!validator.isEmpty(data.password_confirm)){
-        error.password_confirm = "패스워드 확인을 입력하세요."
+
+    if(!Validator.equals(data.user_password, data.user_password_confirm)) {
+        errors.user_password_confirm = 'Password and Confirm Password must match';
     }
-    return{
+
+    if(Validator.isEmpty(data.user_password_confirm)) {
+        errors.user_password_confirm = 'Password is required';
+    }
+
+    return {
         errors,
-        invalid: isEmpty(errors)
+        isValid: isEmpty(errors)
     }
-
 }

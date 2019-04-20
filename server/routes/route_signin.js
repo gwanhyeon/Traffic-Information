@@ -4,12 +4,13 @@ const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const User = require('../models/model_user');
+const validateSigninInput = require('../validation/signin');
 
 
 
 router.post('/signin', (req, res) => {
 
-    const { errors, isValid } = validateLoginInput(req.body);
+    const { errors, isValid } = validateSigninInput(req.body);
 
     if(!isValid) {
         return res.status(400).json(errors);

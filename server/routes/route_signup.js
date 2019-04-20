@@ -3,14 +3,14 @@ const router = express.Router();
 // const gravatar = require('gravatar');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const passport = require('passport');
-const validateRegisterInput = require('../validation/register');
-const validateLoginInput = require('../validation/login');
+const passport = require('../jwt/passport');
+const validateSignupInput = require('../validation/signup');
 
 
-router.post('/siginup', function(req, res) {
+const User = require('../models/model_user');
+router.post('/signup', function(req, res) {
 
-    const { errors, isValid } = validateRegisterInput(req.body);
+    const { errors, isValid } = validateSignupInput(req.body);
 
     if(!isValid) {
         return res.status(400).json(errors);
