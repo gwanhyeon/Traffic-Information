@@ -11,7 +11,6 @@ class BoardItem extends Component {
                 <td> {board_contents} </td>
                 <td> {board_user_name}</td>
                 <td> {board_date} </td>
-                
                 </tr>
                 </Fragment>
         );
