@@ -11,4 +11,5 @@ const board = mongoose.Schema({
     createdAt : {type: Data},
     updatedAt : {type: Date}
 })
-module.exports = mongoose.model('Board',board);
+const Board = mongoose.model('Board',board);
+module.exports = Board;

@@ -22,6 +22,9 @@ class TransInfo extends Component {
         // ,{responseType : 'xml'}
         axios.get(`${url}/${subway_id}/${stain_id}/${location}`)
         .then(res =>{
+            // res.setRequestHeader("Access-Control-Allow-Origin","*");
+
+
             var parser = new DOMParser(),
             xmlDoc = parser.parseFromString(res.data,'text/xml');
             // html DOM -> xml DOM을 사용한다.
@@ -54,7 +57,7 @@ class TransInfo extends Component {
             
 
             // let parsing_data = [];
-            const parsing_data = new Array();
+            
 
             // //여기 
             // for(var i=0; i<row_length; i++){
@@ -63,7 +66,7 @@ class TransInfo extends Component {
             //     }
             // }
            
-
+            const parsing_data = new Array();
             for(var i=0; i< row_length; i++){
                 var sub = new Array();
                 for(var j=0; j<attribute_length; j++){
@@ -85,7 +88,7 @@ class TransInfo extends Component {
             this.setState({
                 data : parsing_data
             })
-            console.log(this.state.data);
+            console.log("test =>",this.state.data);
             // parsing_data.forEach(function(value,idx){
             //     console.log(value);
             //     console.log(idx);
@@ -100,6 +103,7 @@ class TransInfo extends Component {
     }    
     render() {
         const {data} = this.state;
+        
         return (
             <div>
             
