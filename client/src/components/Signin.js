@@ -78,7 +78,8 @@ class Signin extends Component {
                     <input
                     type="password"
                     placeholder="user_password"
-                    className={classnames('form-control form-control-lg', {
+                    className={
+                        classnames('form-control form-control-lg', {
                         'is-invalid': errors.user_password
                     })} 
                     name="user_password"
