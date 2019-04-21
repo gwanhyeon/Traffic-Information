@@ -20,7 +20,12 @@ db.db_connect;
 
 
 //todo cors 처리
-app.use(cors())
+app.use(cors({
+    origin: 'http://localhost:3002',
+    credentials: true
+
+}))
+
 //todo bodyparser(인코딩 설정, JSON 설정)
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
