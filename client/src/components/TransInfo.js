@@ -3,6 +3,8 @@ import axios from 'axios';
 import { createLogger } from 'redux-logger';
 import TransItem from './TransItem'
 import {Table} from 'react-bootstrap'
+import { callbackify } from 'util';
+import Error from './Error';
 class TransInfo extends Component {
 
 
@@ -22,33 +24,17 @@ class TransInfo extends Component {
         // ,{responseType : 'xml'}
         axios.get(`${url}/${subway_id}/${stain_id}/${location}`)
         .then(res =>{
-            // res.setRequestHeader("Access-Control-Allow-Origin","*");
-
-
+            
             var parser = new DOMParser(),
             xmlDoc = parser.parseFromString(res.data,'text/xml');
             row_length = xmlDoc.getElementsByTagName('row').length;
-            // console.log("row 개수 ", xmlDoc.getElementsByTagName('row')[0].getAttribute.length);
-            
-
-            // let parsing_data = [];
-            
-
-            // //여기 
-            // for(var i=0; i<row_length; i++){
-            //     for(var j=0; j<attribute_length; j++){
-            //         parsing_data.push(xmlDoc.getElementsByTagName('row')[i].childNodes[j].childNodes[0])
-            //     }
-            // }
-           
+            console.log(row_length)
             const parsing_data = new Array();
             for(var i=0; i< row_length; i++){
                 var sub = new Array();
                 for(var j=0; j<attribute_length; j++){
                      sub.push(xmlDoc.getElementsByTagName('row')[i]
                     .childNodes[j].childNodes[0])
-                // console.log("hello xml",xmlDoc.getElementsByTagName('row')[i]
-                // .childNodes[j].childNodes[0])
                 }
                 parsing_data.push(sub);
             console.log("여기잠시대기")
@@ -64,24 +50,51 @@ class TransInfo extends Component {
                 data : parsing_data
             })
             console.log("test =>",this.state.data);
-            // parsing_data.forEach(function(value,idx){
-            //     console.log(value);
-            //     console.log(idx);
-            // })
-            
-            // console.log(hello);
-
 
             //todo firstChild -> 해당 태그를 가져온다.
             //todo
             })
+            .catch( err =>{
+                
+                
+                console.log(err);
+        
+            })
     }    
+
+
     render() {
         const {data} = this.state;
+        let return_page = null;
+        const list_page =       
+            data.map((data, i) => {
+          console.log("key=>",data[0]);
+          console.log("key=>",data[1]);
+          console.log("key=>",data[2]);
+          console.log("key=>",data[3]);
+          return (
+              <TransItem 
+              board_id={data[1].data}
+              board_title={data[2].data} 
+              board_contents={data[3].data} 
+              board_user_name ={data[4].data} 
+              board_date ={data[5].data}
+              key={i}/>);
+          })
+          
+          const error_page =<Error></Error>
+          if(data.length !== 0){
+            return_page = list_page;
+          }else{
+            return_page = error_page;
+          }
+          console.log("data.lengh => ",data.length)
+          
+      
         
+        const ErrorPage = <Error></Error>
         return (
             <div>
-            
             <link to='board'></link>
             <Table responsive>
             <thead>
@@ -94,23 +107,9 @@ class TransInfo extends Component {
               </tr>
             </thead>
             <tbody>
-             
-              {data.map((data, i) => {
-                console.log("key=>",data[0]);
-                console.log("key=>",data[1]);
-                console.log("key=>",data[2]);
-                console.log("key=>",data[3]);
-
+            
                 
-                return (
-                    <TransItem 
-                    board_id={data[1].data}
-                    board_title={data[2].data} 
-                    board_contents={data[3].data} 
-                    board_user_name ={data[4].data} 
-                    board_date ={data[5].data}
-                    key={i}/>);
-                })}
+            {return_page}
               
          
             </tbody>
