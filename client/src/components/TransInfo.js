@@ -28,27 +28,27 @@ class TransInfo extends Component {
             // firstnode를 나타내는것 ('row')[0];
             console.log('1 =>',xmlDoc.getElementsByTagName('row')[1]); // row로 묶인 태그가 순서대로 들어가게 된다 .
             console.log('row[2]) =>',xmlDoc.getElementsByTagName('row')[2]); // row로 묶인 태그가 순서대로 들어가게 된다 .
-            console.log('row[2].firstChild =>',xmlDoc.getElementsByTagName('row')[2].firstChild); // row로 묶인 태그가 순서대로 들어가게 된다 .
+            //console.log('row[2].firstChild =>',xmlDoc.getElementsByTagName('row')[2].firstChild); // row로 묶인 태그가 순서대로 들어가게 된다 .
             // console.log('row[2].firstnextsibling =>',xmlDoc.getElementsByTagName('row')[2].nextSibling); // row로 묶인 태그가 순서대로 들어가게 된다 .
-            console.log('row[2].firstChild.firstChild.value =>',xmlDoc.getElementsByTagName('row')[2].firstChild.firstChild.value); // row로 묶인 태그가 순서대로 들어가게 된다 .
-            console.log('row[2].value',xmlDoc.getElementsByTagName('row')[2].value); // row로 묶인 태그가 순서대로 들어가게 된다 .
-            console.log('row[2].value',xmlDoc.getElementsByTagName('row')[2].getAttributeNames('rowNum')); // row로 묶인 태그가 순서대로 들어가게 된다 .
-            console.log('3 =>',xmlDoc.getElementsByTagName('row')[3].getAttribute('rowNum')); // row로 묶인 태그가 순서대로 들어가게 된다 .
+            //console.log('row[2].firstChild.firstChild.value =>',xmlDoc.getElementsByTagName('row')[2].firstChild.firstChild.value); // row로 묶인 태그가 순서대로 들어가게 된다 .
+            //console.log('row[2].value',xmlDoc.getElementsByTagName('row')[2].value); // row로 묶인 태그가 순서대로 들어가게 된다 .
+            //console.log('row[2].value',xmlDoc.getElementsByTagName('row')[2].getAttributeNames('rowNum')); // row로 묶인 태그가 순서대로 들어가게 된다 .
+            //console.log('3 =>',xmlDoc.getElementsByTagName('row')[3].getAttribute('rowNum')); // row로 묶인 태그가 순서대로 들어가게 된다 .
             
             console.log('length=>',xmlDoc.getElementsByTagName('row').length); // row로 묶인 태그가 순서대로 들어가게 된다 .
-            console.log('nextSibling=>',xmlDoc.getElementsByTagName('row')[0].innerHTML.nextSibling); // row로 묶인 태그가 순서대로 들어가게 된다 .
-            console.log('nextSibling=>',xmlDoc.getElementsByTagName('row')[0].innerHTML.nextSibling); // row로 묶인 태그가 순서대로 들어가게 된다 .
+            //console.log('nextSibling=>',xmlDoc.getElementsByTagName('row')[0].innerHTML.nextSibling); // row로 묶인 태그가 순서대로 들어가게 된다 .
+            //console.log('nextSibling=>',xmlDoc.getElementsByTagName('row')[0].innerHTML.nextSibling); // row로 묶인 태그가 순서대로 들어가게 된다 .
             // console.log('getAttribue=>',xmlDoc.getElementsByTagName('row')[1].innerHTML.getAttribute('rowNum')); // row로 묶인 태그가 순서대로 들어가게 된다 .
             // row[0] rownum = 1, row[1] = rownum = 2
-            console.log("",xmlDoc.getElementsByTagName('row')[0]
-            .childNodes[0].childNodes[0]);
-            console.log("hello xml",xmlDoc.getElementsByTagName('row')[0]
-            .childNodes[0].childNodes[0])
-            console.log("hello xml",xmlDoc.getElementsByTagName('row')[0]
-            .childNodes[1].childNodes[0]);
+            //console.log("",xmlDoc.getElementsByTagName('row')[0]
+            //.childNodes[0].childNodes[0]);
+            //console.log("hello xml",xmlDoc.getElementsByTagName('row')[0]
+            //.childNodes[0].childNodes[0])
+            //console.log("hello xml",xmlDoc.getElementsByTagName('row')[0]
+            //.childNodes[1].childNodes[0]);
             //todo node
-            console.log("hello xml",xmlDoc.getElementsByTagName('row')[0]
-            .childNodes[0].childNodes[0])
+            //console.log("hello xml",xmlDoc.getElementsByTagName('row')[0]
+            //.childNodes[0].childNodes[0])
             row_length = xmlDoc.getElementsByTagName('row').length;
             // console.log("row 개수 ", xmlDoc.getElementsByTagName('row')[0].getAttribute.length);
             

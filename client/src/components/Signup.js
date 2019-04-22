@@ -7,8 +7,6 @@ import { registerUser } from '../actions/authentication';
 import classnames from 'classnames';
 
 class Signup extends Component {
-
-
     state = {
         user_name: '',
         user_id: '',
@@ -133,7 +131,7 @@ class Signup extends Component {
                     {errors.user_password_confirm && (<div className="invalid-feedback">{errors.user_password_confirm}</div>)}
                 </div>
                 <div className="form-group">
-                    <button type="submit" className="btn btn-primary">
+                    <button type="submit" className="btn btn-danger">
                         Register User
                     </button>
                 </div>

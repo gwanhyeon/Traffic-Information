@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { GET_ERRORS, SET_CURRENT_USER } from './types';
-import setAuthToken from '../auth/setAuthToken';
+import setAuthToken from '../Auth/setAuthToken';
 import jwt_decode from 'jwt-decode';
 
 // thunk 적용

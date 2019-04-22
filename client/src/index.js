@@ -4,6 +4,8 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
+
+import 'bootstrap/dist/css/bootstrap.css'
 // 스토어 생성 리덕스
 
 import modules from './reducers';
