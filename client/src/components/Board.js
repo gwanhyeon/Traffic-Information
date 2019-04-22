@@ -12,14 +12,14 @@ class Board extends Component {
                 board_title: 'React Board #1',
                 board_contents: 'If you intend to live then you die',
                 board_user_name : 'kgh',
-                board_date: new Date()
+                board_date: formatDate(new Date())
             },
             {
                 board_id: 2,
                 board_title: 'React Board #2',
                 board_contents: 'If you intend to live then you die',
                 board_user_name : 'easy',
-                board_date: new Date()
+                board_date: formatDate(new Date())
             }
         ]
     }
@@ -30,7 +30,7 @@ class Board extends Component {
     //     board_name : '',
     //     board_date : new Date(),
     // }
-
+    
     handleClickChange = (e) =>{
         const {board_id,board_title,board_contents,board_name,date} = this.state;
         this.setState({
@@ -81,6 +81,17 @@ class Board extends Component {
     }
 
 
+}
+function formatDate(date) {
+    var d = new Date(date),
+        month = '' + (d.getMonth() + 1),
+        day = '' + d.getDate(),
+        year = d.getFullYear();
+
+    if (month.length < 2) month = '0' + month;
+    if (day.length < 2) day = '0' + day;
+
+    return [year, month, day].join('-');
 }
 
 export default Board;
