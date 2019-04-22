@@ -65,30 +65,8 @@ class TransInfo extends Component {
 
     render() {
         const {data} = this.state;
-        let return_page = null;
-        const list_page =       
-            data.map((data, i) => {
-          console.log("key=>",data[0]);
-          console.log("key=>",data[1]);
-          console.log("key=>",data[2]);
-          console.log("key=>",data[3]);
-          return (
-              <TransItem 
-              board_id={data[1].data}
-              board_title={data[2].data} 
-              board_contents={data[3].data} 
-              board_user_name ={data[4].data} 
-              board_date ={data[5].data}
-              key={i}/>);
-          })
-          
-          const error_page =<Error></Error>
-          if(data.length !== 0){
-            return_page = list_page;
-          }else{
-            return_page = error_page;
-          }
-          console.log("data.lengh => ",data.length)
+       
+        console.log("data.lengh => ",data.length)
           
       
         
@@ -107,11 +85,21 @@ class TransInfo extends Component {
               </tr>
             </thead>
             <tbody>
-            
-                
-            {return_page}
-              
-         
+            {data.map((data, i) => {
+              console.log("key=>",data[0]);
+              console.log("key=>",data[1]);
+              console.log("key=>",data[2]);
+              console.log("key=>",data[3]);
+              return (
+                  <TransItem 
+                  board_id={data[1].data}
+                  board_title={data[2].data} 
+                  board_contents={data[3].data} 
+                  board_user_name ={data[4].data} 
+                  board_date ={data[5].data}
+                  key={i}/>);
+              })
+            }
             </tbody>
           </Table>
             
