@@ -7,7 +7,7 @@ import { withRouter } from 'react-router-dom';
 
 class Navbar extends Component {
 
-    onLogout(e) {
+    onLogout = (e) => {
         e.preventDefault();
         this.props.logoutUser(this.props.history);
     }
