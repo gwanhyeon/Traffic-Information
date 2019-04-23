@@ -15,6 +15,7 @@ export default function(state = initialState, action ) {
     
         case SET_CURRENT_USER:
         console.log("set_Current_user",action.payload);
+
         
             return {
                 ...state,

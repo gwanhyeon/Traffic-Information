@@ -5,11 +5,11 @@ const mongoose = require('mongoose');
 
 
 const board = mongoose.Schema({
-    // _id : mongoose.Types.ObjectId,
-    title : {type: String , required: true},
-    body : {type: String },
-    createdAt : {type: Data},
-    updatedAt : {type: Date}
+    id : String,
+    title: String,
+    contents: String,
+    author: String,
+    board_date: {type: Date, default: Date.now()},
 })
 const Board = mongoose.model('Board',board);
 module.exports = Board;
