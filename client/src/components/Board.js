@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
 import BoardItem from './BoardItem';
 import {Table} from 'react-bootstrap'
+import BoardForm from './BoardForm';
 import {BootstrapTable, TableHeaderColumn} from 'react-bootstrap-table';
+import {Link} from 'react-router-dom';
+
 
 class Board extends Component {
-
+    id = 3
     state = {
         boards: [
             {
@@ -38,13 +41,39 @@ class Board extends Component {
         })
     }
 
+    handleCreate = (data) => {
+        const {boards} = this.state;
+        this.setState({
+            boards: boards.concat({board_id: this.id++, board_date: formatDate(new Date()), ...data})
+        })
+    }
+    handleRemove = (id) => {
+        const {boards} = this.state;
+        this.setState({
+            boards: boards.filter(boards => boards.board_id !== id)
+        })
+    }
+    handleUpdate = (id, data) => {
+        const {boards} = this.state;
+        this.setState({
+            boards: boards.map(
+                info => id === info.board_id
+                ? {...info, ...data}
+                : info
+            )
+        })
+    }
     // 클릭 이벤트 발생시 Link!
 
     render() {
-        
+        // <Route render={props => <BoardForm onCreate={this.handleCreate}/>}></Route>
             const {boards,board_id,board_title,board_contents,board_name,date} = this.state; 
         return (
+
             <div>
+            <BoardForm 
+                onCreate={this.handleCreate}
+            />
             
             <link to='board'></link>
             <Table responsive>
@@ -55,6 +84,8 @@ class Board extends Component {
                 <th>내용</th>
                 <th>이름</th>
                 <th>날짜</th>
+                <th>수정</th>
+                <th>삭제</th>
               </tr>
             </thead>
             <tbody>
@@ -63,16 +94,22 @@ class Board extends Component {
                 console.log("key=>",i);
                 
                 return (
+
                     <BoardItem 
                     board_id={board.board_id}
                     board_title={board.board_title} 
                     board_contents={board.board_contents} 
                     board_user_name ={board.board_user_name} 
                     board_date ={board.board_date.toString()}
+                    onRemove={this.handleRemove}
+                    onUpdate={this.handleUpdate}
                     key={i}/>);
                 })}
               
-         
+                {/* <button>
+                    
+                    <Link to='/BoardForm' component = {BoardForm} onLoadedData={this.handleCreate}>글쓰기</Link>
+                </button> */}
             </tbody>
           </Table>
             
