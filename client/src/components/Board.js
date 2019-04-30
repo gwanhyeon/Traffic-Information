@@ -7,21 +7,14 @@ import {Link} from 'react-router-dom';
 
 
 class Board extends Component {
-    id = 3
+    id = 1
     state = {
         boards: [
             {
-                board_id: 1,
-                board_title: 'React Board #1',
-                board_contents: 'If you intend to live then you die',
-                board_user_name : 'kgh',
-                board_date: formatDate(new Date())
-            },
-            {
-                board_id: 2,
-                board_title: 'React Board #2',
-                board_contents: 'If you intend to live then you die',
-                board_user_name : 'easy',
+                board_id: 0,
+                board_title: '',
+                board_contents: '',
+                board_user_name : '',
                 board_date: formatDate(new Date())
             }
         ]
@@ -43,16 +36,28 @@ class Board extends Component {
 
     handleCreate = (data) => {
         const {boards} = this.state;
-        this.setState({
-            boards: boards.concat({board_id: this.id++, board_date: formatDate(new Date()), ...data})
-        })
+        console.log(data);
+            this.setState({
+                boards: boards.concat({board_id: this.id++, board_date: formatDate(new Date()), ...data})
+            })
+        
     }
+
     handleRemove = (id) => {
         const {boards} = this.state;
         this.setState({
             boards: boards.filter(boards => boards.board_id !== id)
         })
+        {boards.map((board, i) => {
+                if(board.board_id > id){
+                    this.setState({
+                        board_id: board.board_id--
+                    })
+                }
+            })}
+        this.id--
     }
+
     handleUpdate = (id, data) => {
         const {boards} = this.state;
         this.setState({
@@ -67,7 +72,34 @@ class Board extends Component {
 
     render() {
         // <Route render={props => <BoardForm onCreate={this.handleCreate}/>}></Route>
-            const {boards,board_id,board_title,board_contents,board_name,date} = this.state; 
+        const {boards} = this.state; 
+        const {id} = this;
+        let check = null;
+        if(id > 1){
+            check = <tbody>
+              {boards.map((board, i) => {
+                    if(i>0){
+                    console.log("key=>",i);
+                    
+                             return (
+                                <BoardItem 
+                                board_id={board.board_id}
+                                board_title={board.board_title} 
+                                board_contents={board.board_contents} 
+                                board_user_name ={board.board_user_name} 
+                                board_date ={board.board_date.toString()}
+                                onRemove={this.handleRemove}
+                                onUpdate={this.handleUpdate}
+                                key={i}/>
+                            );
+                    }
+                }
+                )
+              }
+            </tbody>
+        }
+
+      
         return (
 
             <div>
@@ -88,29 +120,7 @@ class Board extends Component {
                 <th>삭제</th>
               </tr>
             </thead>
-            <tbody>
-             
-              {boards.map((board, i) => {
-                console.log("key=>",i);
-                
-                return (
-
-                    <BoardItem 
-                    board_id={board.board_id}
-                    board_title={board.board_title} 
-                    board_contents={board.board_contents} 
-                    board_user_name ={board.board_user_name} 
-                    board_date ={board.board_date.toString()}
-                    onRemove={this.handleRemove}
-                    onUpdate={this.handleUpdate}
-                    key={i}/>);
-                })}
-              
-                {/* <button>
-                    
-                    <Link to='/BoardForm' component = {BoardForm} onLoadedData={this.handleCreate}>글쓰기</Link>
-                </button> */}
-            </tbody>
+            {check}
           </Table>
             
             </div>

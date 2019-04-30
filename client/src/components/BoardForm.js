@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import Board from './Board';
 
 class BoradForm extends Component {
-    
     state = {
         board_title : '',
         board_contents : '',
@@ -19,18 +18,14 @@ class BoradForm extends Component {
         e.preventDefault();
         // 상태값을 onCreate 를 통하여 부모에게 전달
         this.props.onCreate(this.state);
-        //this.state.onCreate();
-
         // 상태 초기화
-        this.setState = () => ({
+        this.setState({
             board_title: '',
             board_contents: '',
             board_user_name: ''
         })
     
     }
-
-
     render () {
         return(
             <form onSubmit={this.handleSubmit}>
