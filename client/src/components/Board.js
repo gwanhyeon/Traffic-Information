@@ -72,6 +72,7 @@ class Board extends Component {
 
     render() {
         // <Route render={props => <BoardForm onCreate={this.handleCreate}/>}></Route>
+
         const {boards} = this.state; 
         const {id} = this;
         let check = null;
@@ -94,12 +95,11 @@ class Board extends Component {
                             );
                     }
                 }
-                )
+                ).reverse()//게시글 역순으로 출력
               }
             </tbody>
         }
 
-      
         return (
 
             <div>
@@ -122,8 +122,10 @@ class Board extends Component {
             </thead>
             {check}
           </Table>
-            
+          
+            {/* <Link className="nav-link" to="/BoradForm"><button>글쓰기</button></Link> */}
             </div>
+            
         );
     }
 
