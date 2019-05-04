@@ -103,6 +103,7 @@ class Board extends Component {
         return (
 
             <div>
+                <p></p>
             <BoardForm 
                 onCreate={this.handleCreate}
             />

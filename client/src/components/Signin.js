@@ -58,13 +58,13 @@ class Signin extends Component {
         const {handleInputChange,handleSubmit} = this;
         
         return(
-        <div className="container" style={{ marginTop: '50px', width: '700px'}}>
+        <div className="container" style={{ marginTop: '100px', width: '500px'}}>
             <h2 style={{marginBottom: '40px'}}>Login</h2>
             <form onSubmit={ handleSubmit }>
                 <div className="form-group">
                     <input
                     type="email"
-                    placeholder="user_id"
+                    placeholder="E-mail"
                     className={classnames('form-control form-control-lg', {
                         'is-invalid': errors.user_id
                     })}
@@ -77,7 +77,7 @@ class Signin extends Component {
                 <div className="form-group">
                     <input
                     type="password"
-                    placeholder="user_password"
+                    placeholder="Password"
                     className={
                         classnames('form-control form-control-lg', {
                         'is-invalid': errors.user_password
@@ -89,9 +89,10 @@ class Signin extends Component {
                     {errors.user_password && (<div className="invalid-feedback">{errors.user_password}</div>)}
                 </div>
                 <div className="form-group">
-                    <button type="submit" className="btn btn-primary">
+                    <button type="submit" className="btn btn-primary" style={{width: '470px'}}>
                         Login User
                     </button>
+                    <Link className="nav-link" to="/signup" style={{float: 'right', width: '85px'}}>sing up</Link>
                 </div>
             </form>
         </div>
