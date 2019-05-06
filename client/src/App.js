@@ -14,11 +14,7 @@ import Board from './components/Board';
 import BoradForm from './components/BoardForm';
 
 
-<<<<<<< HEAD
-import 'bootstrap/dist/css/bootstrap.min.css';
-=======
 import './bootstrap.min.css';
->>>>>>> f323a54d4725e081809df5c4d63369b8f25ab3c8
 
 if(localStorage.jwtToken) {
   setAuthToken(localStorage.jwtToken);
