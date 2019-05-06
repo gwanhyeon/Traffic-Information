@@ -77,7 +77,11 @@ class Signup extends Component {
         const {handleInputChange,handleSubmit} = this;
         const {user_name,user_id,user_password,user_password_confirm,errors } = this.state;
         return(
+<<<<<<< HEAD
+        <div className="container" style={{ marginTop: '50px', width: '700px'}}>
+=======
         <div className="container" style={{ marginTop: '100px', width: '500px'}}>
+>>>>>>> f323a54d4725e081809df5c4d63369b8f25ab3c8
             <h2 style={{marginBottom: '40px'}}>Registration</h2>
             <form onSubmit={ handleSubmit }>
                 <div className="form-group">
@@ -96,7 +100,11 @@ class Signup extends Component {
                 <div className="form-group">
                     <input
                     type="email"
+<<<<<<< HEAD
+                    placeholder="user_id"
+=======
                     placeholder="E-mail"
+>>>>>>> f323a54d4725e081809df5c4d63369b8f25ab3c8
                     className={classnames('form-control form-control-lg', {
                         'is-invalid': errors.user_id
                     })}
@@ -109,7 +117,11 @@ class Signup extends Component {
                 <div className="form-group">
                     <input
                     type="password"
+<<<<<<< HEAD
+                    placeholder="user_password"
+=======
                     placeholder="Password"
+>>>>>>> f323a54d4725e081809df5c4d63369b8f25ab3c8
                     className={classnames('form-control form-control-lg', {
                         'is-invalid': errors.user_password
                     })}
@@ -133,7 +145,11 @@ class Signup extends Component {
                     {errors.user_password_confirm && (<div className="invalid-feedback">{errors.user_password_confirm}</div>)}
                 </div>
                 <div className="form-group">
+<<<<<<< HEAD
+                    <button type="submit" className="btn btn-primary">
+=======
                     <button type="submit" className="btn btn-primary" style={{width: '470px'}}>
+>>>>>>> f323a54d4725e081809df5c4d63369b8f25ab3c8
                         Register User
                     </button>
                 </div>
