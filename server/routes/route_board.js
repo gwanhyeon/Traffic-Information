@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const Board = require('../models/mdoel_board')
+const Board = require('../models/model_board')
 
 /* board insert mongo */
 router.post('/board/write', function (req, res) {
@@ -8,14 +8,13 @@ router.post('/board/write', function (req, res) {
     board.title = req.body.title;
     board.contents = req.body.contents;
     board.author = req.body.author;
-   
+    // modle save
     board.save(function (err) {
       if(err){
         console.log(err);
         res.redirect('/');
       }
       else{
-
         const newPost = new Board({
             id : req.body.id,
             title : req.body.title,
@@ -23,9 +22,10 @@ router.post('/board/write', function (req, res) {
             author : req.body.author,
             board_date : req.body.board_date
         });
-        res.json(newPost);
+        console.log(newPost)
+        res.send(newPost);
       }
-    });
+    })
   });
 
   module.exports =router;
