@@ -92,7 +92,7 @@ class Signin extends Component {
                     <button type="submit" className="btn btn-primary" style={{width: '470px'}}>
                         Login User
                     </button>
-                    <Link className="nav-link" to="/signup" style={{float: 'right', width: '85px'}}>sing up</Link>
+                    <Link className="nav-link" to="/signup" style={{float: 'right', width: '85px'}}>sign up</Link>
                 </div>
             </form>
         </div>
