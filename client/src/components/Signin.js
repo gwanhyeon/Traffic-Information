@@ -9,7 +9,7 @@ class Signin extends Component {
 
     
     state = {
-        user_id: '',
+        user_id: ' ',
         user_password: '',
         errors: {}
     }
