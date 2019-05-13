@@ -38,7 +38,7 @@ class Navbar extends Component {
         </ul>
       )
         return(
-            <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+            <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
                 <Link className="navbar-brand" to="/">테스트</Link>
                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
                 <Link className="navbar-brand" to="/Board">board </Link>

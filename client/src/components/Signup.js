@@ -77,8 +77,8 @@ class Signup extends Component {
         const {handleInputChange,handleSubmit} = this;
         const {user_name,user_id,user_password,user_password_confirm,errors } = this.state;
         return(
-        <div className="container" style={{ marginTop: '100px', width: '500px'}}>
-            <h2 style={{marginBottom: '40px'}}>Registration</h2>
+        <div className="container" style={{ marginTop: '50px', width: '500px'}}>
+            <h2 class="text-success" style={{marginTop: '40px', marginBottom: '20px'}}>Registration</h2>
             <form onSubmit={ handleSubmit }>
                 <div className="form-group">
                     <input
