@@ -28,20 +28,20 @@ class Navbar extends Component {
         )
         // 인증되지 않은 경우 이미지 보여주지 않는다.
       const guestLinks = (
-        <ul className="navbar-nav ml-auto">
+        <ul className="navbar-nav ml-auto" style={{fontFamily: 'sans-serif', fontSize: '20px'}}>
             <li className="nav-item">
-                <Link className="nav-link" to="/signup">Sign Up</Link>
+                <Link className="nav-link" to="/signup">Sign up</Link>
             </li>
             <li className="nav-item">
-                <Link className="nav-link" to="/signin">Sign In</Link>
+                <Link className="nav-link" to="/signin">Sign in</Link>
             </li>
         </ul>
       )
         return(
-            <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-                <Link className="navbar-brand" to="/">교통 정보</Link>
+            <nav class="navbar navbar-expand-lg navbar-dark bg-primary" style={{fontFamily: 'sans-serif', fontSize: '20px'}}>
+                <Link className="navbar-brand" to="/">교통정보</Link>
                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                <Link className="navbar-brand" to="/Board">board </Link>
+                <Link className="navbar-brand" to="/Board">board</Link>
                     {isAuthenticated ? authLinks : guestLinks}
                 </div>
             </nav>

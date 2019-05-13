@@ -60,7 +60,7 @@ class BoradForm extends Component {
                     style = {{width: '454px'}}
                 />
                 <p/> */}
-                <button type="submit" className="btn btn-primary" style={{float: 'right'}}>ok</button>
+                <button type="submit" className="btn btn-primary" style={{float: 'right', fontFamily: 'monospace', fontSize: '15px'}}>ok</button>
             </form>
 
         )

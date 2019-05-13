@@ -69,7 +69,7 @@ class TransInfo extends Component {
             <link to='board'></link>
             <Table responsive>
             <thead>
-              <tr>
+              <tr style={{marginBottom: '2px', fontFamily: 'monospace', fontSize: '20px'}}>
                 <th>#</th>
                 <th>제목</th>
                 <th>열차정보</th>
