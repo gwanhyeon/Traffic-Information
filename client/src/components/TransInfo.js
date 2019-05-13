@@ -6,8 +6,6 @@ import {Table} from 'react-bootstrap'
 import { callbackify } from 'util';
 import Error from './Error';
 class TransInfo extends Component {
-
-
     state ={
         data: [],
     }
@@ -21,10 +19,11 @@ class TransInfo extends Component {
         let row_length = null;
         location = encodeURIComponent(location); //인코딩한 값 넣어주기
         // ,{responseType : 'xml'}
+        const sub_url = `${url}/${subway_id}/${stain_id}/${location}`;
+        console.log(sub_url);
         this.lookupInterval = setInterval(() => {
         axios.get(`${url}/${subway_id}/${stain_id}/${location}`)
         .then(res =>{
-            
             var parser = new DOMParser(),
             xmlDoc = parser.parseFromString(res.data,'text/xml');
             row_length = xmlDoc.getElementsByTagName('row').length;
@@ -55,29 +54,23 @@ class TransInfo extends Component {
             .catch( err =>{
                 console.log(err);
             })
-        }, 1000);
+        }, 10000);
         
     }    
     componentWillUnmount(){
         clearInterval(this.lookupInterval)
     }
-
-
     render() {
         const {data} = this.state;
-       
-        // console.log("data.lengh => ",data.length)
-          
-      
-        
+        // console.log("data.lengh => ",data.length)   
         const ErrorPage = <Error></Error>
         return (
             <div>
             <link to='board'></link>
             <Table responsive>
             <thead>
-              <tr style={{fontFamily: 'monospace', fontSize: '20px'}}>
-                <th>no.</th>
+              <tr>
+                <th>#</th>
                 <th>제목</th>
                 <th>열차정보</th>
                 <th>현재역</th>
@@ -86,12 +79,12 @@ class TransInfo extends Component {
             </thead>
             <tbody>
             {data.map((data, i) => {
-            //   console.log("key=>",data[0]);
-            //   console.log("key=>",data[1]);
-            //   console.log("key=>",data[2]);
-            //   console.log("key=>",data[3]);
-            //   console.log("key8=>",data[15]);
-            //   console.log("key9=>",data[14].data);
+              console.log("key=>",data[0]);
+              console.log("key=>",data[1]);
+              console.log("key=>",data[2]);
+              console.log("key=>",data[3]);
+              console.log("key8=>",data[15]);
+              console.log("key9=>",data[14].data);
               if(data[14].data === "급행"){
                 // console.log("급행확인");
                   return(
