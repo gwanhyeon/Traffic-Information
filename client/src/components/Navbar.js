@@ -38,13 +38,8 @@ class Navbar extends Component {
         </ul>
       )
         return(
-<<<<<<< HEAD
-            <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-                <Link className="navbar-brand" to="/">교통 정보</Link>
-=======
             <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
                 <Link className="navbar-brand" to="/">테스트</Link>
->>>>>>> de9b2129b44c1ab3b05b9a4dd6e2de12e856e732
                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
                 <Link className="navbar-brand" to="/Board">board </Link>
                     {isAuthenticated ? authLinks : guestLinks}
