@@ -58,8 +58,8 @@ class Signin extends Component {
         const {handleInputChange,handleSubmit} = this;
         
         return(
-        <div className="container" style={{ marginTop: '100px', width: '500px'}}>
-            <h2 style={{marginBottom: '40px'}}>Login</h2>
+        <div className="container" style={{ marginTop: '50px', width: '500px'}}>
+            <h2 class="text-success" style={{marginTop: '50px', marginBottom: '20px'}}>Login</h2>
             <form onSubmit={ handleSubmit }>
                 <div className="form-group">
                     <input

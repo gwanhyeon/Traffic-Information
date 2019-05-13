@@ -17,37 +17,50 @@ class BoradForm extends Component {
         // 페이지 리로딩 방지
         e.preventDefault();
         // 상태값을 onCreate 를 통하여 부모에게 전달
-        this.props.onCreate(this.state);
+        // this.props.onCreate(this.state);
         // 상태 초기화
         this.setState({
             board_title: '',
             board_contents: '',
             board_user_name: ''
         })
-    
+        this.props.history.push('/board');
     }
+
     render () {
         return(
-            <form onSubmit={this.handleSubmit}>
-                <input
-                    placeholder="제목"
+            <form onSubmit={this.handleSubmit} style={{margin: 'auto', width: '500px', marginTop: '50px'}}>
+                <h1 className="text-success" style={{marginTop: '40px', fontFamily: 'monospace'}}>Posting</h1>
+                <hr/>
+                <h4 style={{marginBottom: '2px', fontFamily: 'monospace'}}>title</h4>
+                <textarea
+                    // placeholder="제목"
                     value={this.state.board_title}
                     onChange={this.handleChange}
                     name="board_title"
+                    className="form-control"
+                    style = {{width: '500px'}}
                 />
-                <input
-                    placeholder="내용"
+                <p/>
+                <h4 style={{marginBottom: '2px', fontFamily: 'monospace'}}>content</h4>
+                <textarea
+                    // placeholder="내용"
                     value={this.state.board_contents}
                     onChange={this.handleChange}
                     name="board_contents"
+                    className="form-control"
+                    style = {{width: '500px', height: '300px'}}
                 />
-                <input
-                    placeholder="유저명"
+                <hr/>
+                {/* 유저명 <input
+                    // placeholder="유저명"
                     value={this.state.board_user_name}
                     onChange={this.handleChange}
                     name="board_user_name"
+                    style = {{width: '454px'}}
                 />
-                <button type="submit">글쓰기</button>
+                <p/> */}
+                <button type="submit" className="btn btn-primary" style={{float: 'right'}}>ok</button>
             </form>
 
         )
