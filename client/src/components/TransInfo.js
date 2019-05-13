@@ -20,15 +20,15 @@ class TransInfo extends Component {
         const attribute_length = 22;
         let row_length = null;
         location = encodeURIComponent(location); //인코딩한 값 넣어주기
-
         // ,{responseType : 'xml'}
+        this.lookupInterval = setInterval(() => {
         axios.get(`${url}/${subway_id}/${stain_id}/${location}`)
         .then(res =>{
             
             var parser = new DOMParser(),
             xmlDoc = parser.parseFromString(res.data,'text/xml');
             row_length = xmlDoc.getElementsByTagName('row').length;
-            console.log(row_length)
+            // console.log(row_length)
             const parsing_data = new Array();
             for(var i=0; i< row_length; i++){
                 var sub = new Array();
@@ -37,36 +37,36 @@ class TransInfo extends Component {
                     .childNodes[j].childNodes[0])
                 }
                 parsing_data.push(sub);
-            console.log("여기잠시대기")
+            // console.log("여기잠시대기")
             }
             for(let i=0; i< parsing_data.length; i++){
                 for(let j=0; j <parsing_data[i].length; j++){            
-                    console.log(parsing_data[i][j]);
+                    // console.log(parsing_data[i][j]);
                 }
-                console.log("어떻게찍히는지")
+                // console.log("어떻게찍히는지")
             }
-
             this.setState({
                 data : parsing_data
             })
-            console.log("test =>",this.state.data);
-
+            // console.log("test =>",this.state.data);
             //todo firstChild -> 해당 태그를 가져온다.
             //todo
             })
             .catch( err =>{
-                
-                
                 console.log(err);
-        
             })
+        }, 1000);
+        
     }    
+    componentWillUnmount(){
+        clearInterval(this.lookupInterval)
+    }
 
 
     render() {
         const {data} = this.state;
        
-        console.log("data.lengh => ",data.length)
+        // console.log("data.lengh => ",data.length)
           
       
         
@@ -79,25 +79,48 @@ class TransInfo extends Component {
               <tr>
                 <th>#</th>
                 <th>제목</th>
-                <th>내용</th>
-                <th>이름</th>
-                <th>날짜</th>
+                <th>열차정보</th>
+                <th>현재역</th>
+                <th>시간</th>
               </tr>
             </thead>
             <tbody>
             {data.map((data, i) => {
-              console.log("key=>",data[0]);
-              console.log("key=>",data[1]);
-              console.log("key=>",data[2]);
-              console.log("key=>",data[3]);
-              return (
-                  <TransItem 
-                  board_id={data[1].data}
-                  board_title={data[2].data} 
-                  board_contents={data[3].data} 
-                  board_user_name ={data[4].data} 
-                  board_date ={data[5].data}
-                  key={i}/>);
+            //   console.log("key=>",data[0]);
+            //   console.log("key=>",data[1]);
+            //   console.log("key=>",data[2]);
+            //   console.log("key=>",data[3]);
+            //   console.log("key8=>",data[15]);
+            //   console.log("key9=>",data[14].data);
+              if(data[14].data === "급행"){
+                // console.log("급행확인");
+                  return(
+                      <TransItem
+                      board_id={data[4].data}
+                      board_title={data[5].data} 
+                      board_contents={data[20].data} 
+                      board_user_name ={data[21].data} 
+                      board_date ={data[19].data}
+                      key={i}/>
+                  )
+              }
+              else{
+                return (
+                    <TransItem 
+                    // 4 상행
+                    // 5 방면
+                    //
+                    // 19 도착지
+                    // 
+                    board_id={data[4].data}
+                    board_title={data[5].data} 
+                    board_contents={data[19].data} 
+                    board_user_name ={data[20].data} 
+                    board_date ={data[18].data}
+                    
+                    key={i}/>
+                );
+                }
               })
             }
             </tbody>
