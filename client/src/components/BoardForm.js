@@ -30,7 +30,7 @@ class BoradForm extends Component {
     render () {
         return(
             <form onSubmit={this.handleSubmit} style={{margin: 'auto', width: '500px', marginTop: '50px'}}>
-                <h1 class="text-success" style={{marginTop: '40px', fontFamily: 'monospace'}}>Posting</h1>
+                <h1 className="text-success" style={{marginTop: '40px', fontFamily: 'monospace'}}>Posting</h1>
                 <hr/>
                 <h4 style={{marginBottom: '2px', fontFamily: 'monospace'}}>title</h4>
                 <textarea
@@ -38,17 +38,17 @@ class BoradForm extends Component {
                     value={this.state.board_title}
                     onChange={this.handleChange}
                     name="board_title"
-                    class="form-control"
+                    className="form-control"
                     style = {{width: '500px'}}
                 />
                 <p/>
-                <h4 style={{marginBottom: '2px', fontFamily: 'monospace'}}>post</h4>
+                <h4 style={{marginBottom: '2px', fontFamily: 'monospace'}}>content</h4>
                 <textarea
                     // placeholder="내용"
                     value={this.state.board_contents}
                     onChange={this.handleChange}
                     name="board_contents"
-                    class="form-control"
+                    className="form-control"
                     style = {{width: '500px', height: '300px'}}
                 />
                 <hr/>
