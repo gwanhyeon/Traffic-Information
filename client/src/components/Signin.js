@@ -9,7 +9,7 @@ class Signin extends Component {
 
     
     state = {
-        user_id: ' ',
+        user_id: '',
         user_password: '',
         errors: {}
     }
@@ -59,11 +59,12 @@ class Signin extends Component {
         
         return(
         <div className="container" style={{ marginTop: '50px', width: '500px'}}>
-            <h2 class="text-success" style={{marginTop: '50px', marginBottom: '20px'}}>Login</h2>
+            <h1 class="text-success" style={{marginTop: '50px', marginBottom: '20px', fontFamily: 'monospace'}}>Login</h1>
             <form onSubmit={ handleSubmit }>
                 <div className="form-group">
                     <input
                     type="email"
+                    style={{fontFamily: 'monospace', fontSize: '20px'}}
                     placeholder="E-mail"
                     className={classnames('form-control form-control-lg', {
                         'is-invalid': errors.user_id
@@ -77,6 +78,7 @@ class Signin extends Component {
                 <div className="form-group">
                     <input
                     type="password"
+                    style={{fontFamily: 'monospace', fontSize: '20px'}}
                     placeholder="Password"
                     className={
                         classnames('form-control form-control-lg', {
@@ -89,10 +91,10 @@ class Signin extends Component {
                     {errors.user_password && (<div className="invalid-feedback">{errors.user_password}</div>)}
                 </div>
                 <div className="form-group">
-                    <button type="submit" className="btn btn-primary" style={{width: '470px'}}>
+                    <button type="submit" className="btn btn-primary" style={{width: '470px', fontFamily: 'monospace', fontSize: '20px'}}>
                         Login User
                     </button>
-                    <Link className="nav-link" to="/signup" style={{float: 'right', width: '85px'}}>sign up</Link>
+                    <Link className="nav-link" to="/signup" style={{float: 'right', width: '95px', fontFamily: 'monospace', fontSize: '15px'}}>sign up</Link>
                 </div>
             </form>
         </div>
