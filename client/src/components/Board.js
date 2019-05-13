@@ -104,9 +104,9 @@ class Board extends Component {
 
             <div>
                 <p></p>
-            <BoardForm 
+            {/* <BoardForm 
                 onCreate={this.handleCreate}
-            />
+            /> */}
             
             <link to='board'></link>
             <Table responsive>
@@ -124,7 +124,7 @@ class Board extends Component {
             {check}
           </Table>
           
-            {/* <Link className="nav-link" to="/BoradForm"><button>글쓰기</button></Link> */}
+            <Link className="nav-link" to="/BoradForm"><button>글쓰기</button></Link>
             </div>
             
         );
