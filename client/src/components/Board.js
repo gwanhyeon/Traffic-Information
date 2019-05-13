@@ -124,7 +124,7 @@ class Board extends Component {
             {check}
           </Table>
           
-            <Link className="nav-link" to="/BoradForm"><button>글쓰기</button></Link>
+            {/* <Link className="nav-link" to="/BoradForm"><button>글쓰기</button></Link> */}
             </div>
             
         );
