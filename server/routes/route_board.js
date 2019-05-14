@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const Board = require('../models/mdoel_board')
+const Board = require('../models/model_board')
 
 /* board insert mongo */
 router.post('/board/write', function (req, res) {
