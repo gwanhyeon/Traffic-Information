@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const passport = require('../jwt/passport');
-const Board = require('../model/model_user');
+const Board = require('../models/model_board');
 
 /* board find by id */
 router.get('/board/:id', function (req, res) {

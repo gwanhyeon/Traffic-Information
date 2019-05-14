@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Board from './Board';
-
+import axios from 'axios';
 class BoradForm extends Component {
     state = {
         board_title : '',
@@ -24,7 +24,18 @@ class BoradForm extends Component {
             board_contents: '',
             board_user_name: ''
         })
+        axios.get('/board/write')
+        .then(res =>{
+            console.log("res.data => ", res.data);
+            
+            })
+            .catch( err =>{
+                console.log(err);
+            })
         this.props.history.push('/board');
+
+
+
     }
 
     render () {
