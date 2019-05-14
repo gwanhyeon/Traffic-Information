@@ -58,7 +58,7 @@ class TransInfo extends Component {
         
     }    
     componentWillUnmount(){
-        clearInterval(this.lookupInterval)
+        // clearInterval(this.lookupInterval)
     }
     render() {
         const {data} = this.state;
