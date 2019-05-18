@@ -4,6 +4,7 @@ import {Table} from 'react-bootstrap'
 import BoardForm from './BoardForm';
 import {BootstrapTable, TableHeaderColumn} from 'react-bootstrap-table';
 import {Link} from 'react-router-dom';
+import axios from 'axios';
 
 
 class Board extends Component {
@@ -11,9 +12,9 @@ class Board extends Component {
     state = {
         boards: [
             {
-                board_id: 0,
-                board_title: '',
-                board_contents: '',
+                _id: 0,
+                title: '',
+                contents: '',
                 board_user_name : '',
                 board_date: formatDate(new Date())
             }
@@ -32,6 +33,19 @@ class Board extends Component {
         this.setState({
             [e.target.name]: e.target.value
         })
+    }
+
+    handlePrint = (e) => {
+        const {boards} = this.state;
+
+        e.preventDefault();
+
+        axios.get('user/board_list')
+        .then(res=> {
+            this.setState({
+                boards : res.data
+            });
+        });
     }
 
     handleCreate = (data) => {
@@ -78,7 +92,7 @@ class Board extends Component {
         const {boards} = this.state; 
         const {id} = this;
         let check = null;
-        if(id > 1){
+        if(id > 0){
             check = <tbody>
               {boards.map((board, i) => {
                     if(i>0){
@@ -86,9 +100,9 @@ class Board extends Component {
                     
                              return (
                                 <BoardItem 
-                                board_id={board.board_id}
-                                board_title={board.board_title} 
-                                board_contents={board.board_contents} 
+                                board_id={this.id}
+                                board_title={board.title} 
+                                board_contents={board.contents} 
                                 board_user_name ={board.board_user_name} 
                                 board_date ={board.board_date.toString()}
                                 onRemove={this.handleRemove}
@@ -127,7 +141,10 @@ class Board extends Component {
           </Table>
           
             {/* <Link className="nav-link" to="/BoradForm"><button>글쓰기</button></Link> */}
-            <button onClick={this.handleChange} className="btn btn-primary" style={{float: 'left'}}>글쓰기</button>
+
+            <button onClick={this.handleChange} className="btn btn-primary" style={{float: 'left', fontFamily: 'sans-serif', fontSize: '15px'}}>글쓰기</button>
+            <button onClick={this.handlePrint}className="btn btn-primary" style={{float: 'left', fontFamily: 'sans-serif', fontSize: '15px'}}>로드</button>
+
             </div>
             
         );

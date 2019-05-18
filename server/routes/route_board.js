@@ -3,9 +3,8 @@ const router = express.Router();
 const Board = require('../models/model_board')
 
 /* board insert mongo */
-// router.post('/board/write', function (req, res) {
-  router.post('/BoardForm', function (req, res) {
-    console.log("req의 바디를 체크", JSON.stringify(req.body));
+
+router.post('/BoardForm', function (req, res) {
     var board = new Board();
     board.id = req.body.id;
     board.title = req.body.title;
