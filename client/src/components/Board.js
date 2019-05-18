@@ -142,8 +142,9 @@ class Board extends Component {
           
             {/* <Link className="nav-link" to="/BoradForm"><button>글쓰기</button></Link> */}
 
-            <button onClick={this.handleChange} className="btn btn-primary" style={{float: 'left', fontFamily: 'sans-serif', fontSize: '15px'}}>글쓰기</button>
-            <button onClick={this.handlePrint}className="btn btn-primary" style={{float: 'left', fontFamily: 'sans-serif', fontSize: '15px'}}>로드</button>
+            <button onClick={this.handleChange} className="btn btn-primary" style={{float: 'left', fontFamily: 'sans-serif', fontSize: '1.5vw'}}>글쓰기</button>
+            
+            <button onClick={this.handlePrint}className="btn btn-primary" style={{float: 'left', fontFamily: 'sans-serif', fontSize: '1.5vw'}}>로드</button>
 
             </div>
             
