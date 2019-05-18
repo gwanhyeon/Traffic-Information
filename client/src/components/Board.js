@@ -48,13 +48,13 @@ class Board extends Component {
             board_date : board_date
         }
 
-        axios.get('/test')
-        try {
+        axios.get('/user/board')
+        .then(res=> {
             console.log("ok");
-            
-        } catch { 
-            console.log("err");
-        }
+            this.setState({
+                boards : res.data
+            });
+        });
     }
 
     handleCreate = (data) => {
