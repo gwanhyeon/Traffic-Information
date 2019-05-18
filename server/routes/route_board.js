@@ -3,8 +3,11 @@ const router = express.Router();
 const Board = require('../models/model_board')
 
 /* board insert mongo */
-router.post('/board/write', function (req, res) {
+// router.post('/board/write', function (req, res) {
+  router.post('/BoardForm', function (req, res) {
+    console.log("req의 바디를 체크", JSON.stringify(req.body));
     var board = new Board();
+    board.id = req.body.id;
     board.title = req.body.title;
     board.contents = req.body.contents;
     board.author = req.body.author;
@@ -20,8 +23,9 @@ router.post('/board/write', function (req, res) {
             title : req.body.title,
             contents : req.body.contents,
             author : req.body.author,
-            board_date : req.body.board_date
+            board_date : board.board_date
         });
+        
         res.json(newPost);
       }
     });
