@@ -4,7 +4,7 @@ const passport = require('../jwt/passport');
 const Board = require('../models/model_board');
 
 /* board find by id */
-router.get('/board/:id', function (req, res) {
+router.get('/board', function (req, res) {
     Board.findOne({
         id: req.params.id
     }).then(user =>{

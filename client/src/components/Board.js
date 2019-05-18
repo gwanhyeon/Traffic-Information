@@ -4,6 +4,7 @@ import {Table} from 'react-bootstrap'
 import BoardForm from './BoardForm';
 import {BootstrapTable, TableHeaderColumn} from 'react-bootstrap-table';
 import {Link} from 'react-router-dom';
+import axios from 'axios';
 
 
 class Board extends Component {
@@ -32,6 +33,28 @@ class Board extends Component {
         this.setState({
             [e.target.name]: e.target.value
         })
+    }
+
+    handlePrint = (e) => {
+        const {board_id, board_title, board_contents, board_user_name, board_date} = this.state;
+
+        e.preventDefault();
+
+        this.state = {
+            board_id : board_id,
+            board_title: board_title,
+            board_contents : board_contents,
+            board_user_name : board_user_name,
+            board_date : board_date
+        }
+
+        axios.get('/test')
+        try {
+            console.log("ok");
+            
+        } catch { 
+            console.log("err");
+        }
     }
 
     handleCreate = (data) => {
@@ -128,6 +151,7 @@ class Board extends Component {
           
             {/* <Link className="nav-link" to="/BoradForm"><button>글쓰기</button></Link> */}
             <button onClick={this.handleChange} className="btn btn-primary" style={{float: 'left', fontFamily: 'sans-serif', fontSize: '15px'}}>글쓰기</button>
+            <button onClick={this.handlePrint}className="btn btn-primary" style={{float: 'left', fontFamily: 'sans-serif', fontSize: '15px'}}>로드</button>
             </div>
             
         );
