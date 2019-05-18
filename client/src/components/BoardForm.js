@@ -18,19 +18,13 @@ class BoradForm extends Component {
         // 페이지 리로딩 방지
         e.preventDefault();
 
-        this.state = {
-            board_title: board_title,
-            board_contents : board_contents
+        const board = {
+            title : board_title,
+            contents : board_contents
         }
-        // 상태값을 onCreate 를 통하여 부모에게 전달
-        // this.props.onCreate(this.state);
-        axios.post('/BoardForm')
-        .then(res =>{
-            console.log("res.data => ", res.data);
-            })
-            .catch( err =>{
-                console.log(err);
-            })
+        console.log("BoardForm에서 board객체: " + JSON.stringify(board));
+        axios.post('/user/BoardForm', board)
+        
         // 상태 초기화
         this.setState({
             board_title: '',

@@ -12,9 +12,9 @@ class Board extends Component {
     state = {
         boards: [
             {
-                board_id: 0,
-                board_title: '',
-                board_contents: '',
+                _id: 0,
+                title: '',
+                contents: '',
                 board_user_name : '',
                 board_date: formatDate(new Date())
             }
@@ -36,21 +36,12 @@ class Board extends Component {
     }
 
     handlePrint = (e) => {
-        const {board_id, board_title, board_contents, board_user_name, board_date} = this.state;
+        const {boards} = this.state;
 
         e.preventDefault();
 
-        this.state = {
-            board_id : board_id,
-            board_title: board_title,
-            board_contents : board_contents,
-            board_user_name : board_user_name,
-            board_date : board_date
-        }
-
-        axios.get('/user/board')
+        axios.get('user/board_list')
         .then(res=> {
-            console.log("ok");
             this.setState({
                 boards : res.data
             });
@@ -101,7 +92,7 @@ class Board extends Component {
         const {boards} = this.state; 
         const {id} = this;
         let check = null;
-        if(id > 1){
+        if(id > 0){
             check = <tbody>
               {boards.map((board, i) => {
                     if(i>0){
@@ -109,9 +100,9 @@ class Board extends Component {
                     
                              return (
                                 <BoardItem 
-                                board_id={board.board_id}
-                                board_title={board.board_title} 
-                                board_contents={board.board_contents} 
+                                board_id={this.id}
+                                board_title={board.title} 
+                                board_contents={board.contents} 
                                 board_user_name ={board.board_user_name} 
                                 board_date ={board.board_date.toString()}
                                 onRemove={this.handleRemove}
