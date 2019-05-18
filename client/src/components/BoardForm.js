@@ -14,24 +14,30 @@ class BoradForm extends Component {
         });
     }
     handleSubmit = (e) => {
+        const {board_title, board_contents} = this.state;
         // 페이지 리로딩 방지
         e.preventDefault();
+
+        this.state = {
+            board_title: board_title,
+            board_contents : board_contents
+        }
         // 상태값을 onCreate 를 통하여 부모에게 전달
         // this.props.onCreate(this.state);
+        axios.post('/BoardForm')
+        .then(res =>{
+            console.log("res.data => ", res.data);
+            })
+            .catch( err =>{
+                console.log(err);
+            })
         // 상태 초기화
         this.setState({
             board_title: '',
             board_contents: '',
             board_user_name: ''
         })
-        axios.get('/board/write')
-        .then(res =>{
-            console.log("res.data => ", res.data);
-            
-            })
-            .catch( err =>{
-                console.log(err);
-            })
+        
         this.props.history.push('/board');
 
 

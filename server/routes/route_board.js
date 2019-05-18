@@ -3,7 +3,7 @@ const router = express.Router();
 const Board = require('../models/model_board')
 
 /* board insert mongo */
-router.post('/board/write', function (req, res) {
+router.post('/BoardForm', function (req, res) {
     var board = new Board();
     board.title = req.body.title;
     board.contents = req.body.contents;
