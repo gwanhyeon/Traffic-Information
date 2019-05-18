@@ -16,6 +16,7 @@ class BoradForm extends Component {
     handleSubmit = (e) => {
         const {board_title, board_contents} = this.state;
         // 페이지 리로딩 방지
+        const {board_title, board_contents} = this.state;
         e.preventDefault();
 
         const board = {
@@ -26,6 +27,16 @@ class BoradForm extends Component {
         axios.post('/user/BoardForm', board)
         
         // 상태 초기화
+
+        const board = {
+            title : board_title,
+            contents : board_contents
+        }
+        console.log("BoardForm에서 board객체: " + JSON.stringify(board));
+        axios.post('/user/BoardForm', board)
+
+
+
         this.setState({
             board_title: '',
             board_contents: '',
