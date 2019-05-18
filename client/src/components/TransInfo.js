@@ -94,11 +94,11 @@ class TransInfo extends Component {
         // console.log("data.lengh => ",data.length)   
         const ErrorPage = <Error></Error>
         return (
-            <div>
+            <div style={{marginBottom: '2px', fontFamily: 'monospace', fontSize: '1.5vw'}}>
             <link to='board'></link>
             <Table responsive>
             <thead>
-              <tr style={{marginBottom: '2px', fontFamily: 'monospace', fontSize: '20px'}}>
+              <tr>
                 <th>#</th>
                 <th>제목</th>
                 <th>열차정보</th>

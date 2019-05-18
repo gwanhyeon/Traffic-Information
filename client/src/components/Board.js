@@ -104,7 +104,7 @@ class Board extends Component {
 
         return (
 
-            <div>
+            <div style={{marginBottom: '2px', fontFamily: 'sans-serif', fontSize: '1.5vw'}}>
                 <p></p>
             {/* <BoardForm 
                 onCreate={this.handleCreate}
@@ -113,7 +113,7 @@ class Board extends Component {
             <link to='board'></link>
             <Table responsive>
             <thead>
-              <tr style={{marginBottom: '2px', fontFamily: 'sans-serif', fontSize: '20px'}}>
+              <tr>
                 <th>no.</th>
                 <th>제목</th>
                 <th>내용</th>
@@ -127,7 +127,7 @@ class Board extends Component {
           </Table>
           
             {/* <Link className="nav-link" to="/BoradForm"><button>글쓰기</button></Link> */}
-            <button onClick={this.handleChange} className="btn btn-primary" style={{float: 'left', fontFamily: 'sans-serif', fontSize: '15px'}}>글쓰기</button>
+            <button onClick={this.handleChange} className="btn btn-primary" style={{float: 'left'}}>글쓰기</button>
             </div>
             
         );
