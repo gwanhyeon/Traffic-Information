@@ -10,7 +10,7 @@ class TransInfo extends Component {
         data: [],
     }
 
-    componentDidMount(){
+    subway_call () {
         const url = 'http://swopenAPI.seoul.go.kr/api/subway/6a7644634e6b67683739434e557a61/xml/realtimeStationArrival'
         let location = "의왕";
         const subway_id='1';
@@ -55,6 +55,35 @@ class TransInfo extends Component {
                 console.log(err);
             })
         }, 10000);
+
+    }
+
+    bus_call(){
+        let serviceKey='a5mSPyGouPCZhF2pi%2F%2Fciz%2FAokup9JJaIsQYgLHPEYE6Wct2ANSuspDzQTxakihNLNyfD%2FKxDxDunVk2lnY5jQ%3D%3D'
+        const bus_url = 'http://openapi.gbis.go.kr/ws/rest/busarrivalservice/station';
+        const stationId = 'stationId=226000160';
+        // serviceKey =encodeURIComponent(serviceKey); //인코딩한 값 넣어주기
+        axios.get(`${bus_url}/${serviceKey}/${stationId}`)
+            .then(res =>{
+                console.log(res);
+                var parser = new DOMParser(),
+                xmlDoc = parser.parseFromString(res.data,'text/xml');
+                const bus_length = xmlDoc.getElementsByTagName('row').length;
+                console.log(bus_length)
+
+            })
+            .catch((err)=>{
+                
+
+            }
+        )
+
+
+    }
+
+    componentDidMount(){
+        // this.subway_call();
+        this.bus_call();
         
     }    
     componentWillUnmount(){
