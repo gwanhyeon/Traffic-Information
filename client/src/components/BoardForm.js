@@ -14,17 +14,23 @@ class BoradForm extends Component {
         });
     }
     handleSubmit = (e) => {
+        let board_id = null;
         const {board_title, board_contents} = this.state;
         // 페이지 리로딩 방지
         e.preventDefault();
 
-        const board = {
-            board_title : board_title,
-            board_contents : board_contents
-        }
-        console.log("BoardForm에서 board객체: " + JSON.stringify(board));
-        axios.post('/user/BoardForm', board)
-        
+        axios.get('user/board_list')
+        .then(res=>{
+            board_id = res.data.length+1;
+            
+            const board = {
+                board_id : board_id,
+                board_title : board_title,
+                board_contents : board_contents
+            }
+            return axios.post('/user/BoardForm', board)
+        });
+
         // 상태 초기화
         this.setState({
             board_title: '',

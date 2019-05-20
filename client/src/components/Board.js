@@ -86,7 +86,7 @@ class Board extends Component {
                     
                              return (
                                 <BoardItem
-                                board_id={this.id}
+                                board_id={board.board_id}
                                 board_title={board.board_title} 
                                 board_contents={board.board_contents} 
                                 board_author ={board.board_author} 
