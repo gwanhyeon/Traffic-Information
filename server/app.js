@@ -17,6 +17,7 @@ const route_mail = require('./routes/route_mail');
 const route_mail_auth = require('./routes/route_mail_auth');
 const route_board_list = require('./routes/route_board_list');
 const route_board = require('./routes/route_board');
+const route_all_list = require('./routes/route_board_all_list');
 
 //todo database 연결 및 설정
 db.db_connect;
@@ -39,6 +40,7 @@ app.use('/user',route_mail);
 app.use('/user',route_signin);
 app.use('/user',route_signup);;
 app.use('/user',route_mail_auth);
+app.use('/user',route_all_list);
 app.post('/', (req,res) =>{
     console.log(req.query.hello);
     console.log(req.params.name)

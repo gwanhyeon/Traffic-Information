@@ -1,6 +1,6 @@
 import React, { Component,Fragment } from 'react';
 
-class TransItem extends Component {
+class TransSubwayItem extends Component {
     render() {
         const {board_id, board_title,board_contents,board_date,board_user_name} = this.props;
         console.log("transItem => ",board_id);
@@ -20,4 +20,4 @@ class TransItem extends Component {
     }
 }
 
-export default TransItem;
+export default TransSubwayItem;

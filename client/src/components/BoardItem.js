@@ -14,7 +14,6 @@ class BoardItem extends Component {
         const { editing } = this.state;
         this.setState({ editing: !editing });
     }
-
     handleChange = (e) => {
         const {name, value} = e.target;
         this.setState({
