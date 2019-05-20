@@ -5,7 +5,7 @@ class BoradRead extends Component {
     state = {
         board_title : '',
         board_contents : '',
-        board_user_name: ''
+        board_author: ''
     }
     // 미리 가져오기
     componentDidMount = () => {

@@ -13,9 +13,9 @@ class Board extends Component {
         boards: [
             {
                 _id: 0,
-                title: '',
-                contents: '',
-                board_user_name : '',
+                board_title: '',
+                board_contents: '',
+                board_author : '',
                 board_date: formatDate(new Date())
             }
         ]
@@ -38,7 +38,7 @@ class Board extends Component {
     }
 
     handleClickChange = (e) =>{
-        const {board_id,board_title,board_contents,board_name,date} = this.state;
+        const {board_id,board_title,board_contents,board_author,date} = this.state;
         this.setState({
             [e.target.name]: e.target.value
         })
@@ -54,14 +54,14 @@ class Board extends Component {
         });
     }
 
-    handleCreate = (data) => {
-        const {boards} = this.state;
-        console.log(data);
-            this.setState({
-                boards: boards.concat({board_id: this.id++, board_date: formatDate(new Date()), ...data})
-            })
+    // handleCreate = (data) => {
+    //     const {boards} = this.state;
+    //     console.log(data);
+    //         this.setState({
+    //             boards: boards.concat({board_id: this.id++, board_date: formatDate(new Date()), ...data})
+    //         })
         
-    }
+    // }
 
     // 클릭 이벤트 발생시 Link!
     handleChange = (e) => {
@@ -78,18 +78,18 @@ class Board extends Component {
         const {boards} = this.state; 
         const {id} = this;
         let check = null;
-        if(id > 0){
+        if(id >= 0){
             check = <tbody>
               {boards.map((board, i) => {
-                    if(i>0){
+                    if(i>=0){
                     console.log("key=>",i);
                     
                              return (
                                 <BoardItem
                                 board_id={this.id}
-                                board_title={board.title} 
-                                board_contents={board.contents} 
-                                board_user_name ={board.board_user_name} 
+                                board_title={board.board_title} 
+                                board_contents={board.board_contents} 
+                                board_author ={board.board_author} 
                                 board_date ={board.board_date.toString()}
                                 onRemove={this.handleRemove}
                                 onUpdate={this.handleUpdate}
