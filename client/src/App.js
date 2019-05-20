@@ -12,6 +12,7 @@ import Signin from './components/Signin';
 import Home from './components/Home';
 import Board from './components/Board';
 import BoardForm from './components/BoardForm';
+import BoardRead from './components/BoardRead';
 
 
 import './bootstrap.min.css';
@@ -42,6 +43,7 @@ class App extends Component {
                   <Route exact path="/signup" component={ Signup } />
                   <Route exact path="/signin" component={ Signin } />
                   <Route exact path = "/BoardForm" component = {BoardForm} />
+                  <Route exact path = "/BoardRead" component = {BoardRead} />
 
                 </div>
             </div>

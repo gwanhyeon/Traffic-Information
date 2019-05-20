@@ -3,10 +3,8 @@ const router = express.Router();
 const Board = require('../models/model_board')
 
 /* board insert mongo */
-
 router.post('/BoardForm', function (req, res) {
     var board = new Board();
-    board.id = req.body.id;
     board.title = req.body.title;
     board.contents = req.body.contents;
     board.author = req.body.author;
@@ -22,9 +20,8 @@ router.post('/BoardForm', function (req, res) {
             title : req.body.title,
             contents : req.body.contents,
             author : req.body.author,
-            board_date : board.board_date
+            board_date : req.body.board_date
         });
-        
         res.json(newPost);
       }
     });

@@ -78,7 +78,7 @@ class Signup extends Component {
         const {user_name,user_id,user_password,user_password_confirm,errors } = this.state;
         return(
         <div className="container" style={{ marginTop: '50px', width: '50%'}}>
-            <h1 class="text-success" style={{marginTop: '40px', marginBottom: '20px' , fontFamily: 'monospace', fontSize:'3.5vw'}}>Registration</h1>
+            <h1 class="text-success" style={{marginTop: '40px', marginBottom: '20px' , fontFamily: 'monospace', fontSize:"3.5vw"}}>Registration</h1>
             <form onSubmit={ handleSubmit }>
                 <div className="form-group">
                     <input
