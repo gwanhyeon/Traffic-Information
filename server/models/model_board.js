@@ -5,10 +5,10 @@ const mongoose = require('mongoose');
 
 
 const board = mongoose.Schema({
-    id : String,
-    title: String,
-    contents: String,
-    author: String,
+    board_id : String,
+    board_title: String,
+    board_contents: String,
+    board_author: String,
     board_date: {type: Date, default: Date.now()},
 })
 const Board = mongoose.model('Board',board);

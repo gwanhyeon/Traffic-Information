@@ -5,7 +5,7 @@ class BoradForm extends Component {
     state = {
         board_title : '',
         board_contents : '',
-        board_user_name: ''
+        board_author: ''
     }
 
     handleChange = (e) => {
@@ -19,8 +19,8 @@ class BoradForm extends Component {
         e.preventDefault();
 
         const board = {
-            title : board_title,
-            contents : board_contents
+            board_title : board_title,
+            board_contents : board_contents
         }
         console.log("BoardForm에서 board객체: " + JSON.stringify(board));
         axios.post('/user/BoardForm', board)
@@ -29,7 +29,7 @@ class BoradForm extends Component {
         this.setState({
             board_title: '',
             board_contents: '',
-            board_user_name: ''
+            board_author: ''
         })
         
         this.props.history.push('/board');
@@ -65,9 +65,9 @@ class BoradForm extends Component {
                 <hr/>
                 {/* 유저명 <input
                     // placeholder="유저명"
-                    value={this.state.board_user_name}
+                    value={this.state.board_author}
                     onChange={this.handleChange}
-                    name="board_user_name"
+                    name="board_author"
                     style = {{width: '454px'}}
                 />
                 <p/> */}
