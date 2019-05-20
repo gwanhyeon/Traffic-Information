@@ -16,6 +16,7 @@ const route_signup = require('./routes/route_signup');
 const route_mail = require('./routes/route_mail');
 const route_mail_auth = require('./routes/route_mail_auth');
 const route_board_list = require('./routes/route_board_list');
+const route_board_read = require('./routes/route_board_read');
 const route_board = require('./routes/route_board');
 
 //todo database 연결 및 설정
@@ -35,6 +36,7 @@ app.use(bodyParser.json());
 //todo route signup, signin router connect to and then using exporess moduel 
 app.use('/user',route_board);
 app.use('/user',route_board_list);
+app.use('/user',route_board_read);
 app.use('/user',route_mail);
 app.use('/user',route_signin);
 app.use('/user',route_signup);;

@@ -3,14 +3,15 @@ const router = express.Router();
 const passport = require('../jwt/passport');
 const Board = require('../models/model_board');
 
-// find board list
-router.get('/board_list', function (req, res) {
-    Board.find().then(user =>{
+/* board find by id */
+router.get('/board_read', function (req, res) {
+    Board.findOne({
+        board_id: req.params.board_id
+    }).then(user =>{
         if(user){
             res.send(user);
         }
     })
 });
-
 
 module.exports = router;

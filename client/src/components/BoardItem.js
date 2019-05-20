@@ -6,6 +6,10 @@ class BoardItem extends Component {
         title:'',
         contents:''
     }
+    handleRead = () => {
+      const {board_id, onRead} = this.props;
+      onRead(board_id);
+  }
     handleRemove = () => {
         const {board_id, onRemove} = this.props;
         onRemove(board_id);
@@ -52,7 +56,7 @@ class BoardItem extends Component {
         if (editing) { // 수정모드
             return (
                 <Fragment>
-                <tr style={{fontFamily: 'sans-serif', fontSize: '20px'}}>
+                <tr style={{fontFamily: 'sans-serif', fontSize: '1.5vw'}}>
                 <td>{board_id}</td>
                 <td> <input
                     value={this.state.title}
@@ -68,8 +72,8 @@ class BoardItem extends Component {
                   /> </td>
                 <td> {board_user_name}</td>
                 <td> {board_date} </td>
-                <td> <button onClick={this.handleToggleEdit} className="btn btn-primary">적용</button></td>
-                <td> <button onClick={this.handleRemove} className="btn btn-primary">삭제</button></td>
+                <td> <button onClick={this.handleToggleEdit} className="btn btn-primary" style={{fontFamily: 'sans-serif', fontSize: '1.5vw'}}>적용</button></td>
+                <td> <button onClick={this.handleRemove} className="btn btn-primary" style={{fontFamily: 'sans-serif', fontSize: '1.5vw'}}>삭제</button></td>
                 
                 </tr>
                 </Fragment>
@@ -78,14 +82,14 @@ class BoardItem extends Component {
         
         return (
                 <Fragment>
-                <tr style={{fontFamily: 'sans-serif', fontSize: '20px'}}>
+                <tr style={{fontFamily: 'sans-serif', fontSize: '1.5vw'}}>
                 <td>{board_id}</td>
-                <td> {board_title} </td>
+                <td onClick={this.handleRead}> {board_title} </td>
                 <td> {board_contents} </td>
                 <td> {board_user_name}</td>
                 <td> {board_date} </td>
-                <td> <button onClick={this.handleToggleEdit} className="btn btn-primary">수정</button></td>
-                <td> <button onClick={this.handleRemove} className="btn btn-primary">삭제</button></td>
+                <td> <button onClick={this.handleToggleEdit} className="btn btn-primary" style={{fontFamily: 'sans-serif', fontSize: '1.5vw'}}>수정</button></td>
+                <td> <button onClick={this.handleRemove} className="btn btn-primary" style={{fontFamily: 'sans-serif', fontSize: '1.5vw'}}>삭제</button></td>
                 
                 </tr>
                 </Fragment>
