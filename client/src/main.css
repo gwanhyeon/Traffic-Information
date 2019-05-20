@@ -1,0 +1,10 @@
+.left-box {
+    background: white;
+    float: left;
+    width: 50%;
+  }
+  .right-box {
+    background:white;
+    float: right;
+    width: 50%;
+  }
