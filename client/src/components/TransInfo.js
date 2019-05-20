@@ -13,7 +13,7 @@ class TransInfo extends Component {
         bus_data: []
     }
 
-    componentDidMount(){
+    subway_call(){
         const url = 'http://swopenAPI.seoul.go.kr/api/subway/6a7644634e6b67683739434e557a61/xml/realtimeStationArrival'
         let location = "의왕";
         const subway_id='1';
