@@ -3,9 +3,13 @@ import React, { Fragment,Component } from 'react';
 class BoardItem extends Component {
     state = {
         editing : false,
-        title:'',
-        contents:''
+        board_title:'',
+        board_contents:''
     }
+    handleRead = () => {
+      const {board_id, onRead} = this.props;
+      onRead(board_id);
+  }
     handleRemove = () => {
         const {board_id, onRemove} = this.props;
         onRemove(board_id);
@@ -31,44 +35,44 @@ class BoardItem extends Component {
           // editing 값이 false -> true 로 전환 될 때
           // info 의 값을 state 에 넣어준다
           this.setState({
-            title: board_title,
-            contents: board_contents
+            board_title: board_title,
+            board_contents: board_contents
           })
         }
     
         if (prevState.editing && !this.state.editing) {
           // editing 값이 true -> false 로 전환 될 때
           onUpdate(board_id, {
-            board_title: this.state.title,
-            board_contents: this.state.contents
+            board_title: this.state.board_title,
+            board_contents: this.state.board_contents
           });
         }
       }
     render() {
-        const {board_id, board_title,board_contents,board_date,board_user_name} = this.props;
+        const {board_id, board_title,board_contents,board_date,board_author} = this.props;
         const {editing} = this.state;
 
         if (editing) { // 수정모드
             return (
                 <Fragment>
-                <tr style={{fontFamily: 'sans-serif', fontSize: '20px'}}>
+                <tr style={{fontFamily: 'sans-serif', fontSize: '1.5vw'}}>
                 <td>{board_id}</td>
                 <td> <input
-                    value={this.state.title}
+                    value={this.state.board_title}
                     name="title"
                     placeholder="제목"
                     onChange={this.handleChange}
                   /> </td>
                 <td> <input
-                    value={this.state.contents}
+                    value={this.state.board_contents}
                     name="contents"
                     placeholder="내용"
                     onChange={this.handleChange}
                   /> </td>
-                <td> {board_user_name}</td>
+                <td> {board_author}</td>
                 <td> {board_date} </td>
-                <td> <button onClick={this.handleToggleEdit} className="btn btn-primary">적용</button></td>
-                <td> <button onClick={this.handleRemove} className="btn btn-primary">삭제</button></td>
+                <td> <button onClick={this.handleToggleEdit} className="btn btn-primary" style={{fontFamily: 'sans-serif', fontSize: '1.5vw'}}>적용</button></td>
+                <td> <button onClick={this.handleRemove} className="btn btn-primary" style={{fontFamily: 'sans-serif', fontSize: '1.5vw'}}>삭제</button></td>
                 
                 </tr>
                 </Fragment>
@@ -77,14 +81,14 @@ class BoardItem extends Component {
         
         return (
                 <Fragment>
-                <tr style={{fontFamily: 'sans-serif', fontSize: '20px'}}>
+                <tr style={{fontFamily: 'sans-serif', fontSize: '1.5vw'}}>
                 <td>{board_id}</td>
-                <td> {board_title} </td>
+                <td onClick={this.handleRead}> {board_title} </td>
                 <td> {board_contents} </td>
-                <td> {board_user_name}</td>
+                <td> {board_author}</td>
                 <td> {board_date} </td>
-                <td> <button onClick={this.handleToggleEdit} className="btn btn-primary">수정</button></td>
-                <td> <button onClick={this.handleRemove} className="btn btn-primary">삭제</button></td>
+                <td> <button onClick={this.handleToggleEdit} className="btn btn-primary" style={{fontFamily: 'sans-serif', fontSize: '1.5vw'}}>수정</button></td>
+                <td> <button onClick={this.handleRemove} className="btn btn-primary" style={{fontFamily: 'sans-serif', fontSize: '1.5vw'}}>삭제</button></td>
                 
                 </tr>
                 </Fragment>

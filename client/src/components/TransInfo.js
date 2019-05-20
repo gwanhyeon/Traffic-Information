@@ -13,7 +13,7 @@ class TransInfo extends Component {
         bus_data: []
     }
 
-    subway_call () {
+    componentDidMount(){
         const url = 'http://swopenAPI.seoul.go.kr/api/subway/6a7644634e6b67683739434e557a61/xml/realtimeStationArrival'
         let location = "의왕";
         const subway_id='1';
@@ -57,6 +57,7 @@ class TransInfo extends Component {
             .catch( err =>{
                 console.log(err);
             })
+
         }, 1000);
 
     }
@@ -104,6 +105,7 @@ class TransInfo extends Component {
     componentDidMount(){
         this.subway_call();
         this.bus_call();
+
         
     }    
     componentWillUnmount(){
@@ -123,7 +125,7 @@ class TransInfo extends Component {
             <link to='board'></link>
             <Table responsive>
             <thead>
-              <tr style={{marginBottom: '2px', fontFamily: 'monospace', fontSize: '20px'}}>
+              <tr style={{marginBottom: '2px', fontFamily: 'monospace', fontSize: '1.5vw'}}>
                 <th>#</th>
                 <th>제목</th>
                 <th>열차정보</th>
