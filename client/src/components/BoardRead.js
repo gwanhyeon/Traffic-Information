@@ -5,15 +5,15 @@ class BoradRead extends Component {
     state = {
         board_title : '',
         board_contents : '',
-        board_user_name: ''
+        board_author: ''
     }
     // 미리 가져오기
     componentDidMount = () => {
         axios.get('user/board_read')
         .then(res=> {
             this.setState({
-                board_title : res.data.title,
-                board_contents : res.data.contents
+                board_title : res.data.board_title,
+                board_contents : res.data.board_contents
             })
             console.log("res.data", res.data);
             console.log("title", res.data.title)
