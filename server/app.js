@@ -18,6 +18,7 @@ const route_mail_auth = require('./routes/route_mail_auth');
 const route_board_list = require('./routes/route_board_list');
 const route_board_read = require('./routes/route_board_read');
 const route_board_delete = require('./routes/route_board_delete');
+const route_board_edit = require('./routes/route_board_edit');
 const route_board = require('./routes/route_board');
 const route_all_list = require('./routes/route_board_all_list');
 
@@ -40,6 +41,7 @@ app.use('/user',route_board);
 app.use('/user',route_board_list);
 app.use('/user',route_board_read);
 app.use('/user',route_board_delete);
+app.use('/user',route_board_edit);
 app.use('/user',route_mail);
 app.use('/user',route_signin);
 app.use('/user',route_signup);;

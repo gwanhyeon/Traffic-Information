@@ -28,14 +28,21 @@ class Board extends Component {
     //     board_name : '',
     //     board_date : new Date(),
     // }
-    
-    componentDidMount = () => {
-        axios.get('user/board_list')
+    async_list(){
+        this.lookupInterval = setInterval(() => axios.get('user/board_list')
         .then(res=> {
             this.setState({
                 boards : res.data
             });
-        });
+        })
+        ,1000);
+    }
+    componentDidMount = () => {
+        this.async_list();
+       
+    }
+    componentWillUnmount(){
+         clearInterval(this.lookupInterval)
     }
 
     handleClickChange = (e) =>{
@@ -82,6 +89,13 @@ class Board extends Component {
         .then(res => {
             console.log(res.data);
         });
+    }
+    // 수정
+    handleUpdate = (board_id,body) => {
+        axios.put('user/board_edit/'+board_id, body)
+        .then(res => {
+            console.log(res.data);
+        })
     }
 
     render() {
@@ -141,6 +155,7 @@ class Board extends Component {
             {/* <Link className="nav-link" to="/BoradForm"><button>글쓰기</button></Link> */}
             <button onClick={this.handleChange} className="btn btn-primary" style={{float: 'left', fontFamily: 'sans-serif', fontSize: '1.5vw'}}>글쓰기</button>
             <button onClick={this.handlePrint} className="btn btn-primary" style={{float: 'left', fontFamily: 'sans-serif', fontSize: '1.5vw'}}>로드</button>
+
             </div>
             
         );

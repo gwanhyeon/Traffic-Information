@@ -22,7 +22,7 @@ class BoradForm extends Component {
         axios.get('user/board_list')
         .then(res=>{
             board_id = res.data.length+1;
-            
+            let = board_id
             const board = {
                 board_id : board_id,
                 board_title : board_title,
@@ -79,7 +79,6 @@ class BoradForm extends Component {
                 <p/> */}
                 <button type="submit" className="btn btn-primary" style={{float: 'right', fontFamily: 'monospace', fontSize: '1.5vw'}}>ok</button>
             </form>
-
         )
     }
 }
