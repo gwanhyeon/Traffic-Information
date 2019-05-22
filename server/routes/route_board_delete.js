@@ -5,7 +5,6 @@ const Board = require('../models/model_board');
 
 /* board find by id */
 router.delete('/board_delete/:board_id', function (req, res) {
-    console.log("req.params.board_id---->", req.params.board_id);
     Board.remove({
        board_id : req.params.board_id
     })
