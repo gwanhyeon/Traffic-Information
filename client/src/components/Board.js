@@ -7,6 +7,7 @@ import {Link} from 'react-router-dom';
 import axios from 'axios';
 
 
+
 class Board extends Component {
     id = 1
     state = {
@@ -27,14 +28,21 @@ class Board extends Component {
     //     board_name : '',
     //     board_date : new Date(),
     // }
-    
-    componentDidMount = () => {
-        axios.get('user/board_list')
+    async_list(){
+        this.lookupInterval = setInterval(() => axios.get('user/board_list')
         .then(res=> {
             this.setState({
                 boards : res.data
             });
-        });
+        })
+        ,1000);
+    }
+    componentDidMount = () => {
+        this.async_list();
+       
+    }
+    componentWillUnmount(){
+         clearInterval(this.lookupInterval)
     }
 
     handleClickChange = (e) =>{
@@ -54,27 +62,44 @@ class Board extends Component {
         });
     }
 
-    // handleCreate = (data) => {
-    //     const {boards} = this.state;
-    //     console.log(data);
-    //         this.setState({
-    //             boards: boards.concat({board_id: this.id++, board_date: formatDate(new Date()), ...data})
-    //         })
-        
-    // }
 
     // 클릭 이벤트 발생시 Link!
     handleChange = (e) => {
         this.props.history.push('/BoardForm');
     }
+    // 게시글 하나 자세히 보기
+    handleRead = (board_id) => {
+        axios.get('user/board_read/'+board_id)
+        .then(res=> {
+            this.setState({
+                board_id : res.data[0].board_id,
+                board_title : res.data[0].board_title,
+                board_contents : res.data[0].board_contents,
+                board_data : res.data[0].board_data,
+                _id : res.data[0]._id
+            })
+            console.log("get findOne() 후 this.state =>", this.state);
+        });
+        // this.props.history.push('/BoardRead');
+    }
 
-    handleRead = () => {
-        this.props.history.push('/BoardRead');
+    // 삭제
+    handleRemove = (board_id) => {
+        axios.delete('user/board_delete/'+board_id)
+        .then(res => {
+            console.log(res.data);
+        });
+    }
+    // 수정
+    handleUpdate = (board_id,body) => {
+        axios.put('user/board_edit/'+board_id, body)
+        .then(res => {
+            console.log(res.data);
+        })
     }
 
     render() {
         // <Route render={props => <BoardForm onCreate={this.handleCreate}/>}></Route>
-
         const {boards} = this.state; 
         const {id} = this;
         let check = null;
@@ -130,6 +155,7 @@ class Board extends Component {
             {/* <Link className="nav-link" to="/BoradForm"><button>글쓰기</button></Link> */}
             <button onClick={this.handleChange} className="btn btn-primary" style={{float: 'left', fontFamily: 'sans-serif', fontSize: '1.5vw'}}>글쓰기</button>
             <button onClick={this.handlePrint} className="btn btn-primary" style={{float: 'left', fontFamily: 'sans-serif', fontSize: '1.5vw'}}>로드</button>
+
             </div>
             
         );

@@ -59,13 +59,13 @@ class BoardItem extends Component {
                 <td>{board_id}</td>
                 <td> <input
                     value={this.state.board_title}
-                    name="title"
+                    name="board_title"
                     placeholder="제목"
                     onChange={this.handleChange}
                   /> </td>
                 <td> <input
                     value={this.state.board_contents}
-                    name="contents"
+                    name="board_contents"
                     placeholder="내용"
                     onChange={this.handleChange}
                   /> </td>

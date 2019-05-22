@@ -4,17 +4,20 @@ const passport = require('../jwt/passport');
 const Board = require('../models/model_board');
 
 /* board find by id */
-router.get('/board_read/:board_id', function (req, res) {
-    console.log("req.params.board_id---->", req.params.board_id);
-    Board.find({
+router.put('/board_edit/:board_id', function (req, res) {
+    Board.update({
        board_id : req.params.board_id
-    }
-    ).then(board =>{
+    },{
+        $set: {
+            board_title : req.body.board_title,
+            board_contents : req.body.board_contents
+        }
+    })
+    .then(board => {
         if(board){
             res.send(board);
         }
-        console.log("user--->", board);
-    })
+    });
 });
 
 module.exports = router;
