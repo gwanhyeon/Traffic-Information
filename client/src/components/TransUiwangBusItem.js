@@ -6,9 +6,7 @@ const TransUiwangBusItem = ({bus_state,
     bus_plate1,
     bus_plate2 ,
     bus_time1 ,
-    bus_time2 ,
-    bus_remainSeatCnt1 ,
-    bus_remainSeatCnt2}) => {
+    bus_time2 }) => {
         return (
             
             <Fragment>
