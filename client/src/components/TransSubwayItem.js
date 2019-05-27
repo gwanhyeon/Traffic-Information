@@ -1,8 +1,10 @@
 import React, { Component,Fragment } from 'react';
 
-class TransSubwayItem extends Component {
-    render() {
-        const {board_id, board_title,board_contents,board_date,board_user_name} = this.props;
+const TransSubwayItem = ({
+    board_id, board_title,board_contents,board_date,board_user_name
+}) => {
+    
+        const {} = this.props;
         console.log("transItem => ",board_id);
         return (
             
@@ -17,7 +19,7 @@ class TransSubwayItem extends Component {
             </Fragment>
             
         );
-    }
+    
 }
 
 export default TransSubwayItem;

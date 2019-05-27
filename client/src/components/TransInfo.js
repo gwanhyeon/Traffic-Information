@@ -62,7 +62,7 @@ class TransInfo extends Component {
                 console.log(err);
             })
 
-        }, 1000);
+        }, 10000);
 
     }
     knut_station_bus_call(){
@@ -106,7 +106,7 @@ class TransInfo extends Component {
         }).catch( err => {
             console.log(err);
         });
-    },1000);
+    },10000);
 
     
     }
@@ -150,7 +150,7 @@ class TransInfo extends Component {
             }).catch( err =>{
                 console.log(err);
             })
-        },1000);
+        },10000);
     }
 
     componentDidMount(){
@@ -161,7 +161,7 @@ class TransInfo extends Component {
         
     }    
     componentWillUnmount(){
-         clearInterval(this.this.lookupInterval_subway)
+         clearInterval(this.lookupInterval_subway)
          clearInterval(this.lookupInterval_knut_station)
         clearInterval(this.lookupInterval_uiwang_station)
     }
