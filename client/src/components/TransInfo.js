@@ -66,52 +66,62 @@ class TransInfo extends Component {
 
     }
     knut_station_bus_call(){
-        // #1 static Variable
-        const serviceKey ='a5mSPyGouPCZhF2pi%2F%2Fciz%2FAokup9JJaIsQYgLHPEYE6Wct2ANSuspDzQTxakihNLNyfD%2FKxDxDunVk2lnY5jQ%3D%3D'  // Service Key
-        const bus_url = 'http://openapi.gbis.go.kr/ws/rest/busarrivalservice/station?';      //bus Url
-        const knut_stationId = '226000103'          // 한국교통대학교
-        const bus_attribute_length =14;
-        // serviceKey =encodeURIComponent(serviceKey); //인코딩한 값 넣어주기
-        // # 2위치 - 교통대
-        let knut_msgBody_data = null;
-
-         this.lookupInterval_knut_station = setInterval(() => {axios.get(`${bus_url}serviceKey=${serviceKey}&stationId=${knut_stationId}`)
-        .then(res => {
-
-            console.log("res=>",res);
-            var knut_parser = new DOMParser(),
-            xmlDoc = knut_parser.parseFromString(res.data, 'text/xml');
-            console.log(xmlDoc);
-            knut_msgBody_data = xmlDoc.getElementsByTagName('busArrivalList').length;
-            console.log(knut_msgBody_data);
-            const parsing_data2 = new Array();
-            for(let i=0; i<knut_msgBody_data; i++){
-                let sub2 = new Array();
-                for(let j=0; j<bus_attribute_length; j++){
-                    sub2.push(xmlDoc.getElementsByTagName('busArrivalList')[i]
-                    .childNodes[j].childNodes[0])
-                } 
-                parsing_data2.push(sub2);
-            }
-            for(let i=0; i<parsing_data2.length; i++){
-                for(let j=0; j<parsing_data2[i].length; j++){
-                    console.log("parsing_data => " ,parsing_data2[i][j]);
-                }
-                console.log("check2");
-            }
-            this.setState({
-                knut_bus_data : parsing_data2
+        this.lookupInterval_knut_station = setInterval(() => {axios.get("user/open_data")
+            .then(res => {
+                console.log("십셰끼 => " , res);
+                this.setState({
+                    knut_bus_data : res
+                })
             })
-            console.log(this.state.knut_bus_data);
-        }).catch( err => {
-            console.log(err);
-        });
-    },10000);
+        },1000);
+        
+        // #1 static Variable
+    //     const serviceKey ='a5mSPyGouPCZhF2pi%2F%2Fciz%2FAokup9JJaIsQYgLHPEYE6Wct2ANSuspDzQTxakihNLNyfD%2FKxDxDunVk2lnY5jQ%3D%3D'  // Service Key
+    //     const bus_url = 'http://openapi.gbis.go.kr/ws/rest/busarrivalservice/station?';      //bus Url
+    //     const knut_stationId = '226000103'          // 한국교통대학교
+    //     const bus_attribute_length =14;
+    //     // serviceKey =encodeURIComponent(serviceKey); //인코딩한 값 넣어주기
+    //     // # 2위치 - 교통대
+    //     let knut_msgBody_data = null;
+
+    //      this.lookupInterval_knut_station = setInterval(() => {axios.get(`${bus_url}serviceKey=${serviceKey}&stationId=${knut_stationId}`)
+    //     .then(res => {
+
+    //         console.log("res=>",res);
+    //         var knut_parser = new DOMParser(),
+    //         xmlDoc = knut_parser.parseFromString(res.data, 'text/xml');
+    //         console.log(xmlDoc);
+    //         knut_msgBody_data = xmlDoc.getElementsByTagName('busArrivalList').length;
+    //         console.log(knut_msgBody_data);
+    //         const parsing_data2 = new Array();
+    //         for(let i=0; i<knut_msgBody_data; i++){
+    //             let sub2 = new Array();
+    //             for(let j=0; j<bus_attribute_length; j++){
+    //                 sub2.push(xmlDoc.getElementsByTagName('busArrivalList')[i]
+    //                 .childNodes[j].childNodes[0])
+    //             } 
+    //             parsing_data2.push(sub2);
+    //         }
+    //         for(let i=0; i<parsing_data2.length; i++){
+    //             for(let j=0; j<parsing_data2[i].length; j++){
+    //                 console.log("parsing_data => " ,parsing_data2[i][j]);
+    //             }
+    //             console.log("check2");
+    //         }
+    //         this.setState({
+    //             knut_bus_data : parsing_data2
+    //         })
+    //         console.log(this.state.knut_bus_data);
+    //     }).catch( err => {
+    //         console.log(err);
+    //     });
+    // },10000);
 
     
     }
 
     uiwang_station_bus_call(){
+        
         // #1 static Variable
         const serviceKey ='a5mSPyGouPCZhF2pi%2F%2Fciz%2FAokup9JJaIsQYgLHPEYE6Wct2ANSuspDzQTxakihNLNyfD%2FKxDxDunVk2lnY5jQ%3D%3D'  // Service Key
         const bus_url = 'http://openapi.gbis.go.kr/ws/rest/busarrivalservice/station?';      //bus Url
@@ -121,7 +131,8 @@ class TransInfo extends Component {
         // # 2위치 - 교통대
         
         // 의왕역 버스 데이터 request , serviceKey =encodeURIComponent(serviceKey); //인코딩한 값 넣어주기
-        this.lookupInterval_uiwang_station = setInterval(() => {axios.get(`${bus_url}serviceKey=${serviceKey}&stationId=${uiwang_stationId}`)
+        this.lookupInterval_uiwang_station = setInterval(() => {
+        axios.get(`${bus_url}serviceKey=${serviceKey}&stationId=${uiwang_stationId}`)
         .then(res =>{
                 var parser = new DOMParser(),
                 xmlDoc = parser.parseFromString(res.data,'text/xml');

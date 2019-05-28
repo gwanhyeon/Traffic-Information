@@ -4,7 +4,6 @@ const TransSubwayItem = ({
     board_id, board_title,board_contents,board_date,board_user_name
 }) => {
     
-        const {} = this.props;
         console.log("transItem => ",board_id);
         return (
             
