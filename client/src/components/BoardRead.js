@@ -3,71 +3,104 @@ import Board from './Board';
 import axios from 'axios';
 import BoardItem from './BoardItem';
 class BoradRead extends Component {
-
-    
+    state = {
+        board_id : '',
+        board_title:'',
+        board_contents:''
+    }
+    data_store = null;
     // 클릭시 findOne() 가져오기
     componentDidMount = () => {
-        // console.log("this.props" ,this.props);
-
-        // axios.get('user/board_read/'+board_id)
-        // .then(res=> {
-        //     this.setState({
-        //         board_id : res.data[0].board_id,
-        //         board_title : res.data[0].board_title,
-        //         board_contents : res.data[0].board_contents,
-        //         board_data : res.data[0].board_data,
-        //         _id : res.data[0]._id
-        //     })
-        //     console.log("state를 봐보자", this.state);
-        // });
-        // console.log("state를 한번 더 봐보자", this.state);
+        console.log("this.props" ,this.props.dataFromParent);
+        this.data_store = axios.get('user/board_read/'+this.props.dataFromParent)
+        .then(res=> {
+            this.data_store = res.data;
+            this.setState({
+                board_id : res.data[0].board_id,
+                board_title : res.data[0].board_title,
+                board_contents : res.data[0].board_contents
+            })
+            return res;
+        });
     }
     // 삭제
-    handleRemove = (id) => {
-        // const {boards} = this.state;
-        // this.setState({
-        //     boards: boards.filter(boards => boards.board_id !== id)
-        // })
-        // {boards.map((board, i) => {
-        //         if(board.board_id > id){
-        //             this.setState({
-        //                 board_id: board.board_id--
-        //             })
-        //         }
-        //     })}
-        // this.id--
-    }
+    // handleRemove = (board_id) => {
+    //     console.log("this.props" ,board_id);
+    //     axios.delete('user/board_delete/'+board_id)
+    //     .then(res => {
+    //         console.log(res.data);
+    //     });
+    // }
 
-    // 수정
-    handleUpdate = (id, data) => {
-        // const {boards} = this.state;
-        // this.setState({
-        //     boards: boards.map(
-        //         info => id === info.board_id
-        //         ? {...info, ...data}
-        //         : info
-        //     )
-        // })
+    handleToggleEdit = () => {
+        const { editing } = this.state;
+        this.setState({ editing: !editing });
     }
+    handleChange = (e) => {
+        const {name, value} = e.target;
+        this.setState({
+            [name]: value
+        })
+    }
+    componentDidUpdate(prevProps, prevState, body) {
+    
+        const { board_title, board_contents, board_id } = this.props;
+        if(!prevState.editing && this.state.editing) {
 
-    handleBack = (e) => {
-        this.props.history.push('/board');
+          this.setState({
+            board_title: board_title,
+            board_contents: board_contents
+          })
+        }
+        // 수정하기
+        if (prevState.editing && !this.state.editing) {
+            body = this.state;
+            axios.put('user/board_edit/'+this.state.board_id, body)
+            .then(res => {
+                console.log(res.data);
+            })
+        }
     }
 
     render () {
-        return(
-            <form style={{margin: 'auto', width: '50%', marginTop: '50px'}}>
-                <h1 className="text-success" style={{marginTop: '40px', fontFamily: 'monospace', fontSize: '3vw'}}>게시글 자세히보기</h1>
+        const { editing } = this.state;
+        if (editing) { // 수정모드
+            return (
+                <form style={{margin: 'auto', width: '50%', marginTop: '50px'}}>
+                <h3 className="text-success" style={{marginTop: '10px', fontFamily: 'monospace', fontSize: '2vw'}}>수정하기</h3>
                 <hr/>
                 <h4 style={{marginBottom: '2px', fontFamily: 'monospace', fontSize: '1.5vw'}}>title</h4>
-                <p
-                    // placeholder="제목"
-                    name="board_title"
-                    className="form-control"
+
+                <input
+                    value={this.state.board_title}
+                    className="form-control" 
                     style = {{width: '100%'}}
-                >
-                제목
-                {/* {this.state.board_title} */}
+                    name="board_title"
+                    placeholder="제목"
+                    onChange={this.handleChange}
+                  />
+                <h4 style={{marginBottom: '2px', fontFamily: 'monospace', fontSize: '1.5vw'}}>content</h4>
+                <input
+                    value={this.state.board_contents}
+                    className="form-control"
+                    style = {{width: '100%', height: '300px'}}
+                    name="board_contents"
+                    placeholder="내용"
+                    onChange={this.handleChange}
+                  />
+                <hr/>
+                <button onClick={this.handleToggleEdit} className="btn btn-primary" style={{float: 'left', fontFamily: 'monospace', fontSize: '1.5vw'}}>적용</button>
+               
+                </form>  
+            );
+          }
+        return(
+            <form style={{margin: 'auto', width: '50%', marginTop: '50px'}}>
+                <h3 className="text-success" style={{marginTop: '10px', fontFamily: 'monospace', fontSize: '2vw'}}>자세히보기</h3>
+                <hr/>
+                <h4 style={{marginBottom: '2px', fontFamily: 'monospace', fontSize: '1.5vw'}}>title</h4>
+                <p  name="board_title"  className="form-control" style = {{width: '100%'}}>
+                {this.state.board_title}
                 </p>
                 <p/>
                 <h4 style={{marginBottom: '2px', fontFamily: 'monospace', fontSize: '1.5vw'}}>content</h4>
@@ -77,13 +110,11 @@ class BoradRead extends Component {
                     className="form-control"
                     style = {{width: '100%', height: '300px'}}
                 >
-                제목
-                {/* {this.state.board_contents} */}
+                {this.state.board_contents}
                 </p>
                 <hr/>
-                <button onClick={this.handleUpdate} className="btn btn-primary" style={{float: 'left', fontFamily: 'monospace', fontSize: '1.5vw'}}>수정</button>
-                <button onClick={this.handleRemove} className="btn btn-primary" style={{float: 'left', fontFamily: 'monospace', fontSize: '1.5vw'}}>삭제</button>
-                <button onClick={this.handleBack} className="btn btn-primary" style={{float: 'right', fontFamily: 'monospace', fontSize: '1.5vw'}}>Back</button>
+                <button onClick={this.handleToggleEdit} className="btn btn-primary" style={{float: 'left', fontFamily: 'monospace', fontSize: '1.5vw'}}>수정</button>
+                
             </form>
         )
     }

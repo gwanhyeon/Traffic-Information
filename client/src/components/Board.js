@@ -61,42 +61,20 @@ class Board extends Component {
             });
         });
     }
-
-
     // 클릭 이벤트 발생시 Link!
     handleChange = (e) => {
         this.props.history.push('/BoardForm');
     }
-    // 게시글 하나 자세히 보기
-    handleRead = (board_id) => {
-        axios.get('user/board_read/'+board_id)
-        .then(res=> {
-            this.setState({
-                board_id : res.data[0].board_id,
-                board_title : res.data[0].board_title,
-                board_contents : res.data[0].board_contents,
-                board_data : res.data[0].board_data,
-                _id : res.data[0]._id
-            })
-            console.log("get findOne() 후 this.state =>", this.state);
-        });
-        // this.props.history.push('/BoardRead');
-    }
 
     // 삭제
     handleRemove = (board_id) => {
+        console.log("과연 지워지는 board_id가 들어올까용 ?" , board_id);
         axios.delete('user/board_delete/'+board_id)
         .then(res => {
             console.log(res.data);
         });
     }
-    // 수정
-    handleUpdate = (board_id,body) => {
-        axios.put('user/board_edit/'+board_id, body)
-        .then(res => {
-            console.log(res.data);
-        })
-    }
+
 
     render() {
         // <Route render={props => <BoardForm onCreate={this.handleCreate}/>}></Route>
@@ -113,11 +91,10 @@ class Board extends Component {
                                 <BoardItem
                                 board_id={board.board_id}
                                 board_title={board.board_title} 
-                                board_contents={board.board_contents} 
+                                // board_contents={board.board_contents} 
                                 board_author ={board.board_author} 
-                                board_date ={board.board_date.toString()}
+                                board_date ={formatDate(board.board_date)}
                                 onRemove={this.handleRemove}
-                                onUpdate={this.handleUpdate}
                                 onRead={this.handleRead}
                                 key={i}/>
                             );
@@ -142,10 +119,9 @@ class Board extends Component {
               <tr style={{marginBottom: '2px', fontFamily: 'sans-serif', fontSize: '1.5vw'}}>
                 <th>no.</th>
                 <th>제목</th>
-                <th>내용</th>
+                {/* <th>내용</th> */}
                 <th>이름</th>
                 <th>날짜</th>
-                <th>수정</th>
                 <th>삭제</th>
               </tr>
             </thead>
