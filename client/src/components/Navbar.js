@@ -43,6 +43,7 @@ class Navbar extends Component {
                 <Link className="navbar-brand" to="/" style={{fontSize: '1.5vw'}}>교통정보</Link>
                 {/* <div className="collapse navbar-collapse" id="navbarSupportedContent"> */}
                 <Link className="navbar-brand" to="/Board" style={{fontSize: '1.5vw'}}>board</Link>
+                <Link className="navbar-brand" to="/about" style={{fontSize: '1.5vw'}}>about</Link>
                     {isAuthenticated ? authLinks : guestLinks}
                 {/* </div> */}
             {/* </nav> */}
