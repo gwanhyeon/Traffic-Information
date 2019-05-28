@@ -21,6 +21,7 @@ const route_board_delete = require('./routes/route_board_delete');
 const route_board_edit = require('./routes/route_board_edit');
 const route_board = require('./routes/route_board');
 const route_all_list = require('./routes/route_board_all_list');
+const route_open_api = require('./routes/route_open_api')
 
 //todo database 연결 및 설정
 db.db_connect;
@@ -47,6 +48,7 @@ app.use('/user',route_signin);
 app.use('/user',route_signup);;
 app.use('/user',route_mail_auth);
 app.use('/user',route_all_list);
+app.use('/user',route_open_api);
 app.post('/', (req,res) =>{
     console.log(req.query.hello);
     console.log(req.params.name)
