@@ -65,15 +65,15 @@ class TransInfo extends Component {
         }, 10000);
 
     }
-    knut_station_bus_call(){
-        this.lookupInterval_knut_station = setInterval(() => {axios.get("user/open_data")
-            .then(res => {
-                console.log("십셰끼 => " , res);
-                this.setState({
-                    knut_bus_data : res
-                })
-            })
-        },1000);
+    // knut_station_bus_call(){
+    //     axios.get("user/open_data")
+    //         .then(res => {
+    //             console.log("십셰끼 => " , res);
+    //             this.setState({
+    //                 knut_bus_data : res
+    //             })
+    //         })
+    // }
         
         // #1 static Variable
     //     const serviceKey ='a5mSPyGouPCZhF2pi%2F%2Fciz%2FAokup9JJaIsQYgLHPEYE6Wct2ANSuspDzQTxakihNLNyfD%2FKxDxDunVk2lnY5jQ%3D%3D'  // Service Key
@@ -118,7 +118,7 @@ class TransInfo extends Component {
     // },10000);
 
     
-    }
+    
 
     uiwang_station_bus_call(){
         
@@ -167,14 +167,12 @@ class TransInfo extends Component {
     componentDidMount(){
         this.subway_call();
         this.uiwang_station_bus_call();
-        this.knut_station_bus_call();
-
-        
+        // this.knut_station_bus_call();
     }    
     componentWillUnmount(){
-         clearInterval(this.lookupInterval_subway)
-         clearInterval(this.lookupInterval_knut_station)
-        clearInterval(this.lookupInterval_uiwang_station)
+        //  clearInterval(this.lookupInterval_subway)
+        //  clearInterval(this.lookupInterval_knut_station)
+        // clearInterval(this.lookupInterval_uiwang_station)
     }
     render() {
         const {subway_data,uiwang_bus_data,knut_bus_data} = this.state;
