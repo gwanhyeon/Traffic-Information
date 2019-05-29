@@ -48,7 +48,7 @@ app.use('/user',route_signin);
 app.use('/user',route_signup);;
 app.use('/user',route_mail_auth);
 app.use('/user',route_all_list);
-app.use('/user',route_open_api);
+// app.use('/user',route_open_api);
 app.post('/', (req,res) =>{
     console.log(req.query.hello);
     console.log(req.params.name)

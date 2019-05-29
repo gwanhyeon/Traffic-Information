@@ -40,7 +40,7 @@ class App extends Component {
               <Navbar />
                 <Route exact path="/" component={ Home } />
                 
-                <div className="container">
+                <div className="container-fluid">
                   <Route exact path="/board" component={Board}/>
                   <Route exact path="/transportation" component={TransInfo}/>
                   <Route exact path="/about" component={About}/>
