@@ -10,11 +10,8 @@ class BoardItem extends Component {
     handleRead = () => {
       const { reading } = this.state;
       this.setState({ reading : !reading });
-  }
-    handleRemove = () => {
-        const {board_id, onRemove} = this.props;
-        onRemove(board_id);
     }
+
 
     render() {
         const {board_id, board_title,board_contents,board_date,board_author} = this.props;
@@ -29,7 +26,6 @@ class BoardItem extends Component {
                 {/* <td> {board_contents} </td> */}
                 <td> {board_author}</td>
                 <td> {board_date} </td>
-                <td> <button  className="btn btn-primary" style={{fontFamily: 'sans-serif', fontSize: '1.5vw'}}>삭제</button></td>
                 </tr>
                 <tr>
                   <td colSpan="7"> <BoardRead dataFromParent={board_id} onUpdate={this.handleUpdate} /> </td>
@@ -46,8 +42,6 @@ class BoardItem extends Component {
                 {/* <td> {board_contents} </td> */}
                 <td> {board_author}</td>
                 <td> {board_date} </td>
-                <td> <button onClick={this.handleRemove} className="btn btn-primary" style={{fontFamily: 'sans-serif', fontSize: '1.5vw'}}>삭제</button></td>
-                
                 </tr>
                 </Fragment>
         );
