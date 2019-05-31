@@ -5,6 +5,8 @@ import BoardForm from './BoardForm';
 import {BootstrapTable, TableHeaderColumn} from 'react-bootstrap-table';
 import {Link} from 'react-router-dom';
 import axios from 'axios';
+import { loginUser } from '../actions/authentication';
+import { connect } from 'react-redux';
 
 
 
@@ -51,7 +53,7 @@ class Board extends Component {
             [e.target.name]: e.target.value
         })
     }
-
+    // 새로고침
     handlePrint = (e) => {
         e.preventDefault();
         axios.get('user/board_list')
@@ -61,24 +63,19 @@ class Board extends Component {
             });
         });
     }
-    // 클릭 이벤트 발생시 Link!
+    // 글쓰기 컴포넌트 변경
     handleChange = (e) => {
         this.props.history.push('/BoardForm');
     }
-
-    // 삭제
-    handleRemove = (board_id) => {
-        console.log("과연 지워지는 board_id가 들어올까용 ?" , board_id);
-        axios.delete('user/board_delete/'+board_id)
-        .then(res => {
-            console.log(res.data);
-        });
-    }
-
+    
 
     render() {
         // <Route render={props => <BoardForm onCreate={this.handleCreate}/>}></Route>
         const {boards} = this.state; 
+        const {auth} = this.props;
+
+        console.log("auth가 잘 돌아가는가",auth);
+        
         const {id} = this;
         let check = null;
         if(id >= 0){
@@ -94,7 +91,7 @@ class Board extends Component {
                                 // board_contents={board.board_contents} 
                                 board_author ={board.board_author} 
                                 board_date ={formatDate(board.board_date)}
-                                onRemove={this.handleRemove}
+                                // onRemove={this.handleRemove}
                                 onRead={this.handleRead}
                                 key={i}/>
                             );
@@ -105,39 +102,45 @@ class Board extends Component {
             </tbody>
         }
 
-        return (
-
-            <div>
-                <p></p>
-            {/* <BoardForm 
-                onCreate={this.handleCreate}
-            /> */}
-            
-            <link to='board'></link>
-            <Table responsive>
-            <thead>
-              <tr style={{marginBottom: '2px', fontFamily: 'sans-serif', fontSize: '1.5vw'}}>
-                <th>no.</th>
-                <th>제목</th>
-                {/* <th>내용</th> */}
-                <th>이름</th>
-                <th>날짜</th>
-                <th>삭제</th>
-              </tr>
-            </thead>
-            {check}
-          </Table>
-          
-            {/* <Link className="nav-link" to="/BoradForm"><button>글쓰기</button></Link> */}
-            <button onClick={this.handleChange} className="btn btn-primary" style={{float: 'left', fontFamily: 'sans-serif', fontSize: '1.5vw'}}>글쓰기</button>
-            <button onClick={this.handlePrint} className="btn btn-primary" style={{float: 'left', fontFamily: 'sans-serif', fontSize: '1.5vw'}}>로드</button>
-
-            </div>
-            
-        );
+        if(auth.isAuthenticated) {
+            return (
+                <div>
+                <link to='board'></link>
+                <Table responsive>
+                <thead>
+                  <tr style={{marginBottom: '2px', fontFamily: 'sans-serif', fontSize: '1.5vw'}}>
+                    <th>no.</th>
+                    <th>제목</th>
+                    <th>이름</th>
+                    <th>날짜</th>
+                  </tr>
+                </thead>
+                {check}
+              </Table>
+                <button onClick={this.handleChange} className="btn btn-primary" style={{float: 'left', fontFamily: 'sans-serif', fontSize: '1.5vw'}}>글쓰기</button>
+                <button onClick={this.handlePrint} className="btn btn-primary" style={{float: 'left', fontFamily: 'sans-serif', fontSize: '1.5vw'}}>새로고침</button>
+                </div>
+            );
+        } else {
+            return (
+                <div>
+                <link to='board'></link>
+                <Table responsive>
+                <thead>
+                  <tr style={{marginBottom: '2px', fontFamily: 'sans-serif', fontSize: '1.5vw'}}>
+                    <th>no.</th>
+                    <th>제목</th>
+                    <th>이름</th>
+                    <th>날짜</th>
+                  </tr>
+                </thead>
+                {check}
+              </Table>
+              <button onClick={this.handlePrint} className="btn btn-primary" style={{float: 'left', fontFamily: 'sans-serif', fontSize: '1.5vw'}}>새로고침</button>
+              </div>
+              )
+        }
     }
-
-
 }
 function formatDate(date) {
     var d = new Date(date),
@@ -151,4 +154,10 @@ function formatDate(date) {
     return [year, month, day].join('-');
 }
 
-export default Board;
+const mapStateToProps = (state) => ({
+    auth: state.auth,
+    errors: state.errors
+})
+
+export default connect(mapStateToProps, { loginUser })(Board)
+// export default Board;

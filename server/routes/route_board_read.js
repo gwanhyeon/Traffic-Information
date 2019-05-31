@@ -5,7 +5,6 @@ const Board = require('../models/model_board');
 
 /* board find by id */
 router.get('/board_read/:board_id', function (req, res) {
-    console.log("req.params.board_id---->", req.params.board_id);
     Board.find({
        board_id : req.params.board_id
     }
@@ -13,7 +12,6 @@ router.get('/board_read/:board_id', function (req, res) {
         if(board){
             res.send(board);
         }
-        console.log("선택한 board 하나만 보기 user--->", board);
     })
 });
 

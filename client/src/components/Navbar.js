@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { logoutUser } from '../actions/authentication';
 import { withRouter } from 'react-router-dom';
+import TransInfo from './TransInfo';
 
 class Navbar extends Component {
 
@@ -43,12 +44,21 @@ class Navbar extends Component {
         return(
             <form class="navbar navbar-expand-lg navbar-dark bg-primary">
             {/* <nav > */}
+
                 <Link className="navbar-brand text-white" to="/" style={{fontFamily: 'sans-serif', fontSize: '1.5vw'}}>교통정보</Link>
                 {/* <div className="collapse navbar-collapse" id="navbarSupportedContent"> */}
                 <Link className="navbar-brand" to="/Board" style={{fontFamily: 'sans-serif', fontSize: '1.5vw'}}>board</Link>
                 <Link className="navbar-brand text-white" to="/about" style={{fontFamily: 'sans-serif', fontSize: '1.5vw'}}>about</Link>
+//                 <Link className="navbar-brand" to="/" style={{fontSize: '1.5vw'}}>Transportation</Link>
+                <Link className="navbar-brand" to="/contact" style={{fontSize: '1.5vw'}}>Contact</Link>
+                <Link className="navbar-brand" to="/transportation" style={{fontSize: '1.5vw'}}>TransInfo</Link>
+                {/* <div className="collapse navbar-collapse" id="navbarSupportedContent"> */}
+                
+
+
                     {isAuthenticated ? authLinks : guestLinks}
                 {/* </div> */}
+                
             {/* </nav> */}
             </form>
         )

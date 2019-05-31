@@ -1,10 +1,10 @@
+
 import React, { Component } from 'react'
 import image1 from './images/photo.jpeg'
 
 class About extends Component{
     render(){
         return(
-          
             <div className = 'container-fluid row justify-content-around' style={{marginTop: '3%'}}>
             <div class="card bg-primary shadow-lg" style={{width: '18rem'}}>
             <img src={image1} class="card-img-top" alt="..." sytle={{ borderRadius: '50%'}}/>
@@ -44,4 +44,4 @@ class About extends Component{
     }
 }
 
-export default About; 
+export default About;

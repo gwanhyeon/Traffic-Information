@@ -5,7 +5,6 @@ import store from './store';
 import jwt_decode from 'jwt-decode';
 import setAuthToken from './auth/setAuthToken';
 import { setCurrentUser, logoutUser } from './actions/authentication';
-
 import Navbar from './components/Navbar';
 import Signup from './components/Signup';
 import Signin from './components/Signin';
@@ -13,10 +12,10 @@ import Home from './components/Home';
 import Board from './components/Board';
 import BoardForm from './components/BoardForm';
 import BoardRead from './components/BoardRead';
-import About from './components/About';
-
-
+import Contact from './components/ContactForm';
 import './bootstrap.min.css';
+import TransInfo from './components/TransInfo';
+import About from './components/About';
 
 if(localStorage.jwtToken) {
   setAuthToken(localStorage.jwtToken);
@@ -41,6 +40,10 @@ class App extends Component {
                 
                 <div className="container-fluid">
                   <Route exact path="/board" component={Board}/>
+                  <Route exact path="/transportation" component={TransInfo}/>
+                  <Route exact path="/about" component={About}/>
+
+                  <Route exact path="/contact" component={Contact}/>
                   <Route exact path="/signup" component={ Signup } />
                   <Route exact path="/signin" component={ Signin } />
                   <Route exact path = "/BoardForm" component = {BoardForm} />

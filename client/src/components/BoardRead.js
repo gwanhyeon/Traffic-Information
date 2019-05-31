@@ -2,6 +2,10 @@ import React, { Component } from 'react';
 import Board from './Board';
 import axios from 'axios';
 import BoardItem from './BoardItem';
+import { loginUser } from '../actions/authentication';
+import { connect } from 'react-redux';
+
+
 class BoradRead extends Component {
     state = {
         board_id : '',
@@ -9,7 +13,8 @@ class BoradRead extends Component {
         board_contents:''
     }
     data_store = null;
-    // 클릭시 findOne() 가져오기
+
+    // 목록에서 findOne() 가져오기
     componentDidMount = () => {
         console.log("this.props" ,this.props.dataFromParent);
         this.data_store = axios.get('user/board_read/'+this.props.dataFromParent)
@@ -24,13 +29,13 @@ class BoradRead extends Component {
         });
     }
     // 삭제
-    // handleRemove = (board_id) => {
-    //     console.log("this.props" ,board_id);
-    //     axios.delete('user/board_delete/'+board_id)
-    //     .then(res => {
-    //         console.log(res.data);
-    //     });
-    // }
+    handleDelete = () => {
+        console.log("state알아보기", this.state);
+        axios.delete('user/board_delete/'+ this.state.board_id)
+        .then(res => {
+            console.log(res.data);
+        });
+    }
 
     handleToggleEdit = () => {
         const { editing } = this.state;
@@ -43,7 +48,6 @@ class BoradRead extends Component {
         })
     }
     componentDidUpdate(prevProps, prevState, body) {
-    
         const { board_title, board_contents, board_id } = this.props;
         if(!prevState.editing && this.state.editing) {
 
@@ -59,12 +63,18 @@ class BoradRead extends Component {
             .then(res => {
                 console.log(res.data);
             })
+            
         }
     }
 
     render () {
         const { editing } = this.state;
-        if (editing) { // 수정모드
+        const {auth} = this.props;
+
+        console.log("auth가 잘 돌아가는가",auth);
+
+        if(auth.isAuthenticated) {
+            if (editing) { // 수정모드
             return (
                 <form style={{margin: 'auto', width: '50%', marginTop: '50px'}}>
                 <h3 className="text-success" style={{marginTop: '10px', fontFamily: 'monospace', fontSize: '2vw'}}>수정하기</h3>
@@ -114,9 +124,20 @@ class BoradRead extends Component {
                 </p>
                 <hr/>
                 <button onClick={this.handleToggleEdit} className="btn btn-primary" style={{float: 'left', fontFamily: 'monospace', fontSize: '1.5vw'}}>수정</button>
-                
+                <button onClick={this.handleDelete} className="btn btn-primary" style={{float: 'left', fontFamily: 'monospace', fontSize: '1.5vw'}}> 삭제 </button>
             </form>
         )
+    } else {
+        return(
+            <h3 className="text-success" style={{marginTop: '10px', fontFamily: 'monospace', fontSize: '2vw'}}> 로그인 후 서비스 이용 가능합니다. </h3>
+        )
+        }
     }
 }
-export default BoradRead;
+const mapStateToProps = (state) => ({
+    auth: state.auth,
+    errors: state.errors
+})
+
+export default connect(mapStateToProps, { loginUser })(BoradRead)
+// export default BoradRead;
