@@ -34,11 +34,11 @@ class App extends Component {
     return (
       <Provider store = { store }>
         <Router>
-            <div>
+            <div >
               <Navbar />
                 <Route exact path="/" component={ Home } />
                 
-                <div className="container-fluid">
+                <div className="container-fluid"> 
                   <Route exact path="/board" component={Board}/>
                   <Route exact path="/transportation" component={TransInfo}/>
                   <Route exact path="/about" component={About}/>
@@ -48,7 +48,6 @@ class App extends Component {
                   <Route exact path="/signin" component={ Signin } />
                   <Route exact path = "/BoardForm" component = {BoardForm} />
                   <Route exact path = "/BoardRead" component = {BoardRead} />
-                  <Route exact path = "/about" component = {About} />
 
                 </div>
             </div>
