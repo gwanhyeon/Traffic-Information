@@ -6,7 +6,11 @@ import { logoutUser } from '../actions/authentication';
 import { withRouter } from 'react-router-dom';
 import TransInfo from './TransInfo';
 
-class Navbar extends Component {
+import { Navbar, Nav, Form } from 'react-bootstrap'
+
+import main_image from './images/photo.png'
+
+class Navbar1 extends Component {
 
     onLogout = (e) => {
         e.preventDefault();
@@ -30,37 +34,68 @@ class Navbar extends Component {
         )
         // 인증되지 않은 경우 이미지 보여주지 않는다.
       const guestLinks = (
-          <div className="navbar navbar-expand-lg navbar-dark bg-primary ml-auto"style={{fontFamily: 'sans-serif', fontSize: '1.5vw'}}>
-        {/* <ul className="navbar-nav ml-auto" style={{fontFamily: 'sans-serif', fontSize: '1.5vw'}}>
-            <li className="nav-item"> */}
-                <Link className="nav-link text-white" to="/signup">Sign up</Link>
-            {/* </li>
-            <li className="nav-item"> */}
+          // <div className="navbar navbar-expand-lg navbar-dark bg-primary ml-auto"style={{fontFamily: 'sans-serif', fontSize: '1.5vw'}}>
+        // {/* <ul className="navbar-nav ml-auto" style={{fontFamily: 'sans-serif', fontSize: '1.5vw'}}>
+        //     <li className="nav-item"> */}
+              <ul className="nav ml-auto">
+                <li>
+                <Link className="nav-link text-white" to="/signup" style={{marginRight:'15px'}}>Sign up</Link>
+                </li>
+            {/* // </li>
+            // <li className="nav-item"> */}
+                <li>
                 <Link className="nav-link text-white" to="/signin">Sign in</Link>
-            {/* </li>
-        </ul> */}
-        </div>
+                </li>
+                </ul>
+        //     {/* </li>
+        // </ul> */}
+        // </div>
       )
         return(
-            <form class="navbar navbar-expand-lg navbar-dark bg-primary">
-            {/* <nav > */}
+          
+          <Navbar bg="dark" variant="dark" expand="lg"sticky="top" >
+            <Link to="/">
+              <img src={main_image} className="navbar-brand" alt="image" style={{maxWidth:'60px', borderRadius: '20%'}}/>
+            </Link>
+            <Navbar.Toggle className=""  aria-controls="responsive-navbar-nav" style={{background:"gray"}}/>
 
-                <Link className="navbar-brand text-white" to="/" style={{fontFamily: 'sans-serif', fontSize: '1.5vw'}}>교통정보</Link>
-                {/* <div className="collapse navbar-collapse" id="navbarSupportedContent"> */}
-                <Link className="navbar-brand" to="/Board" style={{fontFamily: 'sans-serif', fontSize: '1.5vw'}}>board</Link>
-                <Link className="navbar-brand text-white" to="/about" style={{fontFamily: 'sans-serif', fontSize: '1.5vw'}}>about</Link>
-                 {/* <Link className="navbar-brand" to="/" style={{fontSize: '1.5vw'}}>Transportation</Link> */}
-                <Link className="navbar-brand" to="/contact" style={{fontSize: '1.5vw'}}>Contact</Link>
-                <Link className="navbar-brand" to="/transportation" style={{fontSize: '1.5vw'}}>TransInfo</Link>
-                {/* <div className="collapse navbar-collapse" id="navbarSupportedContent"> */}
+            <Navbar.Collapse id="responsive-navbar-nav" style={{fontFamily: 'sans-serif', fontSize: '20px'}}>
+              <Nav className="mr-auto">
+              <ul className="navbar">
+                {/* <Link className="text" to="/" style={{marginRight:'15px'}}>교통정보</Link> */}
+                <Link className="nav-link" to="/Board" style={{marginRight:'15px'}}>Board</Link>
+                <Link className="nav-link" to="/about" style={{marginRight:'15px'}}>About</Link>
+                <Link className="nav-link" to="/contact" style={{marginRight:'15px'}}>Contact</Link>
+                <Link className="nav-link" to="/transinfo" style={{marginRight:'15px'}}>TransInfo</Link>
+                </ul>
+              </Nav>
+
+              <Form inline>
+              {isAuthenticated ? authLinks : guestLinks}
+              </Form>
+            </Navbar.Collapse>
+          </Navbar>
+            // <form class="navbar navbar-expand-lg navbar-dark bg-primary">
+            // {/* <nav > */}           
+            // <img src={main_image} class="navbar-brand" alt="..." style={{maxWidth:'5%', borderRadius: '20%'}}/>
+
+
+            //     <Link className="navbar-brand text-white" to="/" style={{fontFamily: 'sans-serif', fontSize: '1.5vw'}}>교통정보</Link>
+            //     {/* <div className="collapse navbar-collapse" id="navbarSupportedContent"> */}
+            //     <Link className="navbar-brand" to="/Board" style={{fontFamily: 'sans-serif', fontSize: '1.5vw'}}>board</Link>
+            //     <Link className="navbar-brand text-white" to="/about" style={{fontFamily: 'sans-serif', fontSize: '1.5vw'}}>about</Link>
+            //      {/* <Link className="navbar-brand" to="/" style={{fontSize: '1.5vw'}}>Transportation</Link> */}
+            //     <Link className="navbar-brand" to="/contact" style={{fontSize: '1.5vw'}}>Contact</Link>
+            //     <Link className="navbar-brand" to="/transportation" style={{fontSize: '1.5vw'}}>TransInfo</Link>
+            //     {/* <div className="collapse navbar-collapse" id="navbarSupportedContent"> */}
                 
 
 
-                    {isAuthenticated ? authLinks : guestLinks}
-                {/* </div> */}
+            //         {isAuthenticated ? authLinks : guestLinks}
+            //     {/* </div> */}
                 
-            {/* </nav> */}
-            </form>
+            // {/* </nav> */}
+            // </form>
         )
     }
 }
@@ -73,4 +108,4 @@ const mapStateToProps = (state) => ({
     auth: state.auth
 })
 
-export default connect(mapStateToProps, { logoutUser })(withRouter(Navbar));
+export default connect(mapStateToProps, { logoutUser })(withRouter(Navbar1));

@@ -5,7 +5,7 @@ import store from './store';
 import jwt_decode from 'jwt-decode';
 import setAuthToken from './auth/setAuthToken';
 import { setCurrentUser, logoutUser } from './actions/authentication';
-import Navbar from './components/Navbar';
+import Navbar1 from './components/Navbar1';
 import Signup from './components/Signup';
 import Signin from './components/Signin';
 import Home from './components/Home';
@@ -16,6 +16,8 @@ import Contact from './components/ContactForm';
 import './bootstrap.min.css';
 import TransInfo from './components/TransInfo';
 import About from './components/About';
+
+import './css/contactform.css'
 
 if(localStorage.jwtToken) {
   setAuthToken(localStorage.jwtToken);
@@ -33,9 +35,13 @@ class App extends Component {
   render() {
     return (
       <Provider store = { store }>
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"/>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+                
         <Router>
             <div >
-              <Navbar />
+              <Navbar1 />
                 <Route exact path="/" component={ Home } />
                 
                 <div className="container-fluid"> 

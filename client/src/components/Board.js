@@ -108,7 +108,7 @@ class Board extends Component {
                 <link to='board'></link>
                 <Table responsive>
                 <thead>
-                  <tr style={{marginBottom: '2px', fontFamily: 'sans-serif', fontSize: '1.5vw'}}>
+                  <tr style={{marginBottom: '2px', fontFamily: 'sans-serif', fontSize: '1.5rem'}}>
                     <th>no.</th>
                     <th>제목</th>
                     <th>이름</th>
@@ -117,8 +117,8 @@ class Board extends Component {
                 </thead>
                 {check}
               </Table>
-                <button onClick={this.handleChange} className="btn btn-primary" style={{float: 'left', fontFamily: 'sans-serif', fontSize: '1.5vw'}}>글쓰기</button>
-                <button onClick={this.handlePrint} className="btn btn-primary" style={{float: 'left', fontFamily: 'sans-serif', fontSize: '1.5vw'}}>새로고침</button>
+                <button onClick={this.handleChange} className="btn btn-primary" style={{float: 'left', fontFamily: 'sans-serif', fontSize: '1.5rem'}}>글쓰기</button>
+                <button onClick={this.handlePrint} className="btn btn-primary" style={{float: 'left', fontFamily: 'sans-serif', fontSize: '1.5rem'}}>새로고침</button>
                 </div>
             );
         } else {
@@ -127,7 +127,7 @@ class Board extends Component {
                 <link to='board'></link>
                 <Table responsive>
                 <thead>
-                  <tr style={{marginBottom: '2px', fontFamily: 'sans-serif', fontSize: '1.5vw'}}>
+                  <tr style={{marginBottom: '2px', fontFamily: 'sans-serif', fontSize: '1.5rem'}}>
                     <th>no.</th>
                     <th>제목</th>
                     <th>이름</th>
@@ -136,7 +136,7 @@ class Board extends Component {
                 </thead>
                 {check}
               </Table>
-              <button onClick={this.handlePrint} className="btn btn-primary" style={{float: 'left', fontFamily: 'sans-serif', fontSize: '1.5vw'}}>새로고침</button>
+              <button onClick={this.handlePrint} className="btn btn-primary" style={{float: 'left', fontFamily: 'sans-serif', fontSize: '1.5rem'}}>새로고침</button>
               </div>
               )
         }
