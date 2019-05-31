@@ -66,7 +66,9 @@ class TransInfo extends Component {
         // , 1000);
 
     }
+
     knut_station_bus_call(){
+
         // #1 static Variable
         const serviceKey ='a5mSPyGouPCZhF2pi%2F%2Fciz%2FAokup9JJaIsQYgLHPEYE6Wct2ANSuspDzQTxakihNLNyfD%2FKxDxDunVk2lnY5jQ%3D%3D'  // Service Key
         const bus_url = 'http://openapi.gbis.go.kr/ws/rest/busarrivalservice/station?';      //bus Url
@@ -112,7 +114,7 @@ class TransInfo extends Component {
     // ,1000);
 
     
-    }
+    // }
 
     uiwang_station_bus_call(){
         // #1 static Variable
@@ -159,9 +161,9 @@ class TransInfo extends Component {
     }
 
     componentDidMount(){
-        this.subway_call();
-        this.uiwang_station_bus_call();
-        this.knut_station_bus_call();
+        // this.subway_call();
+        // this.uiwang_station_bus_call();
+        // this.knut_station_bus_call();
 
         
     }    
