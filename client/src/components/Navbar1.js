@@ -57,7 +57,7 @@ class Navbar1 extends Component {
             <Link to="/">
               <img src={main_image} className="navbar-brand" alt="image" style={{maxWidth:'60px', borderRadius: '20%'}}/>
             </Link>
-            <Navbar.Toggle className=""  aria-controls="responsive-navbar-nav" style={{background:"gray"}}/>
+            <Navbar.Toggle className="navbar-default"  aria-controls="responsive-navbar-nav" style={{border: 'none',  }}/>
 
             <Navbar.Collapse id="responsive-navbar-nav" style={{fontFamily: 'sans-serif', fontSize: '20px'}}>
               <Nav className="mr-auto">
