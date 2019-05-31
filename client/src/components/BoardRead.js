@@ -77,9 +77,9 @@ class BoradRead extends Component {
             if (editing) { // 수정모드
             return (
                 <form style={{margin: 'auto', width: '50%', marginTop: '50px'}}>
-                <h3 className="text-success" style={{marginTop: '10px', fontFamily: 'monospace', fontSize: '2vw'}}>수정하기</h3>
+                <h3 className="" style={{marginTop: '10px', fontFamily: 'monospace', fontSize: '2rem'}}>수정하기</h3>
                 <hr/>
-                <h4 style={{marginBottom: '2px', fontFamily: 'monospace', fontSize: '1.5vw'}}>title</h4>
+                <h4 style={{marginBottom: '2px', fontFamily: 'monospace', fontSize: '1.5rem'}}>title</h4>
 
                 <input
                     value={this.state.board_title}
@@ -89,7 +89,7 @@ class BoradRead extends Component {
                     placeholder="제목"
                     onChange={this.handleChange}
                   />
-                <h4 style={{marginBottom: '2px', fontFamily: 'monospace', fontSize: '1.5vw'}}>content</h4>
+                <h4 style={{marginBottom: '2px', fontFamily: 'monospace', fontSize: '1.5rem'}}>content</h4>
                 <input
                     value={this.state.board_contents}
                     className="form-control"
@@ -99,21 +99,21 @@ class BoradRead extends Component {
                     onChange={this.handleChange}
                   />
                 <hr/>
-                <button onClick={this.handleToggleEdit} className="btn btn-primary" style={{float: 'left', fontFamily: 'monospace', fontSize: '1.5vw'}}>적용</button>
+                <button onClick={this.handleToggleEdit} className="btn btn-primary" style={{float: 'left', fontFamily: 'monospace', fontSize: '1.5rem'}}>적용</button>
                
                 </form>  
             );
           }
         return(
             <form style={{margin: 'auto', width: '50%', marginTop: '50px'}}>
-                <h3 className="text-success" style={{marginTop: '10px', fontFamily: 'monospace', fontSize: '2vw'}}>자세히보기</h3>
-                <hr/>
-                <h4 style={{marginBottom: '2px', fontFamily: 'monospace', fontSize: '1.5vw'}}>title</h4>
+                {/* <h3 className="text-success" style={{marginTop: '10px', fontFamily: 'monospace', fontSize: '2.5rem'}}>자세히보기</h3>
+                <hr/> */}
+                <h4 style={{marginBottom: '2px', fontFamily: 'monospace', fontSize: '1.5rem'}}>title</h4>
                 <p  name="board_title"  className="form-control" style = {{width: '100%'}}>
                 {this.state.board_title}
                 </p>
                 <p/>
-                <h4 style={{marginBottom: '2px', fontFamily: 'monospace', fontSize: '1.5vw'}}>content</h4>
+                <h4 style={{marginBottom: '2px', fontFamily: 'monospace', fontSize: '1.5rem'}}>content</h4>
                 <p
                     // placeholder="내용"
                     name="board_contents"
@@ -123,13 +123,13 @@ class BoradRead extends Component {
                 {this.state.board_contents}
                 </p>
                 <hr/>
-                <button onClick={this.handleToggleEdit} className="btn btn-primary" style={{float: 'left', fontFamily: 'monospace', fontSize: '1.5vw'}}>수정</button>
-                <button onClick={this.handleDelete} className="btn btn-primary" style={{float: 'left', fontFamily: 'monospace', fontSize: '1.5vw'}}> 삭제 </button>
+                <button onClick={this.handleToggleEdit} className="btn btn-primary" style={{float: 'left', fontFamily: 'monospace', fontSize: '1.5rem'}}>수정</button>
+                <button onClick={this.handleDelete} className="btn btn-primary" style={{float: 'left', fontFamily: 'monospace', fontSize: '1.5rem'}}> 삭제 </button>
             </form>
         )
     } else {
         return(
-            <h3 className="text-success" style={{marginTop: '10px', fontFamily: 'monospace', fontSize: '2vw'}}> 로그인 후 서비스 이용 가능합니다. </h3>
+            <h3 className="" style={{marginTop: '10px', fontFamily: 'monospace', fontSize: '1.5rem'}}> 로그인 후 서비스 이용 가능합니다. </h3>
         )
         }
     }

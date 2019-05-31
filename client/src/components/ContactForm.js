@@ -1,14 +1,9 @@
 import React, { Fragment, Component } from 'react';
-import '../css/contactform.css'
 
 class ContactForm extends Component {
     render() {
         return (
                 <Fragment>
-                <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"/>
-                <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway"/>
-                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
-                
                 
                 <div class="w3-container w3-light-grey" style={{padding:'128px 16px'}} id="contact">
                     <h3 class="w3-center">CONTACT</h3>

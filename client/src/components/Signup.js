@@ -77,13 +77,13 @@ class Signup extends Component {
         const {handleInputChange,handleSubmit} = this;
         const {user_name,user_id,user_password,user_password_confirm,errors } = this.state;
         return(
-        <div className="container" style={{ marginTop: '50px', width: '50%'}}>
-            <h1 class="text-success" style={{marginTop: '40px', marginBottom: '20px' , fontFamily: 'monospace', fontSize:"3.5vw"}}>Registration</h1>
+        <div className="container" style={{ marginTop: '50px', min:'350px', maxWidth:'350px', height:'auto'}}>
+            <h1 class="" style={{marginTop: '40px', marginBottom: '20px' , fontFamily: 'monospace', fontSize:"2.5rem"}}>Registration</h1>
             <form onSubmit={ handleSubmit }>
                 <div className="form-group">
                     <input
                     type="text"
-                    style={{fontFamily: 'monospace', fontSize: '2vw'}}
+                    style={{fontFamily: 'monospace', fontSize: '1.5rem'}}
                     placeholder="Name"
                     className={classnames('form-control form-control-lg', {
                         'is-invalid': errors.user_name
@@ -97,7 +97,7 @@ class Signup extends Component {
                 <div className="form-group">
                     <input
                     type="email"
-                    style={{fontFamily: 'monospace', fontSize: '2vw'}}
+                    style={{fontFamily: 'monospace', fontSize: '1.5rem'}}
                     placeholder="E-mail"
                     className={classnames('form-control form-control-lg', {
                         'is-invalid': errors.user_id
@@ -111,7 +111,7 @@ class Signup extends Component {
                 <div className="form-group">
                     <input
                     type="password"
-                    style={{fontFamily: 'monospace', fontSize: '2vw'}}
+                    style={{fontFamily: 'monospace', fontSize: '1.5rem'}}
                     placeholder="Password"
                     className={classnames('form-control form-control-lg', {
                         'is-invalid': errors.user_password
@@ -125,7 +125,7 @@ class Signup extends Component {
                 <div className="form-group">
                     <input
                     type="password"
-                    style={{fontFamily: 'monospace', fontSize: '2vw'}}
+                    style={{fontFamily: 'monospace', fontSize: '1.5rem'}}
                     placeholder="Confirm Password"
                     className={classnames('form-control form-control-lg', {
                         'is-invalid': errors.user_password_confirm
@@ -137,7 +137,7 @@ class Signup extends Component {
                     {errors.user_password_confirm && (<div className="invalid-feedback">{errors.user_password_confirm}</div>)}
                 </div>
                 <div className="form-group">
-                    <button type="submit" className="btn btn-primary" style={{width: '100%', fontFamily: 'monospace', fontSize: '2vw'}}>
+                    <button type="submit" className="btn btn-primary" style={{width: '100%', fontFamily: 'monospace', fontSize: '1.5rem'}}>
                         Register User
                     </button>
                 </div>

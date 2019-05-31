@@ -20,7 +20,7 @@ class BoardItem extends Component {
         if(reading) {
           return (
             <Fragment>
-                <tr style={{fontFamily: 'sans-serif', fontSize: '1.5vw'}}>
+                <tr style={{fontFamily: 'sans-serif', fontSize: '1.3rem'}}>
                 <td>{board_id}</td>
                 <td onClick={this.handleRead}> {board_title} </td>
                 {/* <td> {board_contents} </td> */}
@@ -36,7 +36,7 @@ class BoardItem extends Component {
 
         return (
                 <Fragment>
-                <tr style={{fontFamily: 'sans-serif', fontSize: '1.5vw'}}>
+                <tr style={{fontFamily: 'sans-serif', fontSize: '1.3rem'}}>
                 <td>{board_id}</td>
                 <td onClick={this.handleRead}> {board_title} </td>
                 {/* <td> {board_contents} </td> */}

@@ -58,13 +58,13 @@ class Signin extends Component {
         const {handleInputChange,handleSubmit} = this;
         
         return(
-        <div className="container" style={{ marginTop: '50px', width: '50%'}}>
-            <h1 class="text-success" style={{marginTop: '50px', marginBottom: '20px', fontFamily: 'monospace', fontSize: '3.5vw'}}>Login</h1>
+        <div className="container" style={{ marginTop: '50px',min:'350px', maxWidth:'350px', height:'auto'}}>
+            <h1 class="" style={{marginTop: '50px', marginBottom: '20px', fontFamily: 'monospace', fontSize:"2.5rem"}}>Login</h1>
             <form onSubmit={ handleSubmit }>
                 <div className="form-group">
                     <input
                     type="email"
-                    style={{fontFamily: 'monospace', fontSize: '2vw'}}
+                    style={{fontFamily: 'monospace', fontSize: '1.5rem'}}
                     placeholder="E-mail"
                     className={classnames('form-control form-control-lg', {
                         'is-invalid': errors.user_id
@@ -78,7 +78,7 @@ class Signin extends Component {
                 <div className="form-group">
                     <input
                     type="password"
-                    style={{fontFamily: 'monospace', fontSize: '2vw'}}
+                    style={{fontFamily: 'monospace', fontSize: '1.5rem'}}
                     placeholder="Password"
                     className={
                         classnames('form-control form-control-lg', {
@@ -91,10 +91,10 @@ class Signin extends Component {
                     {errors.user_password && (<div className="invalid-feedback">{errors.user_password}</div>)}
                 </div>
                 <div className="form-group">
-                    <button type="submit" className="btn btn-primary" style={{width: '100%', fontFamily: 'monospace', fontSize: '2vw'}}>
+                    <button type="submit" className="btn btn-primary" style={{width: '100%', fontFamily: 'monospace', fontSize: '1.5rem'}}>
                         Login User
                     </button>
-                    <Link className="nav-link" to="/signup" style={{textAlign: 'right', width: '100%', fontFamily: 'monospace', fontSize: '1.5vw'}}>sign up</Link>
+                    <Link className="nav-link" to="/signup" style={{textAlign: 'right', width: '100%', fontFamily: 'monospace', fontSize: '1rem'}}>sign up</Link>
                 </div>
             </form>
         </div>
