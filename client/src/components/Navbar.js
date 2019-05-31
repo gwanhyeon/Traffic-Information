@@ -13,6 +13,7 @@ class Navbar extends Component {
     }
 
     render() {
+           
         const {isAuthenticated, user} = this.props.auth;
         const {onLogout} = this;
         // 인증된 경우 이미지 보여줌 
@@ -28,22 +29,24 @@ class Navbar extends Component {
         )
         // 인증되지 않은 경우 이미지 보여주지 않는다.
       const guestLinks = (
-        <ul className="navbar-nav ml-auto" style={{fontFamily: 'sans-serif', fontSize: '1.5vw'}}>
-            <li className="nav-item">
-                <Link className="nav-link" to="/signup">Sign up</Link>
-            </li>
-            <li className="nav-item">
-                <Link className="nav-link" to="/signin">Sign in</Link>
-            </li>
-        </ul>
+          <div className="navbar navbar-expand-lg navbar-dark bg-primary ml-auto"style={{fontFamily: 'sans-serif', fontSize: '1.5vw'}}>
+        {/* <ul className="navbar-nav ml-auto" style={{fontFamily: 'sans-serif', fontSize: '1.5vw'}}>
+            <li className="nav-item"> */}
+                <Link className="nav-link text-white" to="/signup">Sign up</Link>
+            {/* </li>
+            <li className="nav-item"> */}
+                <Link className="nav-link text-white" to="/signin">Sign in</Link>
+            {/* </li>
+        </ul> */}
+        </div>
       )
         return(
-            <form class="navbar navbar-expand-lg navbar-dark bg-primary" style={{fontFamily: 'sans-serif', fontSize: '1.5vw'}}>
+            <form class="navbar navbar-expand-lg navbar-dark bg-primary">
             {/* <nav > */}
-                <Link className="navbar-brand" to="/" style={{fontSize: '1.5vw'}}>교통정보</Link>
+                <Link className="navbar-brand text-white" to="/" style={{fontFamily: 'sans-serif', fontSize: '1.5vw'}}>교통정보</Link>
                 {/* <div className="collapse navbar-collapse" id="navbarSupportedContent"> */}
-                <Link className="navbar-brand" to="/Board" style={{fontSize: '1.5vw'}}>board</Link>
-                <Link className="navbar-brand" to="/about" style={{fontSize: '1.5vw'}}>about</Link>
+                <Link className="navbar-brand" to="/Board" style={{fontFamily: 'sans-serif', fontSize: '1.5vw'}}>board</Link>
+                <Link className="navbar-brand text-white" to="/about" style={{fontFamily: 'sans-serif', fontSize: '1.5vw'}}>about</Link>
                     {isAuthenticated ? authLinks : guestLinks}
                 {/* </div> */}
             {/* </nav> */}
