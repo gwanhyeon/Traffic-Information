@@ -61,7 +61,7 @@ class BoradForm extends Component {
                     // placeholder="제목"
                     value={this.state.board_title}
                     onChange={this.handleChange}
-                    name="board_title"
+                    required name="board_title"
                     className="form-control"
                     style = {{width: '100%', height: 'auto'}}
                 />
@@ -71,8 +71,9 @@ class BoradForm extends Component {
                     // placeholder="내용"
                     value={this.state.board_contents}
                     onChange={this.handleChange}
-                    name="board_contents"
+                    required name="board_contents"
                     className="form-control"
+                    
                     style = {{width: '100%', height: '300px'}}
                 />
                 <hr/>
