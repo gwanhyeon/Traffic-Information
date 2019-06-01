@@ -1,6 +1,11 @@
 import React, { Fragment, Component } from 'react';
 
 class ContactForm extends Component {
+    state ={}
+
+    handleSubmit = (e) =>{
+
+    }
     render() {
         return (
                 <Fragment>
@@ -13,7 +18,7 @@ class ContactForm extends Component {
                         <p><i class="fa fa-phone fa-fw w3-xxlarge w3-margin-right"></i> Phone: +00 151515</p>
                         <p><i class="fa fa-envelope fa-fw w3-xxlarge w3-margin-right"> </i> Email: mail@mail.com</p>
                         <br/>
-                        <form action="/action_page.php" target="_blank">
+                        <form action="/user/mail_auth" >
                         <p><input class="w3-input w3-border" type="text" placeholder="Name" required name="Name"/></p>
                         <p><input class="w3-input w3-border" type="text" placeholder="Email" required name="Email"/></p>
                         <p><input class="w3-input w3-border" type="text" placeholder="Subject" required name="Subject"/></p>

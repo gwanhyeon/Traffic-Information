@@ -18,6 +18,7 @@ import TransInfo from './components/TransInfo';
 import About from './components/About';
 
 import './css/contactform.css'
+import MyPage from './components/MyPage';
 
 if(localStorage.jwtToken) {
   setAuthToken(localStorage.jwtToken);
@@ -48,12 +49,12 @@ class App extends Component {
                   <Route exact path="/board" component={Board}/>
                   <Route exact path="/transportation" component={TransInfo}/>
                   <Route exact path="/about" component={About}/>
-
                   <Route exact path="/contact" component={Contact}/>
                   <Route exact path="/signup" component={ Signup } />
                   <Route exact path="/signin" component={ Signin } />
                   <Route exact path = "/BoardForm" component = {BoardForm} />
                   <Route exact path = "/BoardRead" component = {BoardRead} />
+                  <Route exact path = "/MyPage" component = {MyPage} />
 
                 </div>
             </div>

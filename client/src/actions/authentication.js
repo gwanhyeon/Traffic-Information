@@ -4,18 +4,33 @@ import setAuthToken from '../auth/setAuthToken';
 import jwt_decode from 'jwt-decode';
 
 // thunk 적용
+
 export const registerUser = (user, history) => dispatch => {
+    
     console.log("Signup actions user=>",user);
     console.log("Signup actions history=>",history);
     console.log("순서 알아보기 4")
+    const formData = new FormData()
+    formData.append(
+        
+        user.user_name,
+        user.user_image
+    )
+    console.log("formdata => " ,formData);
     axios.post('/user/signup', user)
     
-            .then(res => history.push('/signin'))
+    
+    
+            .then(res => {
+                history.push('/signin')
+            })
             .catch(err => {
                 // console.log("signup err => ",err);
                 // console.log("signup err.response =>",err.response);
                 // console.log("signup err.resopnse.data=>",err.response.data);
+                
                 dispatch({
+                    
                     type: GET_ERRORS,
                     payload: err.response.data
                 });

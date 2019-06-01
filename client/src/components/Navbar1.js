@@ -67,6 +67,7 @@ class Navbar1 extends Component {
                 <Link className="nav-link" to="/about" style={{marginRight:'15px'}}>About</Link>
                 <Link className="nav-link" to="/contact" style={{marginRight:'15px'}}>Contact</Link>
                 <Link className="nav-link" to="/transinfo" style={{marginRight:'15px'}}>TransInfo</Link>
+                <Link className="nav-link" to="/mypage" style={{marginRight:'15px'}}>MyPage</Link>
                 </ul>
               </Nav>
 
