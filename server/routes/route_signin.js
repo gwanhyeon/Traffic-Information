@@ -19,6 +19,7 @@ router.post('/signin', (req, res) => {
     const user_id = req.body.user_id;
     const user_password = req.body.user_password;
     const user_name = req.body.user_name;
+    const user_image = req.body.user_image;
 
     User.findOne({user_id})
         .then(user => {
@@ -32,7 +33,7 @@ router.post('/signin', (req, res) => {
                             const payload = {
                                 user_id: user.user_id,
                                 user_name: user.user_name,
-                                // avatar: user.avatar
+                                user_image: user.user_image
                             }
                             jwt.sign(payload, 'secret', {
                                 expiresIn: 3600

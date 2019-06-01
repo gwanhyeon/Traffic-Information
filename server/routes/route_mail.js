@@ -1,10 +1,16 @@
 const express = require('express');
 const router = express.Router();
 const nodemailer = require('nodemailer');
-const user = require('../models/model_user')
+const Contact_User = require('../models/model_contact_user')
 router.post('/mail_auth', (req,res) =>{
-    let email = req.body.email;
-    let name = req.body.name;
+    const requested_user_name = req.body.requested_user_name;
+    const requested_user_email = req.body.requested_user_email;
+    const requested_user_subject = req.body.requested_user_subject;
+    const requested_user_message = req.body.requested_user_message;
+    // let email = req.body.email;
+    // let name = req.body.name;
+
+    console.log("여기 노드 메일",req)
     var smtpTransport = nodemailer.createTransport({  
         service: 'Gmail',
         auth: {
@@ -26,6 +32,17 @@ router.post('/mail_auth', (req,res) =>{
             console.log(error);
         } else {
             console.log("Message sent : 메일이 성공적으로 발송되었습니다.");
+            const newUser = new Contact_User({
+                requested_user_name: req.body.requested_user_name,
+                requested_user_email: req.body.requested_user_email,
+                requested_user_subject: req.body.requested_user_subject,
+                requested_user_message : req.body.requested_user_message   
+            });
+            newUser
+            .save()
+            .then(user => {
+                res.json(user)
+            }); 
 
         }
         smtpTransport.close();

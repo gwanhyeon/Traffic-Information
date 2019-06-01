@@ -5,9 +5,10 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const passport = require('../jwt/passport');
 const validateSignupInput = require('../validation/signup');
-
-
 const User = require('../models/model_user');
+// 파일 업로드
+
+
 router.post('/signup', function(req, res) {
 
     const { errors, isValid } = validateSignupInput(req.body);
@@ -28,6 +29,7 @@ router.post('/signup', function(req, res) {
                 user_name: req.body.user_name,
                 user_id: req.body.user_id,
                 user_password: req.body.user_password,
+                user_image : req.body.user_image
             });
             
             bcrypt.genSalt(10, (err, salt) => {

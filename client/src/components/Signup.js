@@ -3,8 +3,10 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { withRouter,Link } from 'react-router-dom';
 import { registerUser } from '../actions/authentication';
-
+import axios from 'axios';
 import classnames from 'classnames';
+
+
 
 class Signup extends Component {
 
@@ -14,9 +16,11 @@ class Signup extends Component {
         user_id: '',
         user_password: '',
         user_password_confirm: '',
-        errors: {}
+        user_image : null,
+        errors: {},
     }
 
+    target_file = null;
     // 상태 값 변화 
     handleInputChange = (e) => {
         this.setState({
@@ -24,20 +28,74 @@ class Signup extends Component {
         })
     }
     // 회원가입 등록
+    'use strict';
     handleSubmit = (e) => {
+        // e.preventDefault();
+        // const formData = new FormData();
+        // formData.append(this.state.file);
+        // const config = {
+        //     headers: {
+        //         'content-type': 'multipart/form-data'
+        //     }
+        // };
+        // axios.post("/upload",formData,config)
+        //     .then((response) => {
+        //         alert("The file is successfully uploaded");
+        //     }).catch((error) => {
+        // });
+        
+
         console.log("순서 알아보기 1")
         const {registerUser,history} = this.props;
-        const {user_name,user_id,user_password,user_password_confirm}=this.state;
+        const {user_name,user_id,user_password,user_password_confirm,user_image}=this.state;
         e.preventDefault();
-        
+        // # 파일 업로드
+       
+        console.log("#######1 ", user_image);
+        // console.log("#######2 ", formData);
+    
         const user = {
             user_name: user_name,
             user_id: user_id,
             user_password: user_password,
-            user_password_confirm: user_password_confirm
+            user_password_confirm: user_password_confirm,
+            user_image : user_image
+            
         }
+        
         registerUser(user,history);
     }
+    fileChangedHandler = (e)=> {
+        // const {user_image} = this.state;
+        
+        this.setState(        {  
+                ...this.state,
+                user_image: e.target.files[0]
+
+
+        }, () =>{
+            console.log("여기도 들어와",this.state.user_image)
+        })
+            //  console.log("fileChangehandler => ",this.state.user_image);
+      
+    }
+    onFormSubmit(e){
+        e.preventDefault();
+        const formData = new FormData();
+        formData.append('myImage',this.state.user_image);
+        const config = {
+            headers: {
+                'content-type': 'multipart/form-data'
+            }
+        };
+        axios.post("/upload",formData,config)
+            .then((response) => {
+                alert("The file is successfully uploaded");
+            }).catch((error) => {
+        });
+    }
+    
+
     // todo 컴포넌트가 prop 을 새로 받았을 때 실행됩니다.
     // tree structure auth-istAuthenticated(false)
     componentWillReceiveProps(nextProps) {
@@ -74,7 +132,7 @@ class Signup extends Component {
     }
 
     render() {
-        const {handleInputChange,handleSubmit} = this;
+        const {handleInputChange,handleSubmit,fileChangedHandler} = this;
         const {user_name,user_id,user_password,user_password_confirm,errors } = this.state;
         return(
         <div className="container" style={{ marginTop: '50px', min:'350px', maxWidth:'350px', height:'auto'}}>
@@ -135,7 +193,16 @@ class Signup extends Component {
                     value={ user_password_confirm }
                     />
                     {errors.user_password_confirm && (<div className="invalid-feedback">{errors.user_password_confirm}</div>)}
+                   
                 </div>
+                <div>
+                <form onSubmit={this.onFormSubmit}>
+                <input type="file" onChange={fileChangedHandler}/>
+                <button type="submit">Upload</button>
+                </form>
+                </div>
+                
+
                 <div className="form-group">
                     <button type="submit" className="btn btn-primary" style={{width: '100%', fontFamily: 'monospace', fontSize: '1.5rem'}}>
                         Register User

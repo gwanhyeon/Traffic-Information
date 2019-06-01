@@ -7,6 +7,7 @@ module.exports = function validateSignupInput(data) {
     data.user_id = !isEmpty(data.user_id) ? data.user_id : '';
     data.user_password = !isEmpty(data.user_password) ? data.user_password : '';
     data.user_password_confirm = !isEmpty(data.user_password_confirm) ? data.user_password_confirm : '';
+    data.user_image = !isEmpty(data.user_image) ? data.user_image : '';
 
     if(!Validator.isLength(data.user_name, { min: 2, max: 30 })) {
         errors.user_name = 'Name must be between 2 to 30 chars';
