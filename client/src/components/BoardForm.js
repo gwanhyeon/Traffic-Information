@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
 import Board from './Board';
 import axios from 'axios';
+import { loginUser } from '../actions/authentication';
+import { connect } from 'react-redux';
+
 class BoradForm extends Component {
+    
     state = {
         board_title : '',
         board_contents : '',
@@ -14,8 +18,10 @@ class BoradForm extends Component {
         });
     }
     handleSubmit = (e) => {
+        const {auth} = this.props;
         let board_id = null;
-        const {board_title, board_contents} = this.state;
+        const {board_title, board_contents, board_author} = this.state;
+
         // 페이지 리로딩 방지
         e.preventDefault();
 
@@ -25,8 +31,10 @@ class BoradForm extends Component {
             const board = {
                 board_id : board_id,
                 board_title : board_title,
-                board_contents : board_contents
+                board_contents : board_contents,
+                board_author : this.props.auth.user.user_name
             }
+            console.log(" 어떤 값이 들어가는지 봐보자 ", board);
             return axios.post('/user/BoardForm', board)
         });
 
@@ -81,4 +89,11 @@ class BoradForm extends Component {
         )
     }
 }
-export default BoradForm;
+
+const mapStateToProps = (state) => ({
+    auth: state.auth,
+    errors: state.errors
+})
+
+export default connect(mapStateToProps, { loginUser })(BoradForm)
+//export default BoradForm;
