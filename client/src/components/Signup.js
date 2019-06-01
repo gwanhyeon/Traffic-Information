@@ -77,10 +77,10 @@ class Signup extends Component {
         const {handleInputChange,handleSubmit} = this;
         const {user_name,user_id,user_password,user_password_confirm,errors } = this.state;
         return(
-        <div className="container" style={{ marginTop: '50px', min:'350px', maxWidth:'350px', height:'auto'}}>
-            <h1 class="" style={{marginTop: '40px', marginBottom: '20px' , fontFamily: 'monospace', fontSize:"2.5rem"}}>Registration</h1>
-            <form onSubmit={ handleSubmit }>
-                <div className="form-group">
+        <div className="container form-control" style={{ marginTop: '50px', min:'350px', maxWidth:'350px', height:'auto'}}>
+            <h1 class="text-center" style={{marginTop: '40px', marginBottom: '20px' , fontFamily: 'monospace', fontSize:"2.5rem"}}>Registration</h1>
+            <form onSubmit={ handleSubmit } style={{margin:'auto', maxWidth:'300px'}}>
+                <div className="form-group" >
                     <input
                     type="text"
                     style={{fontFamily: 'monospace', fontSize: '1.5rem'}}
