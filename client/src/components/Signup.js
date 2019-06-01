@@ -117,6 +117,7 @@ class Signup extends Component {
     }
 
     componentDidMount() {
+        
         console.log("this.props=>",this.props);
         const {auth,history} = this.props;
         
@@ -135,16 +136,16 @@ class Signup extends Component {
         const {handleInputChange,handleSubmit,fileChangedHandler} = this;
         const {user_name,user_id,user_password,user_password_confirm,errors } = this.state;
         return(
-        <div className="container form-control shadow-lg" style={{marginTop:'100px', maxWidth:'400px', height:'auto'}}>
-            <h1 class="text-center" style={{marginTop: '15px', marginBottom: '20px' , fontSize:"2.5rem"}}>Signup</h1>
-            <form onSubmit={ handleSubmit } style={{margin:'auto', maxWidth:'330px'}}>
+        <div className="container form-control" style={{ marginTop: '50px', min:'350px', maxWidth:'350px', height:'auto'}}>
+            <h1 class="text-center" style={{marginTop: '40px', marginBottom: '20px' , fontFamily: 'monospace', fontSize:"2.5rem"}}>Registration</h1>
+            <form onSubmit={ handleSubmit } style={{margin:'auto', maxWidth:'300px'}}>
             
-                <div className="form-group " style={{borderStyle:'solid',borderWidth: '3px 3px'}}>
+                <div className="form-group" >
                     <input
                     type="text"
-                    style={{ fontSize: '1.3rem'}}
+                    style={{fontFamily: 'monospace', fontSize: '1.5rem'}}
                     placeholder="Name"
-                    className={classnames('form-control form-control-sm', {
+                    className={classnames('form-control form-control-lg', {
                         'is-invalid': errors.user_name
                     })}
                     name="user_name"
@@ -153,26 +154,26 @@ class Signup extends Component {
                     />
                     {errors.user_name && (<div className="invalid-feedback">{errors.user_name}</div>)}
                 </div>
-                <div className="form-group" style={{borderStyle:'solid',borderWidth: '3px 3px'}}>
+                <div className="form-group">
                     <input
                     type="email"
-                    style={{ fontSize: '1.3rem'}}
+                    style={{fontFamily: 'monospace', fontSize: '1.5rem'}}
                     placeholder="E-mail"
-                    className={classnames('form-control form-control-sm', {
+                    className={classnames('form-control form-control-lg', {
                         'is-invalid': errors.user_id
                     })}
                     name="user_id"
-                    onChange={ handleInputChange }
+                    onChange={handleInputChange }
                     value={ user_id }
                     />
                     {errors.user_id && (<div className="invalid-feedback">{user_id}</div>)}
                 </div>
-                <div className="form-group" style={{borderStyle:'solid',borderWidth: '3px 3px'}}>
+                <div className="form-group">
                     <input
                     type="password"
-                    style={{fontSize: '1.3rem'}}
+                    style={{fontFamily: 'monospace', fontSize: '1.5rem'}}
                     placeholder="Password"
-                    className={classnames('form-control form-control-sm', {
+                    className={classnames('form-control form-control-lg', {
                         'is-invalid': errors.user_password
                     })}
                     name="user_password"
@@ -182,12 +183,12 @@ class Signup extends Component {
                     {errors.user_password && (<div className="invalid-feedback">{errors.user_password}</div>)}
                 </div>
 
-                <div className="form-group" style={{borderStyle:'solid',borderWidth: '3px 3px'}}>
+                <div className="form-group">
                     <input
                     type="password"
-                    style={{fontSize: '1.3rem'}}
+                    style={{fontFamily: 'monospace', fontSize: '1.5rem'}}
                     placeholder="Confirm Password"
-                    className={classnames('form-control form-control-sm', {
+                    className={classnames('form-control form-control-lg', {
                         'is-invalid': errors.user_password_confirm
                     })}
                     name="user_password_confirm"
@@ -197,11 +198,9 @@ class Signup extends Component {
                     {errors.user_password_confirm && (<div className="invalid-feedback">{errors.user_password_confirm}</div>)}
                    
                 </div>
-                
-
                 <div className="form-group">
-                    <button type="submit" className="btn btn-primary" style={{width: '100%', fontSize: '1.5rem'}}>
-                        Signup
+                    <button type="submit" className="btn btn-primary" style={{width: '100%', fontFamily: 'monospace', fontSize: '1.5rem'}}>
+                        Register User
                     </button>
                 </div>
             </form>
