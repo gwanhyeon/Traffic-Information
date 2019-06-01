@@ -9,6 +9,7 @@ import TransInfo from './TransInfo';
 import { Navbar, Nav, Form } from 'react-bootstrap'
 
 import main_image from './images/photo.png'
+import hambug from './images/bug.jpeg'
 
 class Navbar1 extends Component {
 
@@ -36,34 +37,36 @@ class Navbar1 extends Component {
       const guestLinks = (
               <ul className="nav ml-auto">
                 <li>
-                  <Link className="nav-link text-white" to="/signup" style={{marginRight:'15px'}}>Sign up</Link>
+                  <Link className="nav-link " to="/signup" style={{marginRight:'15px'}}>Sign up</Link>
                 </li>
                 <li>
-                  <Link className="nav-link text-white" to="/signin">Sign in</Link>
+                  <Link className="nav-link " to="/signin">Sign in</Link>
                 </li>
               </ul>
       )
         return(
           
-          <Navbar bg="dark" variant="dark" expand="lg"sticky="top" >
+          <Navbar bg="" variant="" expand="lg"sticky="top" >
             <Link to="/"> {/* 메인 페이지 */}
-              <img src={main_image} className="navbar-brand" alt="image" style={{maxWidth:'60px', borderRadius: '20%'}}/>
+              <img src={main_image} className="navbar-brand" alt="image" style={{maxWidth:'80px', borderRadius: '20%'}}/>
             </Link>
          
-            <Navbar.Toggle className="navbar-default"  aria-controls="responsive-navbar-nav" style={{border: 'none'}}/>
+            <Navbar.Toggle className="navbar-default"  aria-controls="responsive-navbar-nav" style={{border: 'none'}}>
+                <img src={hambug} className=" rounded float-right" alt="image" style={{maxWidth:'60px', borderRadius: ''}}/>
+            </Navbar.Toggle>
           
-            <Navbar.Collapse id="responsive-navbar-nav" style={{fontFamily: 'sans-serif', fontSize: '20px'}}>
-              <Nav className="mr-auto">
-              <ul className="navbar">
+            <Navbar.Collapse id="responsive-navbar-nav" style={{fontFamily: '', fontSize: '25px'}}>
+              <Form>
+              <ul className="nav ml-auto">
                 <Link className="nav-link" to="/Board" style={{marginRight:'15px'}}>Board</Link>
                 <Link className="nav-link" to="/about" style={{marginRight:'15px'}}>About</Link>
                 <Link className="nav-link" to="/contact" style={{marginRight:'15px'}}>Contact</Link>
                 <Link className="nav-link" to="/transinfo" style={{marginRight:'15px'}}>TransInfo</Link>
                 <Link className="nav-link" to="/mypage" style={{marginRight:'15px'}}>MyPage</Link>
                 </ul>
-              </Nav>
+              </Form>
 
-              <Form inline>
+              <Form inline className="ml-auto">
               {isAuthenticated ? authLinks : guestLinks}
               </Form>
             </Navbar.Collapse>

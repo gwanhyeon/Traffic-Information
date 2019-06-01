@@ -162,7 +162,7 @@ class Signup extends Component {
                         'is-invalid': errors.user_id
                     })}
                     name="user_id"
-                    onChange={handleInputChange }
+                    onChange={ handleInputChange }
                     value={ user_id }
                     />
                     {errors.user_id && (<div className="invalid-feedback">{user_id}</div>)}
@@ -197,6 +197,15 @@ class Signup extends Component {
                     {errors.user_password_confirm && (<div className="invalid-feedback">{errors.user_password_confirm}</div>)}
                    
                 </div>
+
+//                 <div>
+//                 <form onSubmit={this.onFormSubmit}>
+//                 <input type="file" onChange={fileChangedHandler}/>
+//                 <button className="btn btn-primary" type="submit" style={{marginTop: '10px', marginBottom: '10px'}}>Upload</button>
+//                 </form>
+//                 </div>
+                
+
                 <div className="form-group">
                     <button type="submit" className="btn btn-primary" style={{width: '100%', fontFamily: 'monospace', fontSize: '1.5rem'}}>
                         Register User
