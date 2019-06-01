@@ -10,7 +10,8 @@ class BoradRead extends Component {
     state = {
         board_id : '',
         board_title:'',
-        board_contents:''
+        board_contents:'',
+        board_author: ''
     }
     data_store = null;
 
@@ -23,7 +24,8 @@ class BoradRead extends Component {
             this.setState({
                 board_id : res.data[0].board_id,
                 board_title : res.data[0].board_title,
-                board_contents : res.data[0].board_contents
+                board_contents : res.data[0].board_contents,
+                board_author: res.data[0].board_author
             })
             return res;
         });
@@ -36,27 +38,28 @@ class BoradRead extends Component {
             console.log(res.data);
         });
     }
-
+    // 수정하기 변경
     handleToggleEdit = () => {
         const { editing } = this.state;
         this.setState({ editing: !editing });
     }
+    // 내용 변경
     handleChange = (e) => {
         const {name, value} = e.target;
         this.setState({
             [name]: value
         })
     }
+    // 수정하여 저장 업데이트
     componentDidUpdate(prevProps, prevState, body) {
         const { board_title, board_contents, board_id } = this.props;
         if(!prevState.editing && this.state.editing) {
-
           this.setState({
             board_title: board_title,
             board_contents: board_contents
           })
         }
-        // 수정하기
+        // 수정하여 보내기 (server, db)
         if (prevState.editing && !this.state.editing) {
             body = this.state;
             axios.put('user/board_edit/'+this.state.board_id, body)
@@ -71,16 +74,19 @@ class BoradRead extends Component {
         const { editing } = this.state;
         const {auth} = this.props;
 
-        console.log("auth가 잘 돌아가는가",auth);
+        console.log("auth가 잘 돌아가는가",auth.user.user_name);
+        console.log("보드 리드의 state를 봐보자", this.state.board_author);
 
-        if(auth.isAuthenticated) {
-            if (editing) { // 수정모드
+        // 글쓴이 = 로그인 유저
+        if(auth.user.user_name == this.state.board_author) {
+            // 수정할때
+            if (editing) {
             return (
                 <form style={{margin: 'auto', width: '50%', marginTop: '50px'}}>
                 <h3 className="" style={{marginTop: '10px', fontFamily: 'monospace', fontSize: '2rem'}}>수정하기</h3>
                 <hr/>
                 <h4 style={{marginBottom: '2px', fontFamily: 'monospace', fontSize: '1.5rem'}}>title</h4>
-
+                {/* 글 제목 수정 */}
                 <input
                     value={this.state.board_title}
                     className="form-control" 
@@ -90,6 +96,7 @@ class BoradRead extends Component {
                     onChange={this.handleChange}
                   />
                 <h4 style={{marginBottom: '2px', fontFamily: 'monospace', fontSize: '1.5rem'}}>content</h4>
+                {/* 글 내용 수정 */}
                 <input
                     value={this.state.board_contents}
                     className="form-control"
@@ -104,22 +111,18 @@ class BoradRead extends Component {
                 </form>  
             );
           }
+          // 수정 아닐때
         return(
             <form style={{margin: 'auto', width: '50%', marginTop: '50px'}}>
-                {/* <h3 className="text-success" style={{marginTop: '10px', fontFamily: 'monospace', fontSize: '2.5rem'}}>자세히보기</h3>
-                <hr/> */}
                 <h4 style={{marginBottom: '2px', fontFamily: 'monospace', fontSize: '1.5rem'}}>title</h4>
                 <p  name="board_title"  className="form-control" style = {{width: '100%'}}>
+                {/* 글 제목 */}
                 {this.state.board_title}
                 </p>
                 <p/>
                 <h4 style={{marginBottom: '2px', fontFamily: 'monospace', fontSize: '1.5rem'}}>content</h4>
-                <p
-                    // placeholder="내용"
-                    name="board_contents"
-                    className="form-control"
-                    style = {{width: '100%', height: '300px'}}
-                >
+                <p name="board_contents" className="form-control" style = {{width: '100%', height: '300px'}}>
+                {/* 글 내용 */}
                 {this.state.board_contents}
                 </p>
                 <hr/>
@@ -127,6 +130,25 @@ class BoradRead extends Component {
                 <button onClick={this.handleDelete} className="btn btn-primary" style={{float: 'left', fontFamily: 'monospace', fontSize: '1.5rem'}}> 삭제 </button>
             </form>
         )
+    // 글쓴이 != 로그인 유저
+    } else if(auth.isAuthenticated) {
+        return(
+            <form style={{margin: 'auto', width: '50%', marginTop: '50px'}}>
+                <h4 style={{marginBottom: '2px', fontFamily: 'monospace', fontSize: '1.5rem'}}>title</h4>
+                <p  name="board_title"  className="form-control" style = {{width: '100%'}}>
+                {/* 글 제목 */}
+                {this.state.board_title}
+                </p>
+                <p/>
+                <h4 style={{marginBottom: '2px', fontFamily: 'monospace', fontSize: '1.5rem'}}>content</h4>
+                <p name="board_contents" className="form-control"style = {{width: '100%', height: '300px'}} >
+                {/* 글 내용 */}
+                {this.state.board_contents}
+                </p>
+                <hr/>
+            </form>
+        )
+    // 서비스 이용 불가 (로그인 X)
     } else {
         return(
             <h3 className="" style={{marginTop: '10px', fontFamily: 'monospace', fontSize: '1.5rem'}}> 로그인 후 서비스 이용 가능합니다. </h3>
