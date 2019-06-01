@@ -47,7 +47,7 @@ class App extends Component {
                 
                 <div className="container-fluid"> 
                   <Route exact path="/board" component={Board}/>
-                  <Route exact path="/transportation" component={TransInfo}/>
+                  <Route exact path="/transinfo" component={TransInfo}/>
                   <Route exact path="/about" component={About}/>
                   <Route exact path="/contact" component={Contact}/>
                   <Route exact path="/signup" component={ Signup } />

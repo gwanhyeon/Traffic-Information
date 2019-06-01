@@ -7,7 +7,8 @@ import { callbackify } from 'util';
 import Error from './Error';
 import TransUiwangBusItem from './TransUiwangBusItem';
 import TransKnutBusItem from './TransKnutBusItem';
-import '../main.css';
+import main_image from './images/photo.png'
+//import '../main.css';
 
 class TransInfo extends Component {
     state ={
@@ -161,8 +162,8 @@ class TransInfo extends Component {
     }
 
     componentDidMount(){
-        // this.subway_call();
-        // this.uiwang_station_bus_call();
+         this.subway_call();
+         this.uiwang_station_bus_call();
         // this.knut_station_bus_call();
 
         
@@ -177,15 +178,98 @@ class TransInfo extends Component {
         // console.log("data.lengh => ",data.length)   
         const ErrorPage = <Error></Error>
 
-        
-        return (
-
-            
+        console.log("subway_data : ", subway_data.length );
+        if(subway_data.length === 0 || uiwang_bus_data.length === 0 || knut_bus_data.length === 0){
+            return(
             <Fragment>
-            <div class='left-box'>
+                <div style={{overflowX:'hidden'}}>
+            <div style={{height:'400px'}}>
+            <link to='board'></link>
+            <Table>
+            <thead>
+            <tr style={{marginBottom: '2px',  fontSize: '1.5vw'}}>
+            <h6 style={{color:'black', fontSize: '1.3rem', fontFamily: 'monospace'}}>의왕역 지하철 정류장</h6>
+                
+ 
+              </tr>
+              <tr style={{marginBottom: '2px',  fontSize: '1.5vw' , rowspan : '1'}}>
+                <th>#</th>
+                <th>제목</th>
+                <th>열차정보</th>
+                <th>현재역</th>
+                <th>시간</th>
+              </tr>
+            </thead>
+ 
+            <tbody>
+            <img src={main_image} className="" alt="image" style={{maxWidth:'10rem'}}/>
+            </tbody>
+          </Table>
+            </div>
+ 
+            <div style={{height:'400px'}}>
             <link to='board'></link>
             <Table responsive>
             <thead>
+            <tr style={{marginBottom: '2px',  fontSize: '1.5vw', rowspan : '1', width:'100%', color:'black', fontSize: '1.3rem', fontFamily: 'monospace'}} >
+            <h6 style={{color:'black', fontSize: '1.3rem', fontFamily: 'monospace'}}>의왕역 버스 정류장</h6>
+ 
+          </tr>
+              <tr style={{marginBottom: '2px',  fontSize: '20px'}}>
+                <th>운행 버스</th>
+                <th>남은 정거장 버스1</th>
+                <th>운행 번호1</th>
+                <th>도착 예상 시간 버스 1</th>
+                <th>남은 정거장 버스2</th>
+                <th>운행 번호2</th>
+                <th>도착 예상 시간 버스 2</th>
+ 
+              </tr>
+            </thead>
+            <tbody>
+            <img src={main_image} className="" alt="image" style={{maxWidth:'10rem'}}/>
+            </tbody>
+          </Table>
+          </div>
+          <div style={{height:'400px'}}>
+          <Table responsive>
+            <thead>
+             <tr style={{marginBottom: '2px',  fontSize: '1.5vw', rowspan : '1'}}>
+             <h6 style={{color:'black', fontSize: '1.3rem', fontFamily: 'monospace'}}>한국교통대학교 버스 정류장</h6>
+            
+            </tr>
+ 
+              <tr style={{marginBottom: '2px',  fontSize: '20px'}}>
+                <th>운행 버스</th>
+                <th>남은 정거장 버스1</th>
+                <th>운행 번호1</th>
+                <th>도착 예상 시간 버스 1</th>
+                <th>남은 정거장 버스2</th>
+                <th>운행 번호2</th>
+                <th>도착 예상 시간 버스 2</th>
+ 
+              </tr>
+            </thead>
+            <tbody>
+            <img src={main_image} className="" alt="image" style={{maxWidth:'10rem'}}/>
+            </tbody>
+          </Table>
+          </div>
+        </div>
+        
+            </Fragment>
+        );
+        }
+        else{return (
+
+            
+            <Fragment>
+            {/* <div class='left-box'> */}
+            <div style={{overflowX:'hidden'}}>
+            <div style={{height:'400px'}}>
+            <link to='board'></link>
+            <Table responsive>
+            <thead> 
               <tr style={{marginBottom: '2px',  fontSize: '1.5vw'}}>
                 <th>#</th>
                 <th>제목</th>
@@ -204,6 +288,10 @@ class TransInfo extends Component {
             //   console.log("key9=>",data[14].data);
               if(data[14].data === "급행"){
                 // console.log("급행확인");
+                if(subway_data.length === 0){
+                    return (<p>정보가 없습니다.</p>)
+                }
+                else{
                   return(
                       <TransSubwayItem
                       board_id={data[4].data}
@@ -213,8 +301,18 @@ class TransInfo extends Component {
                       board_date ={data[19].data}
                       key={i}/>
                   )
+                }
               }
               else{
+                if(subway_data.length === 0){
+                    return (
+                    
+                    <tr>
+                        <td>정보없다</td>
+                    </tr>
+                    )
+                }
+                else{
                 return (
                     <TransSubwayItem 
                     // 4 상행
@@ -230,13 +328,15 @@ class TransInfo extends Component {
                     key={i}/>
                 );
                 }
+                }
               })
             }
             </tbody>
           </Table>
             </div>      
 
-            <div class='right-box'>
+            {/* <div class='right-box'> */}
+            <div style={{height:'400px'}}>
             <link to='board'></link>
             <Table responsive>
             <thead>
@@ -324,7 +424,8 @@ class TransInfo extends Component {
             }
             </tbody>
           </Table>
-          <div></div>
+          </div>
+          <div style={{height:'400px'}}>
           <Table responsive>
             <thead>
               <tr style={{marginBottom: '2px',  fontSize: '20px'}}>
@@ -376,10 +477,12 @@ class TransInfo extends Component {
             }
             </tbody>
           </Table>
+          
         </div>
-
+        </div>
             </Fragment>
         );
+        }
     }
 }
 

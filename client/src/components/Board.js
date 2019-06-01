@@ -41,7 +41,7 @@ class Board extends Component {
                 boards : res.data
             });
         })
-        ,100000);
+        ,1000);
     }
     componentDidMount = () => {
         
@@ -170,7 +170,7 @@ class Board extends Component {
                     {renderPageNumbers}
                 </ul>
                 <button onClick={this.handleChange} className="btn btn-primary" style={{float: 'left', fontFamily: 'sans-serif', fontSize: '1.5rem'}}>글쓰기</button>
-                <button onClick={this.handlePrint} className="btn btn-primary" style={{float: 'left', fontFamily: 'sans-serif', fontSize: '1.5rem'}}>새로고침</button>
+                
                 
                 </div>
             );
@@ -196,7 +196,7 @@ class Board extends Component {
               <ul className="pagination text-center" style={{alignContent: "center"}}>
                     {renderPageNumbers}
                 </ul>
-              <button onClick={this.handlePrint} className="btn btn-primary" style={{float: 'left', fontFamily: 'sans-serif', fontSize: '1.5rem'}}>새로고침</button>
+            
               </div>
               </Fragment>
               
