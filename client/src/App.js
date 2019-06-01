@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import store from './store';
 import jwt_decode from 'jwt-decode';
@@ -19,6 +19,7 @@ import About from './components/About';
 
 import './css/contactform.css'
 import MyPage from './components/MyPage';
+import AboutInfo from './components/AboutInfo';
 
 if(localStorage.jwtToken) {
   setAuthToken(localStorage.jwtToken);
@@ -55,7 +56,10 @@ class App extends Component {
                   <Route exact path = "/BoardForm" component = {BoardForm} />
                   <Route exact path = "/BoardRead" component = {BoardRead} />
                   <Route exact path = "/MyPage" component = {MyPage} />
-
+                  <Switch>
+                    <Route path = "/AboutInfo/:name" component = {AboutInfo} /> 
+                    <Route path = "/AboutInfo/" component = {AboutInfo} /> 
+                  </Switch>
                 </div>
             </div>
           </Router>
