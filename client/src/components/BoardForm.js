@@ -3,6 +3,7 @@ import Board from './Board';
 import axios from 'axios';
 import { loginUser } from '../actions/authentication';
 import { connect } from 'react-redux';
+import '../css/Board.css';
 
 class BoradForm extends Component {
     
@@ -53,29 +54,34 @@ class BoradForm extends Component {
 
     render () {
         return(
-            <form onSubmit={this.handleSubmit} style={{margin: 'auto', width: '50%'}}>
-                <h1 className="" style={{  fontSize: '2.5rem'}}>Posting</h1>
-                <hr/>
-                <h4 style={{marginBottom: '2px',  fontSize: "1.5rem"}}>title</h4>
+            <div className="listStyle">
+            <form onSubmit={this.handleSubmit} className="formStyle">
+                <div className="formtitle">
+                    <p>글쓰기</p>
+                    <span>자유롭게 의견을 남겨주세요.</span>
+                </div>
+                <div className="formspace">
+                <h4 className="formh4">제목</h4>
                 <textarea
                     // placeholder="제목"
                     value={this.state.board_title}
                     onChange={this.handleChange}
-                    name="board_title"
+                    required name="board_title"
                     className="form-control"
-                    style = {{width: '100%', height: 'auto'}}
+                    id="formContents"
+                    style = {{maxWidth:'1000px', fontSize:'1rem'}}
                 />
-                <p/>
-                <h4 style={{marginBottom: '2px',  fontSize: "1.5rem"}}>content</h4>
+                </div>
+                <h4 className="formh4">내용</h4>
                 <textarea
                     // placeholder="내용"
                     value={this.state.board_contents}
                     onChange={this.handleChange}
-                    name="board_contents"
+                    required name="board_contents"
                     className="form-control"
-                    style = {{width: '100%', height: '300px'}}
+                    id="formContents"
+                    style = {{maxWidth:'1000px', height: '300px', fontSize:'1rem'}}
                 />
-                <hr/>
                 {/* 유저명 <input
                     // placeholder="유저명"
                     value={this.state.board_author}
@@ -84,8 +90,9 @@ class BoradForm extends Component {
                     style = {{width: '454px'}}
                 />
                 <p/> */}
-                <button type="submit" className="btn btn-primary" style={{float: 'right',  fontSize: '1.5rem'}}>ok</button>
+                <button type="submit" className="btn btn-primary" style={{float: 'right',  fontSize: '1rem', margin:'30px'}}>확인</button>
             </form>
+            </div>
         )
     }
 }

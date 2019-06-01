@@ -1,0 +1,138 @@
+body{
+    text-align: center;
+}
+.listStyle {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 30px;
+    max-width: 1200px;
+}
+#th-style {
+    text-align: center;
+    font-size: 1rem;
+    color:#191919;
+}
+#th-style-title {
+    text-align: left;
+    font-size: 1rem;
+    color:#191919;
+}
+.title {
+    text-align: center;
+    margin-top:3rem;
+    margin-bottom: 3rem;
+}
+.title, p {
+    color:black;
+    font-size: 2rem;
+}
+.title, span{
+    color:#191919;
+    font-size: 1rem;
+}
+
+.tableStyle {
+    text-align: center;
+    font-size: 1rem;
+    color:#191919
+}
+.content-text {
+    text-align: left;
+    font-size:1rem;
+}
+#btnRefresh {
+    float: 'left';
+    margin-left:50px;
+    font-size: 1rem;
+}
+#btnSubmit{
+    float: 'right';
+    margin-right:50px;
+    font-size: 1rem;
+}
+.btnClass{
+    display: block;
+    height: 44.5px;
+    margin:20px 10px;
+}
+#btnEdit{
+    font-size: 1rem;
+    margin:0px 10px;
+}
+
+.read {
+    padding:10px 30px;
+    background-color: #f7f7f9;
+}
+#readh4 {
+    display: block;
+    float: left;
+    font-size: 1rem;
+    color: #191919;
+    padding: 20px 80px 20px 40px;
+    font-weight: 600;
+}
+#noread {
+    font-size: 1rem;
+    color: #191919;
+    margin-top:10px;
+    margin-bottom:10px;
+    text-align: center;
+    font-weight: 400;
+    font-style: italic;
+}
+#readContents {
+    display: block;
+    width: 100%;
+    height: 150px;
+    color: #191919;
+    font-size: 1rem;
+    padding: 20px 40px;
+}
+.formStyle {
+    max-width: 1200px;
+    padding: 40px 20px;
+}
+.formtitle{
+    border-style: solid;
+    border-width: 0px 0px 1px 0px;
+    border-color: #eee;
+    text-align: center;
+    margin-top:3rem;
+    padding-bottom: 40px;
+    margin-bottom: 40px;
+}
+.formh4 {
+    display: block;
+    float: left;
+    font-size: 1rem;
+    color: #191919;
+    text-align: center;
+    padding: 10px 50px;
+    font-weight: 600;
+}
+.formContents {
+    display: block;
+    float: right;
+    font-size: 1.5rem;
+    color: #191919;
+    padding: 20px 80px 20px 40px;
+    font-weight: 600;
+    width: 100%;
+    height: auto;
+}
+.formspace {
+    margin-bottom: 30px;
+}
+.edittitle {
+    text-align: center;
+    margin-top:3rem;
+    padding-bottom: 40px;
+    margin-bottom: 20px;
+}
+
+#margin0 {
+    padding:0;
+    margin:0;
+}

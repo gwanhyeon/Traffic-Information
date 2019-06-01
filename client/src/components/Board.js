@@ -8,6 +8,7 @@ import axios from 'axios';
 import { loginUser } from '../actions/authentication';
 import { updateCurrPage, updateStartEndPage} from "../actions/pagenation"
 import { connect } from 'react-redux';
+import '../css/Board.css';
 
 
 
@@ -61,7 +62,7 @@ class Board extends Component {
                 boards : res.data
             });
         })
-        ,100000);
+        ,1000);
     }
     componentDidMount = () => {
         
@@ -152,39 +153,52 @@ class Board extends Component {
     
         if(auth.isAuthenticated) {
             return (
-                <div>
+                <div className="listStyle">
+                <div className="title">
+                    <p>자유게시판</p>
+                    <span>한국교통대학교 의왕캠퍼스 통학생들의 자유로운 이야기 공간입니다.</span>
+                </div>
                 <link to='board'></link>
-                <Table responsive>
+                <Table responsive >
                 <thead>
-                  <tr style={{color:'black',marginBottom: '2px'}}>
-                    <th style={{fontSize: '1rem'}}>no.</th>
-                    <th style={{fontSize: '1.5rem'}}>제목</th>
-                    <th style={{fontSize: '1.5rem'}}>이름</th>
-                    <th style={{fontSize: '1.5rem'}}>날짜</th>
+                  <tr>
+                    <th id="th-style">no.</th>
+                    <th id="th-style">제목</th>
+                    <th id="th-style">이름</th>
+                    <th id="th-style">날짜</th>
                   </tr>
                 </thead>
                 {check}
               </Table>
-                <button onClick={this.handleChange} className="btn btn-primary" style={{float: 'left', fontSize: '1rem'}}>글쓰기</button>
-                <button onClick={this.handlePrint} className="btn btn-primary" style={{float: 'left', fontSize: '1rem'}}>새로고침</button>
+                <div className="btnClass">
+                <button onClick={this.handleChange} className="btn btn-primary" id="btnSubmit" style={{float:"right"}}>글쓰기</button>
+                <button onClick={this.handlePrint} className="btn btn-primary" id="btnRefresh">새로고침</button>
+                </div>
                 </div>
             );
         } else {
             return (
-                <div>
+                <div className="listStyle">
+                <div className="title">
+                    <p>자유게시판</p>
+                    <span>한국교통대학교 의왕캠퍼스 통학생들의 자유로운 이야기 공간입니다.</span>
+                </div>
                 <link to='board'></link>
                 <Table responsive>
                 <thead>
-                  <tr style={{color:'black',marginBottom: '2px'}}>
-                    <th style={{fontSize: '1rem'}}>no.</th>
-                    <th style={{fontSize: '1.5rem'}}>제목</th>
-                    <th style={{fontSize: '1.5rem'}}>이름</th>
-                    <th style={{fontSize: '1.5rem'}}>날짜</th>
+                    <tr>
+                    <th id="th-style">no.</th>
+                    <th id="th-style">제목</th>
+                    <th id="th-style">이름</th>
+                    <th id="th-style">날짜</th>
                   </tr>
                 </thead>
                 {check}
               </Table>
-              <button onClick={this.handlePrint} className="btn btn-primary" style={{float: 'left', fontSize: '1rem'}}>새로고침</button>
+              <div className="btnClass">
+              <button onClick={this.handlePrint} className="btn btn-primary" id="btnRefresh">새로고침</button>
+              </div>
+
               </div>
               )
         }

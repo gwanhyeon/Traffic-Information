@@ -1,6 +1,9 @@
 import React, { Fragment,Component } from 'react';
 import BoardRead from './BoardRead';
 // import Fragment from 'Fragment';
+import '../css/Board.css';
+
+
 class BoardItem extends Component {
     state = {
         editing : false,
@@ -20,30 +23,30 @@ class BoardItem extends Component {
         if(reading) {
           return (
             <Fragment>
-                <tr style={{color:'black', fontSize: '1.3rem'}}>
-                <td>{board_id}</td>
-                <td onClick={this.handleRead}> {board_title} </td>
+                <tr>
+                <td id="th-style">{board_id}</td>
+                <td onClick={this.handleRead} id="th-style-title" > {board_title} </td>
                 {/* <td> {board_contents} </td> */}
-                <td> {board_author}</td>
-                <td> {board_date} </td>
+                <td id="th-style" > {board_author}</td>
+                <td id="th-style" > {board_date} </td>
                 </tr>
                 <tr>
-                  <td colSpan="7"> <BoardRead dataFromParent={board_id} onUpdate={this.handleUpdate} /> </td>
+                  <td colSpan="7" id="margin0"> <BoardRead dataFromParent={board_id} onUpdate={this.handleUpdate} /> </td>
                 </tr>
             </Fragment>
           );
         }
 
         return (
-                <Fragment>
-                <tr style={{color:'black', fontSize: '1.3rem'}}>
-                <td>{board_id}</td>
-                <td onClick={this.handleRead}> {board_title} </td>
-                {/* <td> {board_contents} </td> */}
-                <td> {board_author}</td>
-                <td> {board_date} </td>
-                </tr>
-                </Fragment>
+          <Fragment>
+          <tr>
+          <td id="th-style" >{board_id}</td>
+          <td onClick={this.handleRead} id="th-style-title" > {board_title} </td>
+          {/* <td> {board_contents} </td> */}
+          <td id="th-style"> {board_author}</td>
+          <td id="th-style" > {board_date} </td>
+          </tr>
+          </Fragment>
         );
     }
 }
