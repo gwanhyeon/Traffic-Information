@@ -153,11 +153,11 @@ class Board extends Component {
                 
                 <Table responsive>
                 <thead>
-                  <tr style={{marginBottom: '2px', fontFamily: 'sans-serif', fontSize: '1.5rem'}}>
-                    <th>no.</th>
-                    <th>제목</th>
-                    <th>이름</th>
-                    <th>날짜</th>
+                  <tr style={{marginBottom: '2px', color:'black'}}>
+                    <th style={{fontSize: '1rem'}}>no.</th>
+                    <th style={{fontSize: '1.3rem'}}>제목</th>
+                    <th style={{fontSize: '1.3rem'}}>이름</th>
+                    <th style={{fontSize: '1.3rem'}}>날짜</th>
                   </tr>
                 </thead>
           
@@ -169,9 +169,10 @@ class Board extends Component {
                     <ul className="pagination text-center" style={{alignContent: "center"}}>
                     {renderPageNumbers}
                 </ul>
+
                 <button onClick={this.handleChange} className="btn btn-primary" style={{float: 'left', fontFamily: 'sans-serif', fontSize: '1.5rem'}}>글쓰기</button>
                 
-                
+
                 </div>
             );
         } else {
@@ -181,11 +182,11 @@ class Board extends Component {
                 <link to='board'></link>
                 <Table style={{tableLayout:"fixed"}} height="1000px">
                 <thead>
-                  <tr style={{marginBottom: '2px', fontFamily: 'sans-serif', fontSize: '1.5rem'}}>
-                    <th>no.</th>
-                    <th>제목</th>
-                    <th>이름</th>
-                    <th>날짜</th>
+                  <tr style={{marginBottom: '2px', color:'black'}}>
+                    <th style={{fontSize: '1rem'}}>no.</th>
+                    <th style={{fontSize: '1.3rem'}}>제목</th>
+                    <th style={{fontSize: '1.3rem'}}>이름</th>
+                    <th style={{fontSize: '1.3rem'}}>날짜</th>
                   </tr>
                 </thead>
             
@@ -196,7 +197,7 @@ class Board extends Component {
               <ul className="pagination text-center" style={{alignContent: "center"}}>
                     {renderPageNumbers}
                 </ul>
-            
+
               </div>
               </Fragment>
               

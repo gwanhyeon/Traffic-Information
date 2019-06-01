@@ -53,7 +53,7 @@ class BoradForm extends Component {
 
     render () {
         return(
-            <form onSubmit={this.handleSubmit} style={{margin: 'auto', width: '50%'}}>
+            <form onSubmit={this.handleSubmit} style={{margin: 'auto', marginTop:'40px' , maxWidth: '450px'}}>
                 <h1 className="" style={{  fontSize: '2.5rem'}}>Posting</h1>
                 <hr/>
                 <h4 style={{marginBottom: '2px',  fontSize: "1.5rem"}}>title</h4>
