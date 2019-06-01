@@ -91,6 +91,7 @@ class Board extends Component {
         const {id} = this;
         let renderBoards = null;
         if(id >= 0){
+        currentBoards.board_id.sort();
         renderBoards = <tbody>{currentBoards.map((board, i) => {
             return(
             <BoardItem
