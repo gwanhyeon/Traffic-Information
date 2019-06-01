@@ -14,6 +14,8 @@
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.3",
     "cors": "^2.8.5",
+    "crypto": "^1.0.1",
+    "decrypt": "^0.0.1",
     "express": "^4.17.0",
     "gravatar": "^1.8.0",
     "jsonwebtoken": "^8.5.1",
