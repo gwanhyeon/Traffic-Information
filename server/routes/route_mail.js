@@ -6,7 +6,6 @@ const crypto = require('crypto');
 const decipher = crypto.createDecipher('aes-256-cbc', 'mypassword');
 let result2 = decipher.update('45e2a948b501bc45928af1df2f4fd920', 'hex', 'utf8'); // 암호화할문 (base64, utf8이 위의 cipher과 반대 순서입니다.)
 result2 += decipher.final('utf8'); // 암호화할문장 (여기도 base64대신 utf8)
-
 router.post('/mail_auth', (req,res) =>{
     console.log("req로 뭐가오니?", req.body);
    const requested_user_name = req.body.requested_user_name;
@@ -59,6 +58,8 @@ router.post('/mail_auth', (req,res) =>{
        console.log("then언제오니");
        //res.redirect("/");
    });
+
+  
 
    
 })

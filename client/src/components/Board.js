@@ -6,6 +6,7 @@ import {BootstrapTable, TableHeaderColumn} from 'react-bootstrap-table';
 import {Link} from 'react-router-dom';
 import axios from 'axios';
 import { loginUser } from '../actions/authentication';
+import { updateCurrPage, updateStartEndPage} from "../actions/pagenation"
 import { connect } from 'react-redux';
 
 
@@ -22,14 +23,37 @@ class Board extends Component {
                 board_date: formatDate(new Date())
             }
         ]
+        // ,
+        // pages : {
+        //     page: 1,
+        //     start :0,
+        //     end : 4
+        // }
     }
-    // state = {        
-    //     board_id : '',
-    //     board_title : '',
-    //     board_contents : '',
-    //     board_name : '',
-    //     board_date : new Date(),
+
+    // handleChangeIndexUp = () => {
+    //     const {page,start,end} = this.state.pages;
+    //     this.setState({
+    //         page: page + 1,
+    //         start : start + 4,
+    //         end : end +4
+    //     });
     // }
+
+    // handleChangeIndexDown = () => {
+    //     const {page,start,end}= this.state.pages;
+    //     if (start === 0){
+    //         return 0;
+    //     }
+    
+    //     this.setState({
+    //         page : page - 1,
+    //         start : start -4,
+    //         end : end-4
+
+    //     })
+    // }
+  
     async_list(){
         this.lookupInterval = setInterval(() => axios.get('user/board_list')
         .then(res=> {
@@ -40,6 +64,7 @@ class Board extends Component {
         ,1000);
     }
     componentDidMount = () => {
+        
         this.async_list();
        
     }
@@ -72,9 +97,13 @@ class Board extends Component {
     render() {
         // <Route render={props => <BoardForm onCreate={this.handleCreate}/>}></Route>
         const {boards} = this.state; 
-        const {auth} = this.props;
+        const {auth,pagenation} = this.props;
 
+        // # 페이지 네이션 !
+        const per = 20;
         console.log("auth가 잘 돌아가는가",auth);
+        console.log("pagenation =>" , pagenation)
+        pagenation.start = 30;
         
         const {id} = this;
         let check = null;
@@ -147,17 +176,16 @@ function formatDate(date) {
         month = '' + (d.getMonth() + 1),
         day = '' + d.getDate(),
         year = d.getFullYear();
-
     if (month.length < 2) month = '0' + month;
     if (day.length < 2) day = '0' + day;
-
     return [year, month, day].join('-');
 }
 
 const mapStateToProps = (state) => ({
     auth: state.auth,
-    errors: state.errors
+    errors: state.errors,
+    pagenation : state.pagenation,
 })
 
-export default connect(mapStateToProps, { loginUser })(Board)
+export default connect(mapStateToProps, { loginUser,updateCurrPage, updateStartEndPage })(Board)
 // export default Board;
