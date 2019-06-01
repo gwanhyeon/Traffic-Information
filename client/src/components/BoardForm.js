@@ -53,10 +53,10 @@ class BoradForm extends Component {
 
     render () {
         return(
-            <form onSubmit={this.handleSubmit} style={{margin: 'auto', width: '50%', marginTop: '50px'}}>
-                <h1 className="" style={{marginTop: '40px', fontFamily: 'monospace', fontSize: '2.5rem'}}>Posting</h1>
+            <form onSubmit={this.handleSubmit} style={{margin: 'auto', width: '50%'}}>
+                <h1 className="" style={{  fontSize: '2.5rem'}}>Posting</h1>
                 <hr/>
-                <h4 style={{marginBottom: '2px', fontFamily: 'monospace', fontSize: "1.5rem"}}>title</h4>
+                <h4 style={{marginBottom: '2px',  fontSize: "1.5rem"}}>title</h4>
                 <textarea
                     // placeholder="제목"
                     value={this.state.board_title}
@@ -66,7 +66,7 @@ class BoradForm extends Component {
                     style = {{width: '100%', height: 'auto'}}
                 />
                 <p/>
-                <h4 style={{marginBottom: '2px', fontFamily: 'monospace', fontSize: "1.5rem"}}>content</h4>
+                <h4 style={{marginBottom: '2px',  fontSize: "1.5rem"}}>content</h4>
                 <textarea
                     // placeholder="내용"
                     value={this.state.board_contents}
@@ -84,7 +84,7 @@ class BoradForm extends Component {
                     style = {{width: '454px'}}
                 />
                 <p/> */}
-                <button type="submit" className="btn btn-primary" style={{float: 'right', fontFamily: 'monospace', fontSize: '1.5rem'}}>ok</button>
+                <button type="submit" className="btn btn-primary" style={{float: 'right',  fontSize: '1.5rem'}}>ok</button>
             </form>
         )
     }

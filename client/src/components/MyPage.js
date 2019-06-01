@@ -40,9 +40,9 @@ class MyPage extends Component {
             );
         }else {
             return(
-            <div>   
+            <div style={{marginTop:'100px'}}>   
               
-                로그인하세요.
+                <h1 style={{textAlign:'center'}}>로그인하세요.</h1>
             </div>
             );
 

@@ -16,6 +16,7 @@ import Contact from './components/ContactForm';
 import './bootstrap.min.css';
 import TransInfo from './components/TransInfo';
 import About from './components/About';
+import MainForm from './components/MainForm';
 
 import './css/contactform.css'
 import MyPage from './components/MyPage';
@@ -56,6 +57,7 @@ class App extends Component {
                   <Route exact path = "/BoardForm" component = {BoardForm} />
                   <Route exact path = "/BoardRead" component = {BoardRead} />
                   <Route exact path = "/MyPage" component = {MyPage} />
+                  <Route exact path = "/MainForm" component = {MainForm} />
 
                 </div>
             </div>
