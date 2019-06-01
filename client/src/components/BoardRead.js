@@ -83,9 +83,9 @@ class BoradRead extends Component {
             if (editing) {
             return (
                 <form style={{margin: 'auto', width: '50%', marginTop: '50px'}}>
-                <h3 className="" style={{marginTop: '10px', fontFamily: 'monospace', fontSize: '2rem'}}>수정하기</h3>
+                <h3 className="" style={{marginTop: '10px',  fontSize: '2rem'}}>수정하기</h3>
                 <hr/>
-                <h4 style={{marginBottom: '2px', fontFamily: 'monospace', fontSize: '1.5rem'}}>title</h4>
+                <h4 style={{marginBottom: '2px',  fontSize: '1.5rem'}}>title</h4>
                 {/* 글 제목 수정 */}
                 <input
                     value={this.state.board_title}
@@ -95,7 +95,7 @@ class BoradRead extends Component {
                     placeholder="제목"
                     onChange={this.handleChange}
                   />
-                <h4 style={{marginBottom: '2px', fontFamily: 'monospace', fontSize: '1.5rem'}}>content</h4>
+                <h4 style={{marginBottom: '2px',  fontSize: '1.5rem'}}>content</h4>
                 {/* 글 내용 수정 */}
                 <input
                     value={this.state.board_contents}
@@ -106,7 +106,7 @@ class BoradRead extends Component {
                     onChange={this.handleChange}
                   />
                 <hr/>
-                <button onClick={this.handleToggleEdit} className="btn btn-primary" style={{float: 'left', fontFamily: 'monospace', fontSize: '1.5rem'}}>적용</button>
+                <button onClick={this.handleToggleEdit} className="btn btn-primary" style={{float: 'left',  fontSize: '1.5rem'}}>적용</button>
                
                 </form>  
             );
@@ -114,33 +114,33 @@ class BoradRead extends Component {
           // 수정 아닐때
         return(
             <form style={{margin: 'auto', width: '50%', marginTop: '50px'}}>
-                <h4 style={{marginBottom: '2px', fontFamily: 'monospace', fontSize: '1.5rem'}}>title</h4>
+                <h4 style={{marginBottom: '2px',  fontSize: '1.5rem'}}>title</h4>
                 <p  name="board_title"  className="form-control" style = {{width: '100%'}}>
                 {/* 글 제목 */}
                 {this.state.board_title}
                 </p>
                 <p/>
-                <h4 style={{marginBottom: '2px', fontFamily: 'monospace', fontSize: '1.5rem'}}>content</h4>
+                <h4 style={{marginBottom: '2px',  fontSize: '1.5rem'}}>content</h4>
                 <p name="board_contents" className="form-control" style = {{width: '100%', height: '300px'}}>
                 {/* 글 내용 */}
                 {this.state.board_contents}
                 </p>
                 <hr/>
-                <button onClick={this.handleToggleEdit} className="btn btn-primary" style={{float: 'left', fontFamily: 'monospace', fontSize: '1.5rem'}}>수정</button>
-                <button onClick={this.handleDelete} className="btn btn-primary" style={{float: 'left', fontFamily: 'monospace', fontSize: '1.5rem'}}> 삭제 </button>
+                <button onClick={this.handleToggleEdit} className="btn btn-primary" style={{float: 'left',  fontSize: '1.5rem'}}>수정</button>
+                <button onClick={this.handleDelete} className="btn btn-primary" style={{float: 'left',  fontSize: '1.5rem'}}> 삭제 </button>
             </form>
         )
     // 글쓴이 != 로그인 유저
     } else if(auth.isAuthenticated) {
         return(
             <form style={{margin: 'auto', width: '50%', marginTop: '50px'}}>
-                <h4 style={{marginBottom: '2px', fontFamily: 'monospace', fontSize: '1.5rem'}}>title</h4>
+                <h4 style={{marginBottom: '2px',  fontSize: '1.5rem'}}>title</h4>
                 <p  name="board_title"  className="form-control" style = {{width: '100%'}}>
                 {/* 글 제목 */}
                 {this.state.board_title}
                 </p>
                 <p/>
-                <h4 style={{marginBottom: '2px', fontFamily: 'monospace', fontSize: '1.5rem'}}>content</h4>
+                <h4 style={{marginBottom: '2px',  fontSize: '1.5rem'}}>content</h4>
                 <p name="board_contents" className="form-control"style = {{width: '100%', height: '300px'}} >
                 {/* 글 내용 */}
                 {this.state.board_contents}
@@ -151,7 +151,7 @@ class BoradRead extends Component {
     // 서비스 이용 불가 (로그인 X)
     } else {
         return(
-            <h3 className="" style={{marginTop: '10px', fontFamily: 'monospace', fontSize: '1.5rem'}}> 로그인 후 서비스 이용 가능합니다. </h3>
+            <h3 className="" style={{marginTop: '10px',  fontSize: '1.5rem'}}> 로그인 후 서비스 이용 가능합니다. </h3>
         )
         }
     }
