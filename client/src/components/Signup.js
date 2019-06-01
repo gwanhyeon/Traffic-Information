@@ -161,7 +161,7 @@ class Signup extends Component {
                         'is-invalid': errors.user_id
                     })}
                     name="user_id"
-                    onChange={handleInputChange }
+                    onChange={ handleInputChange }
                     value={ user_id }
                     />
                     {errors.user_id && (<div className="invalid-feedback">{user_id}</div>)}
@@ -197,8 +197,8 @@ class Signup extends Component {
                 </div>
                 <div>
                 <form onSubmit={this.onFormSubmit}>
-                <input type="file" onChange={fileChangedHandler}/>
-                <button type="submit">Upload</button>
+                <input className="input input-primary" type="file" onChange={fileChangedHandler}/>
+                <button className="btn btn-primary" type="submit" style={{marginTop: '10px', marginBottom: '10px'}}>Upload</button>
                 </form>
                 </div>
                 
