@@ -61,7 +61,7 @@ class Board extends Component {
                 boards : res.data
             });
         })
-        ,1000);
+        ,100000);
     }
     componentDidMount = () => {
         
@@ -98,12 +98,31 @@ class Board extends Component {
         // <Route render={props => <BoardForm onCreate={this.handleCreate}/>}></Route>
         const {boards} = this.state; 
         const {auth,pagenation} = this.props;
-
         // # 페이지 네이션 !
-        const per = 20;
+        const per = 10;
+        const total = this.state.boards.length;
+        const total_current = Math.ceil(total / per);
+        const array = [];
+        let j = 0;
+        let end;
+        pagenation.current = total_current;
+        console.log("boards", boards.length);
+        for(let i=0; i<total_current; i++) {
+            var data = new Array();
+            console.log("과연 j는",j)
+            for(j=j; j<end; j++){
+            data.push(boards[j]);
+            }
+            array.push(data);
+        }
+        console.log("잉",array)
+        const target = array.slice(pagenation.start, pagenation.end);
+        console.log("taaaaaaarget", target);
+        console.log("페이지 네이션 몇개 나올까?", total_current);
         console.log("auth가 잘 돌아가는가",auth);
         console.log("pagenation =>" , pagenation)
-        pagenation.start = 30;
+        
+    
         
         const {id} = this;
         let check = null;
@@ -130,7 +149,7 @@ class Board extends Component {
               }
             </tbody>
         }
-
+    
         if(auth.isAuthenticated) {
             return (
                 <div>
