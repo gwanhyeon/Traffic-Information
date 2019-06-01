@@ -16,7 +16,7 @@ class About extends Component{
             <div class="card-body" >
               <h2 class="card-title">김 관 현<h5>(Kim Gwan-hyeon)</h5> </h2>
               <p class="card-text">한국교통대학교<br/>컴퓨터정보공학과</p>
-              <button class="btn btn-primary"  style={{fontSize:'0.96rem'}}><Link to="/AboutInfo/gwan">자세히보기</Link></button><br/>
+              <Link to="/AboutInfo/gwan" type="button" style={{fontSize:'0.96rem'}} >자세히보기</Link>
               <a href="https://github.com/kgh940525/" class="btn btn-danger" style={{fontSize:'1rem'}}>Github</a>
             </div>
             </div>
@@ -25,7 +25,7 @@ class About extends Component{
             <div class="card-body">
               <h2 class="card-title" onClick={<AboutInfo name="이준석"/>}>이 준 석<h5>(Lee Jun-seok)</h5></h2>
               <p class="card-text">한국교통대학교<br/>컴퓨터정보공학과</p>
-              <button class="btn btn-primary"  style={{fontSize:'0.96rem'}}><Link to="/AboutInfo/jun">자세히보기</Link></button><br/>
+              <Link to="/AboutInfo/jun" type="button" style={{fontSize:'0.96rem'}} >자세히보기</Link>
               <a href="https://github.com/jun971006" class="btn btn-danger" style={{fontSize:'1rem'}}>Github</a>
             </div>
             </div>
@@ -34,7 +34,7 @@ class About extends Component{
             <div class="card-body">
               <h2 class="card-title">김 소 의<h5>(Kim So-ui)</h5></h2>
               <p class="card-text">한국교통대학교<br/>컴퓨터정보공학과</p>
-              <button class="btn btn-primary"  style={{fontSize:'0.96rem'}}><Link to="/AboutInfo/so">자세히보기</Link></button><br/>
+              <Link to="/AboutInfo/so" type="button" style={{fontSize:'0.96rem'}} >자세히보기</Link>
               <a href="https://github.com/so2ming" class="btn btn-danger" style={{fontSize:'1rem'}}>Github</a>
             </div>
             </div>
@@ -43,7 +43,7 @@ class About extends Component{
             <div class="card-body">
               <h2 class="card-title">이 지 현<h5>(Lee Ji-hyeon)</h5></h2>
               <p class="card-text">한국교통대학교<br/>컴퓨터정보공학과</p>
-              <button class="btn btn-primary"  style={{fontSize:'0.96rem'}}><Link to="/AboutInfo/ji">자세히보기</Link></button><br/>
+              <Link to="/AboutInfo/ji" type="button" style={{fontSize:'0.96rem'}} >자세히보기</Link>
               <a href="https://github.com/easy0319/" class="btn btn-danger" style={{fontSize:'1rem'}}>Github</a>
             </div>
             </div>
