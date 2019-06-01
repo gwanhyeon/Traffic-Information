@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Fragment,Component } from 'react';
 import BoardItem from './BoardItem';
 import {Table} from 'react-bootstrap'
 import BoardForm from './BoardForm';
@@ -22,38 +22,18 @@ class Board extends Component {
                 board_author : '',
                 board_date: formatDate(new Date())
             }
-        ]
-        // ,
-        // pages : {
-        //     page: 1,
-        //     start :0,
-        //     end : 4
-        // }
-    }
-
-    // handleChangeIndexUp = () => {
-    //     const {page,start,end} = this.state.pages;
-    //     this.setState({
-    //         page: page + 1,
-    //         start : start + 4,
-    //         end : end +4
-    //     });
-    // }
-
-    // handleChangeIndexDown = () => {
-    //     const {page,start,end}= this.state.pages;
-    //     if (start === 0){
-    //         return 0;
-    //     }
+        ],
+        currentPage: 1,
+        boardsPerPage: 10
     
-    //     this.setState({
-    //         page : page - 1,
-    //         start : start -4,
-    //         end : end-4
+    }
+    handleClick = (event) =>{
+        this.setState({
+          currentPage: Number(event.target.id)
+        });
+      }
 
-    //     })
-    // }
-  
+
     async_list(){
         this.lookupInterval = setInterval(() => axios.get('user/board_list')
         .then(res=> {
@@ -68,6 +48,7 @@ class Board extends Component {
         this.async_list();
        
     }
+    
     componentWillUnmount(){
          clearInterval(this.lookupInterval)
     }
@@ -98,94 +79,127 @@ class Board extends Component {
         // <Route render={props => <BoardForm onCreate={this.handleCreate}/>}></Route>
         const {boards} = this.state; 
         const {auth,pagenation} = this.props;
-        // # 페이지 네이션 !
-        const per = 10;
-        const total = this.state.boards.length;
-        const total_current = Math.ceil(total / per);
-        const array = [];
-        let j = 0;
-        let end;
-        pagenation.current = total_current;
-        console.log("boards", boards.length);
-        for(let i=0; i<total_current; i++) {
-            var data = new Array();
-            console.log("과연 j는",j)
-            for(j=j; j<end; j++){
-            data.push(boards[j]);
-            }
-            array.push(data);
-        }
-        console.log("잉",array)
-        const target = array.slice(pagenation.start, pagenation.end);
-        console.log("taaaaaaarget", target);
-        console.log("페이지 네이션 몇개 나올까?", total_current);
-        console.log("auth가 잘 돌아가는가",auth);
-        console.log("pagenation =>" , pagenation)
-        
-    
-        
+
+
+        // ##### 페이지네이션 사용하기
+        const { currentPage, boardsPerPage } = this.state;
+         // Logic for displaying current todos
+        const indexOfLastBoards = currentPage * boardsPerPage;
+        const indexOfFirstBoards = indexOfLastBoards - boardsPerPage;
+        const currentBoards = boards.slice(indexOfFirstBoards, indexOfLastBoards);
+
         const {id} = this;
-        let check = null;
+        let renderBoards = null;
         if(id >= 0){
-            check = <tbody>
-              {boards.map((board, i) => {
-                    if(i>=0){
-                    console.log("key=>",i);
-                    
-                             return (
-                                <BoardItem
-                                board_id={board.board_id}
-                                board_title={board.board_title} 
-                                // board_contents={board.board_contents} 
-                                board_author ={board.board_author} 
-                                board_date ={formatDate(board.board_date)}
-                                // onRemove={this.handleRemove}
-                                onRead={this.handleRead}
-                                key={i}/>
-                            );
-                    }
-                }
-                ).reverse()//게시글 역순으로 출력
-              }
-            </tbody>
+        renderBoards = <tbody>{currentBoards.map((board, i) => {
+            return(
+            <BoardItem
+            board_id={board.board_id}
+            board_title={board.board_title} 
+            board_contents={board.board_contents} 
+            board_author ={board.board_author} 
+            board_date ={formatDate(board.board_date)}
+            onRemove={this.handleRemove}
+            onRead={this.handleRead}
+            key={i}/>
+            );
+        }).sort()}
+        </tbody>};
+           // Logic for displaying page numbers
+        const pageNumbers = [];
+        for (let i = 1; i <= Math.ceil(boards.length / boardsPerPage); i++) {
+            pageNumbers.push(i);
         }
+        const renderPageNumbers = pageNumbers.map(number => {
+            return (
+                
+                <li className="page-item" ><a className="page-link" key={number}
+                id={number}
+                onClick={this.handleClick}>{number}</a></li>
+            
+            );
+          });
+        // // ##### 페이지네이션 사용하기
+        // let check = null;
+        // if(id >= 0){
+        //     check = <tbody>
+        //       {boards.map((board, i) => {
+        //             if(i>=0){
+        //             console.log("key=>",i);
+                    
+        //                      return (
+        //                         <BoardItem
+        //                         board_id={board.board_id}
+        //                         board_title={board.board_title} 
+        //                         // board_contents={board.board_contents} 
+        //                         board_author ={board.board_author} 
+        //                         board_date ={formatDate(board.board_date)}
+        //                         // onRemove={this.handleRemove}
+        //                         onRead={this.handleRead}
+        //                         key={i}/>
+        //                     );
+        //             }
+        //         }
+        //         ).reverse()//게시글 역순으로 출력
+        //       }
+        //     </tbody>
+        // }
     
         if(auth.isAuthenticated) {
             return (
                 <div>
+                
                 <link to='board'></link>
+                
                 <Table responsive>
                 <thead>
-                  <tr style={{color:'black',marginBottom: '2px'}}>
-                    <th style={{fontSize: '1rem'}}>no.</th>
-                    <th style={{fontSize: '1.5rem'}}>제목</th>
-                    <th style={{fontSize: '1.5rem'}}>이름</th>
-                    <th style={{fontSize: '1.5rem'}}>날짜</th>
+                  <tr style={{marginBottom: '2px', fontFamily: 'sans-serif', fontSize: '1.5rem'}}>
+                    <th>no.</th>
+                    <th>제목</th>
+                    <th>이름</th>
+                    <th>날짜</th>
                   </tr>
                 </thead>
-                {check}
+          
+                {renderBoards}
+          
               </Table>
-                <button onClick={this.handleChange} className="btn btn-primary" style={{float: 'left', fontSize: '1rem'}}>글쓰기</button>
-                <button onClick={this.handlePrint} className="btn btn-primary" style={{float: 'left', fontSize: '1rem'}}>새로고침</button>
+              
+              <p><strong>Pagination</strong></p>
+                    <ul className="pagination text-center" style={{alignContent: "center"}}>
+                    {renderPageNumbers}
+                </ul>
+                <button onClick={this.handleChange} className="btn btn-primary" style={{float: 'left', fontFamily: 'sans-serif', fontSize: '1.5rem'}}>글쓰기</button>
+                <button onClick={this.handlePrint} className="btn btn-primary" style={{float: 'left', fontFamily: 'sans-serif', fontSize: '1.5rem'}}>새로고침</button>
+                
                 </div>
             );
         } else {
             return (
+                <Fragment>
                 <div>
                 <link to='board'></link>
-                <Table responsive>
+                <Table style={{tableLayout:"fixed"}} height="1000px">
                 <thead>
-                  <tr style={{color:'black',marginBottom: '2px'}}>
-                    <th style={{fontSize: '1rem'}}>no.</th>
-                    <th style={{fontSize: '1.5rem'}}>제목</th>
-                    <th style={{fontSize: '1.5rem'}}>이름</th>
-                    <th style={{fontSize: '1.5rem'}}>날짜</th>
+                  <tr style={{marginBottom: '2px', fontFamily: 'sans-serif', fontSize: '1.5rem'}}>
+                    <th>no.</th>
+                    <th>제목</th>
+                    <th>이름</th>
+                    <th>날짜</th>
                   </tr>
                 </thead>
-                {check}
+            
               </Table>
-              <button onClick={this.handlePrint} className="btn btn-primary" style={{float: 'left', fontSize: '1rem'}}>새로고침</button>
               </div>
+              <div >
+              <p><strong>Pagination</strong></p>
+              <ul className="pagination text-center" style={{alignContent: "center"}}>
+                    {renderPageNumbers}
+                </ul>
+              <button onClick={this.handlePrint} className="btn btn-primary" style={{float: 'left', fontFamily: 'sans-serif', fontSize: '1.5rem'}}>새로고침</button>
+              </div>
+              </Fragment>
+              
               )
         }
     }
@@ -208,3 +222,18 @@ const mapStateToProps = (state) => ({
 
 export default connect(mapStateToProps, { loginUser,updateCurrPage, updateStartEndPage })(Board)
 // export default Board;
+// <div class="container">
+// 			<div class="row">
+// 				<div class="col">
+// 					<p><strong>Pagination</strong></p>
+// 					<ul class="pagination">
+// 						<li class="page-item"><a class="page-link" href="#">Previous</a></li>
+// 						<li class="page-item"><a class="page-link" href="#">1</a></li>
+// 						<li class="page-item"><a class="page-link" href="#">2</a></li>
+// 						<li class="page-item"><a class="page-link" href="#">3</a></li>
+// 						<li class="page-item"><a class="page-link" href="#">4</a></li>
+// 						<li class="page-item"><a class="page-link" href="#">5</a></li>
+// 						<li class="page-item"><a class="page-link" href="#">Next</a></li>
+// 					</ul>
+// 				</div>
+// 			</div>

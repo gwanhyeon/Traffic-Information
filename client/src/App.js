@@ -16,11 +16,9 @@ import Contact from './components/ContactForm';
 import './bootstrap.min.css';
 import TransInfo from './components/TransInfo';
 import About from './components/About';
-import MainForm from './components/MainForm';
 
 import './css/contactform.css'
 import MyPage from './components/MyPage';
-
 
 if(localStorage.jwtToken) {
   setAuthToken(localStorage.jwtToken);
@@ -41,9 +39,9 @@ class App extends Component {
         <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"/>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway"/>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
-                
+        
         <Router>
-            <div>
+            <div >
               <Navbar1 />
                 <Route exact path="/" component={ Home } />
                 
@@ -57,7 +55,6 @@ class App extends Component {
                   <Route exact path = "/BoardForm" component = {BoardForm} />
                   <Route exact path = "/BoardRead" component = {BoardRead} />
                   <Route exact path = "/MyPage" component = {MyPage} />
-                  <Route exact path = "/MainForm" component = {MainForm} />
 
                 </div>
             </div>
