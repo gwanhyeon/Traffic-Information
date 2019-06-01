@@ -58,9 +58,9 @@ class Signin extends Component {
         const {handleInputChange,handleSubmit} = this;
         
         return(
-        <div className="container" style={{ marginTop: '50px',min:'350px', maxWidth:'350px', height:'auto'}}>
-            <h1 class="" style={{marginTop: '50px', marginBottom: '20px', fontFamily: 'monospace', fontSize:"2.5rem"}}>Login</h1>
-            <form onSubmit={ handleSubmit }>
+        <div className="container form-control" style={{ marginTop: '50px',min:'350px', maxWidth:'350px', height:'auto'}}>
+            <h1 class="text-center" style={{marginTop: '50px', marginBottom: '20px', fontFamily: 'monospace', fontSize:"2.5rem"}}>Login</h1>
+            <form onSubmit={ handleSubmit } style={{margin:'auto', maxWidth:'300px'}}>
                 <div className="form-group">
                     <input
                     type="email"

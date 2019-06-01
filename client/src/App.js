@@ -13,7 +13,7 @@ import Board from './components/Board';
 import BoardForm from './components/BoardForm';
 import BoardRead from './components/BoardRead';
 import Contact from './components/ContactForm';
-import './bootstrap.min.css';
+import './bootstrap.min (2).css';
 import TransInfo from './components/TransInfo';
 import About from './components/About';
 
