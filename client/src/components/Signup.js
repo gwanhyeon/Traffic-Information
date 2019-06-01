@@ -138,6 +138,7 @@ class Signup extends Component {
         <div className="container form-control" style={{ marginTop: '50px', min:'350px', maxWidth:'350px', height:'auto'}}>
             <h1 class="text-center" style={{marginTop: '40px', marginBottom: '20px' , fontFamily: 'monospace', fontSize:"2.5rem"}}>Registration</h1>
             <form onSubmit={ handleSubmit } style={{margin:'auto', maxWidth:'300px'}}>
+            
                 <div className="form-group" >
                     <input
                     type="text"
@@ -180,6 +181,7 @@ class Signup extends Component {
                     />
                     {errors.user_password && (<div className="invalid-feedback">{errors.user_password}</div>)}
                 </div>
+
                 <div className="form-group">
                     <input
                     type="password"
@@ -195,14 +197,6 @@ class Signup extends Component {
                     {errors.user_password_confirm && (<div className="invalid-feedback">{errors.user_password_confirm}</div>)}
                    
                 </div>
-                <div>
-                <form onSubmit={this.onFormSubmit}>
-                <input type="file" onChange={fileChangedHandler}/>
-                <button type="submit">Upload</button>
-                </form>
-                </div>
-                
-
                 <div className="form-group">
                     <button type="submit" className="btn btn-primary" style={{width: '100%', fontFamily: 'monospace', fontSize: '1.5rem'}}>
                         Register User
