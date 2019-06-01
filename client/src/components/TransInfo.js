@@ -186,7 +186,7 @@ class TransInfo extends Component {
             <link to='board'></link>
             <Table responsive>
             <thead>
-              <tr style={{marginBottom: '2px', fontFamily: 'monospace', fontSize: '1.5vw'}}>
+              <tr style={{marginBottom: '2px',  fontSize: '1.5vw'}}>
                 <th>#</th>
                 <th>제목</th>
                 <th>열차정보</th>
@@ -240,7 +240,7 @@ class TransInfo extends Component {
             <link to='board'></link>
             <Table responsive>
             <thead>
-              <tr style={{marginBottom: '2px', fontFamily: 'monospace', fontSize: '20px'}}>
+              <tr style={{marginBottom: '2px',  fontSize: '20px'}}>
                 <th>운행 버스</th>
                 <th>남은 정거장 버스1</th>
                 <th>운행 번호1</th>
@@ -327,7 +327,7 @@ class TransInfo extends Component {
           <div></div>
           <Table responsive>
             <thead>
-              <tr style={{marginBottom: '2px', fontFamily: 'monospace', fontSize: '20px'}}>
+              <tr style={{marginBottom: '2px',  fontSize: '20px'}}>
                 <th>운행 버스</th>
                 <th>남은 정거장 버스1</th>
                 <th>운행 번호1</th>

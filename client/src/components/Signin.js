@@ -58,15 +58,15 @@ class Signin extends Component {
         const {handleInputChange,handleSubmit} = this;
         
         return(
-        <div className="container form-control" style={{ marginTop: '50px',min:'350px', maxWidth:'350px', height:'auto'}}>
-            <h1 class="text-center" style={{marginTop: '50px', marginBottom: '20px', fontFamily: 'monospace', fontSize:"2.5rem"}}>Login</h1>
-            <form onSubmit={ handleSubmit } style={{margin:'auto', maxWidth:'300px'}}>
-                <div className="form-group">
+        <div className="container form-control shadow-lg" style={{marginTop:'100px', maxWidth:'400px', height:'auto'}}>
+            <h1 class="text-center" style={{marginTop: '15px', marginBottom: '20px',  fontSize:"2.5rem"}}>Signin</h1>
+            <form onSubmit={ handleSubmit } style={{margin:'auto', maxWidth:'330px'}}>
+                <div className="form-group" style={{borderStyle:'solid',borderWidth: '3px 3px'}}>
                     <input
                     type="email"
-                    style={{fontFamily: 'monospace', fontSize: '1.5rem'}}
+                    style={{ fontSize: '1.3rem'}}
                     placeholder="E-mail"
-                    className={classnames('form-control form-control-lg', {
+                    className={classnames('form-control form-control-sm', {
                         'is-invalid': errors.user_id
                     })}
                     name="user_id"
@@ -75,13 +75,13 @@ class Signin extends Component {
                     />
                     {errors.user_id && (<div className="invalid-feedback">{user_id}</div>)}
                 </div>
-                <div className="form-group">
+                <div className="form-group" style={{borderStyle:'solid',borderWidth: '3px 3px'}}>
                     <input
                     type="password"
-                    style={{fontFamily: 'monospace', fontSize: '1.5rem'}}
+                    style={{fontSize: '1.3rem'}}
                     placeholder="Password"
                     className={
-                        classnames('form-control form-control-lg', {
+                        classnames('form-control form-control-sm', {
                         'is-invalid': errors.user_password
                     })} 
                     name="user_password"
@@ -91,10 +91,10 @@ class Signin extends Component {
                     {errors.user_password && (<div className="invalid-feedback">{errors.user_password}</div>)}
                 </div>
                 <div className="form-group">
-                    <button type="submit" className="btn btn-primary" style={{width: '100%', fontFamily: 'monospace', fontSize: '1.5rem'}}>
-                        Login User
+                    <button type="submit" className="btn btn-primary" style={{width: '100%',  fontSize: '1.5rem'}}>
+                        Signin
                     </button>
-                    <Link className="nav-link" to="/signup" style={{textAlign: 'right', width: '100%', fontFamily: 'monospace', fontSize: '1rem'}}>sign up</Link>
+                    <Link className="nav-link" to="/signup" style={{textAlign: 'right', width: '100%',  fontSize: '1rem'}}>Signup</Link>
                 </div>
             </form>
         </div>
