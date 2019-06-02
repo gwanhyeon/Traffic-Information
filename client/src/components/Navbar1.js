@@ -32,13 +32,14 @@ class Navbar1 extends Component {
             <ul className="nav ml-auto" style={{height:'50px'}}>
               <li>
                   <Link className="nav-link " to="/Mypage">
-                  <img src={githubimg} style={{marginTop:'-10px',height:'3rem', maxWidth:'3rem', marginRight: '13px'}} />
-                  <p style={{fontSize: '5px'}}>mypage</p>
+                    <img src={githubimg} style={{marginTop:'-10px',height:'3rem', maxWidth:'3rem',marginLeft:'1px'}} />
+                    <p style={{marginTop:'-25px'}}></p>
+                    <h style={{fontSize: '1px'}}>mypage</h>
                   </Link>
               </li>
               <li>
               <a href="" className="nav-link" onClick={onLogout}>
-                <p style={{marginTop:''}}>Logout</p>
+                <h style={{marginTop:''}}>Logout</h>
               </a>
               </li>
             </ul>
@@ -56,11 +57,13 @@ class Navbar1 extends Component {
       )
         return(
           
-          <Navbar className="shadow-sm" bg="white" variant="" expand="lg"sticky="top"  >
+          <Navbar className="shadow-sm" bg="white" variant="" expand="lg"sticky="top" >
+          {/* <p style={{color:'white',msUserSelect:'none',WebkitTouchCallout:'none',WebkitUserSelect:'none',MozUserSelect:'none',userSelect:'none'}}>4444</p> */}
+
             <Link to="/"> {/* 메인 페이지 */}
-              <img src={main_image} className="navbar-brand" alt="image" style={{maxWidth:'70px', borderRadius: '20%'}}/>
+              <img src={main_image} className="navbar-brand" alt="image" style={{maxWidth:'70px',height:'auto', borderRadius: '20%'}}/>
             </Link>
-         
+            
             <Navbar.Toggle className="navbar-default"  aria-controls="responsive-navbar-nav" style={{border: 'none'}}>
                 <img src={hambug} className=" rounded float-right" alt="image" style={{maxWidth:'60px', borderRadius: ''}}/>
             </Navbar.Toggle>
@@ -72,7 +75,6 @@ class Navbar1 extends Component {
                 <Link className="nav-link" to="/Board" style={{marginRight:'15px'}}>Board</Link>
                 <Link className="nav-link" to="/about" style={{marginRight:'15px'}}>About</Link>
                 <Link className="nav-link" to="/contact" style={{marginRight:'15px'}}>Contact</Link>
-                <Link className="nav-link" to="/MainForm" style={{marginRight:'15px'}}>Main</Link>
                 </ul>
               </Form>
                 <hr />
