@@ -17,12 +17,9 @@ export const registerUser = (user, history) => dispatch => {
         user.user_image
     )
     console.log("formdata => " ,formData);
-    axios.post('/user/signup', user)
-    
-    
-    
-            .then(res => {
-                this.props.history.push('/signin');
+    axios.post('/user/signup',user)
+    .then(res => {
+                    history.push('/signin');
             })
             .catch(err => {
                 // console.log("signup err => ",err);
