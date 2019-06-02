@@ -6,7 +6,7 @@ import { registerUser } from '../actions/authentication';
 import axios from 'axios';
 import classnames from 'classnames';
 
-
+import main_image from './images/no3.jpeg';
 
 class Signup extends Component {
 
@@ -136,7 +136,9 @@ class Signup extends Component {
         const {handleInputChange,handleSubmit,fileChangedHandler} = this;
         const {user_name,user_id,user_password,user_password_confirm,errors } = this.state;
         return(
-        <div className="container form-control shadow-lg" style={{ marginTop: '100px', maxWidth:'400px', height:'auto'}}>
+            <div className="container-fluid iron-image-preload" style={{maxWidth:'100%',maxHeight:'100%',bottom:'0',left:'0',margin:'auto',overflow:'auto',position:'fixed',right:'0',top:'0',backgroundImage: `url('${main_image}')`,backgroundSize:'cover'}}>
+
+        <div className="container form-control shadow-lg" style={{ marginTop: '300px', maxWidth:'400px', height:'auto'}}>
             <h1 class="text-center" style={{marginTop: '15px', marginBottom: '20px' ,  fontSize:"2.5rem"}}>Signup</h1>
             <form onSubmit={ handleSubmit } style={{margin:'auto', maxWidth:'330px'}}>
                 <div className="form-group" style={{borderStyle:'solid',borderWidth: '3px 3px'}}>
@@ -203,6 +205,7 @@ class Signup extends Component {
                     </button>
                 </div>
             </form>
+        </div>
         </div>
         )
     }
