@@ -11,13 +11,13 @@ const TransUiwangBusItem = ({bus_state,
             
             <Fragment>
             <tr>
-            <td>{bus_state}</td>
-            <td> {bus_location1} </td>
-            <td> {bus_plate1}</td>
-            <td> {bus_time1}</td>
-            <td> {bus_location2} </td>
-            <td> {bus_plate2}</td>
-            <td> {bus_time2}</td>
+            <td style={{color:'black'}}>{bus_state}</td>
+            <td style={{color:'black'}}> {bus_location1} </td>
+            <td style={{color:'black'}}> {bus_plate1}</td>
+            <td style={{color:'black'}}> {bus_time1}</td>
+            <td style={{color:'black'}}> {bus_location2} </td>
+            <td style={{color:'black'}}> {bus_plate2}</td>
+            <td style={{color:'black'}}> {bus_time2}</td>
 
 
 
