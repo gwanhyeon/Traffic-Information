@@ -17,8 +17,8 @@ class BoardItem extends Component {
 
 
     render() {
-        const {board_id, board_title,board_contents,board_date,board_author} = this.props;
-        const {editing, reading} = this.state;
+        const {board_id, board_title,board_date,board_author} = this.props;
+        const {reading} = this.state;
 
         if(reading) {
           return (

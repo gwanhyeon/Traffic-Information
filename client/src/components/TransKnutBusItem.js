@@ -1,4 +1,4 @@
-import React, { Component,Fragment } from 'react';
+import React, { Fragment } from 'react';
 
 //208000024
 const TransKnutBusItem = ({bus_state,

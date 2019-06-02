@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
-import { withRouter,Link } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import { registerUser } from '../actions/authentication';
 import axios from 'axios';
 import classnames from 'classnames';
@@ -133,7 +132,7 @@ class Signup extends Component {
     }
 
     render() {
-        const {handleInputChange,handleSubmit,fileChangedHandler} = this;
+        const {handleInputChange,handleSubmit} = this;
         const {user_name,user_id,user_password,user_password_confirm,errors } = this.state;
         return(
             <div className="container-fluid iron-image-preload" style={{maxWidth:'100%',maxHeight:'100%',bottom:'0',left:'0',margin:'auto',overflow:'auto',position:'fixed',right:'0',top:'0',backgroundImage: `url('${main_image}')`,backgroundSize:'cover'}}>

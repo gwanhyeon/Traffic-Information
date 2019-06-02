@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-import Board from './Board';
 import axios from 'axios';
-import BoardItem from './BoardItem';
 import { loginUser } from '../actions/authentication';
 import { connect } from 'react-redux';
 import '../css/Board.css';
@@ -53,7 +51,7 @@ class BoradRead extends Component {
     }
     // 수정하여 저장 업데이트
     componentDidUpdate(prevProps, prevState, body) {
-        const { board_title, board_contents, board_id } = this.props;
+        const { board_title, board_contents } = this.props;
         if(!prevState.editing && this.state.editing) {
           this.setState({
             board_title: board_title,
@@ -79,7 +77,7 @@ class BoradRead extends Component {
         console.log("보드 리드의 state를 봐보자", this.state.board_author);
 
         // 글쓴이 = 로그인 유저
-        if(auth.user.user_name == this.state.board_author) {
+        if(auth.user.user_name === this.state.board_author) {
             // 수정할때
             if (editing) {
             return (
@@ -101,7 +99,6 @@ class BoradRead extends Component {
                     name="board_title"
                     placeholder="제목"
                     onChange={this.handleChange}
-                    style={{maxWidth:'1000px', fontSize:'1rem'}}
                   />
 
                 </div>
@@ -115,7 +112,6 @@ class BoradRead extends Component {
                     name="board_contents"
                     placeholder="내용"
                     onChange={this.handleChange}
-                    style={{maxWidth:'1000px', height:'300px', fontSize:'1rem'}}
                   />
 
                 <button onClick={this.handleToggleEdit} className="btn btn-primary" style={{float: 'right',  fontSize: '1rem', margin:'30px 100px'}}>적용</button>
@@ -174,4 +170,3 @@ const mapStateToProps = (state) => ({
 })
 
 export default connect(mapStateToProps, { loginUser })(BoradRead)
-// export default BoradRead;
