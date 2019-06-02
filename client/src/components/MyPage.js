@@ -12,7 +12,7 @@ class MyPage extends Component {
             return (
                 <Fragment>
                 <div class="w3-container" style={{padding:'80px 16px'}} id="contact">
-                    <h3 class="w3-center">MY PAGE</h3>
+                    <h3 class="w3-center" style={{marginTop:'-30px'}}>MY PAGE</h3>
                     <p class="w3-center w3-large">회원가입 정보를 확인하세요!</p>
 
                     <div class="card shadow-lg" style={{margin:'40px',padding:'10px',maxWidth:'1000px',display:'table',marginRight:'auto',marginLeft:'auto'}}>
@@ -31,9 +31,11 @@ class MyPage extends Component {
                         <input type="file" class="custom-file-input" id="inputGroupFile02"/>
                         <label class="custom-file-label" for="inputGroupFile02" aria-describedby="inputGroupFileAddon02">Choose file</label>
                     </div>
-                    <div class="input-group-append">
-                        <span class="input-group-text" id="inputGroupFileAddon02">Upload</span>
-                    </div>
+                    <p>
+                            <button class="btn btn-primary" style={{float: 'right', fontWeight:'100', fontSize: '1rem'}} type="submit">
+                            upload
+                            </button>
+                        </p>
                     </div>
                     </div>
                     
