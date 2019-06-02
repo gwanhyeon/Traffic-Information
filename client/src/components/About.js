@@ -18,7 +18,7 @@ class About extends Component{
               <p class="card-text" style={{fontSize:'1.8rem'}}>한국교통대학교<br/>컴퓨터정보공학과</p>
               </div>
               <div class="card-footer">
-              <Link to="/AboutInfo/jun" type="button" class="btn btn-primary" style={{width:'100%', fontSize:'0.9rem'}} >자세히보기</Link>
+              <Link to="/AboutInfo/gwan" type="button" class="btn btn-primary" style={{width:'100%', fontSize:'0.9rem'}} >자세히보기</Link>
               <a href="https://github.com/kgh940525" class="btn btn-danger" style={{width:'100%', fontSize:'1rem'}}>Github</a>
               </div>
             
