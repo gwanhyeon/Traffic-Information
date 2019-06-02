@@ -68,54 +68,54 @@ class TransInfo extends Component {
 
     }
 
-    // knut_station_bus_call(){
+    knut_station_bus_call(){
 
-    //     // #1 static Variable
-    //     const serviceKey ='a5mSPyGouPCZhF2pi%2F%2Fciz%2FAokup9JJaIsQYgLHPEYE6Wct2ANSuspDzQTxakihNLNyfD%2FKxDxDunVk2lnY5jQ%3D%3D'  // Service Key
-    //     const bus_url = 'http://openapi.gbis.go.kr/ws/rest/busarrivalservice/station?';      //bus Url
-    //     const knut_stationId = '226000103'          // 한국교통대학교
-    //     const bus_attribute_length =14;
-    //     // serviceKey =encodeURIComponent(serviceKey); //인코딩한 값 넣어주기
-    //     // # 2위치 - 교통대
-    //     let knut_msgBody_data = null;
+        // #1 static Variable
+        const serviceKey ='a5mSPyGouPCZhF2pi%2F%2Fciz%2FAokup9JJaIsQYgLHPEYE6Wct2ANSuspDzQTxakihNLNyfD%2FKxDxDunVk2lnY5jQ%3D%3D'  // Service Key
+        const bus_url = 'http://openapi.gbis.go.kr/ws/rest/busarrivalservice/station?';      //bus Url
+        const knut_stationId = '226000103'          // 한국교통대학교
+        const bus_attribute_length =14;
+        // serviceKey =encodeURIComponent(serviceKey); //인코딩한 값 넣어주기
+        // # 2위치 - 교통대
+        let knut_msgBody_data = null;
 
-    //     //  this.lookupInterval_knut_station = setInterval(() => {
-    //          axios.get(`${bus_url}serviceKey=${serviceKey}&stationId=${knut_stationId}`)
-    //     .then(res => {
+        //  this.lookupInterval_knut_station = setInterval(() => {
+             axios.get(`${bus_url}serviceKey=${serviceKey}&stationId=${knut_stationId}`)
+        .then(res => {
 
-    //         console.log("res=>",res);
-    //         var knut_parser = new DOMParser(),
-    //         xmlDoc = knut_parser.parseFromString(res.data, 'text/xml');
-    //         console.log(xmlDoc);
-    //         knut_msgBody_data = xmlDoc.getElementsByTagName('busArrivalList').length;
-    //         console.log(knut_msgBody_data);
-    //         const parsing_data2 = new Array();
-    //         for(let i=0; i<knut_msgBody_data; i++){
-    //             let sub2 = new Array();
-    //             for(let j=0; j<bus_attribute_length; j++){
-    //                 sub2.push(xmlDoc.getElementsByTagName('busArrivalList')[i]
-    //                 .childNodes[j].childNodes[0])
-    //             } 
-    //             parsing_data2.push(sub2);
-    //         }
-    //         for(let i=0; i<parsing_data2.length; i++){
-    //             for(let j=0; j<parsing_data2[i].length; j++){
-    //                 console.log("parsing_data => " ,parsing_data2[i][j]);
-    //             }
-    //             console.log("check2");
-    //         }
-    //         this.setState({
-    //             knut_bus_data : parsing_data2
-    //         })
-    //         console.log(this.state.knut_bus_data);
-    //     }).catch( err => {
-    //         console.log(err);
-    //     });
+            console.log("res=>",res);
+            var knut_parser = new DOMParser(),
+            xmlDoc = knut_parser.parseFromString(res.data, 'text/xml');
+            console.log(xmlDoc);
+            knut_msgBody_data = xmlDoc.getElementsByTagName('busArrivalList').length;
+            console.log(knut_msgBody_data);
+            const parsing_data2 = new Array();
+            for(let i=0; i<knut_msgBody_data; i++){
+                let sub2 = new Array();
+                for(let j=0; j<bus_attribute_length; j++){
+                    sub2.push(xmlDoc.getElementsByTagName('busArrivalList')[i]
+                    .childNodes[j].childNodes[0])
+                } 
+                parsing_data2.push(sub2);
+            }
+            for(let i=0; i<parsing_data2.length; i++){
+                for(let j=0; j<parsing_data2[i].length; j++){
+                    console.log("parsing_data => " ,parsing_data2[i][j]);
+                }
+                console.log("check2");
+            }
+            this.setState({
+                knut_bus_data : parsing_data2
+            })
+            console.log(this.state.knut_bus_data);
+        }).catch( err => {
+            console.log(err);
+        });
     // }
     // ,1000);
 
     
-    // }
+    }
 
     uiwang_station_bus_call(){
         // #1 static Variable
@@ -164,7 +164,7 @@ class TransInfo extends Component {
     componentDidMount(){
          this.subway_call();
          this.uiwang_station_bus_call();
-        // this.knut_station_bus_call();
+        this.knut_station_bus_call();
 
         
     }    
@@ -179,7 +179,7 @@ class TransInfo extends Component {
         const ErrorPage = <Error></Error>
 
         console.log("subway_data : ", subway_data.length );
-        if(subway_data.length === 0 || uiwang_bus_data.length === 0 || knut_bus_data.length === 0){
+        if(subway_data.length === 0 && uiwang_bus_data.length === 0 && knut_bus_data.length === 0){
             return(
             <Fragment>
                 <div style={{overflowX:'hidden'}}>
@@ -188,16 +188,16 @@ class TransInfo extends Component {
             <Table>
             <thead>
             <tr style={{marginBottom: '2px',  fontSize: '1.5vw'}}>
-            <h6 style={{color:'black', fontSize: '1.3rem', fontFamily: 'monospace'}}>의왕역 지하철 정류장</h6>
+            <h6 style={{color:'black', fontSize: '1.3rem', }}>의왕역 지하철 정류장</h6>
                 
  
               </tr>
-              <tr style={{marginBottom: '2px',  fontSize: '1.5vw' , rowspan : '1'}}>
-                <th>#</th>
-                <th>제목</th>
-                <th>열차정보</th>
-                <th>현재역</th>
-                <th>시간</th>
+              <tr style={{color:'black', marginBottom: '2px',   rowspan : '1'}}>
+                <th style={{fontSize:'1rem'}}>#</th>
+                <th style={{fontSize:'1.3rem'}}>제목</th>
+                <th style={{fontSize:'1.3rem'}}>열차정보</th>
+                <th style={{fontSize:'1.3rem'}}>현재역</th>
+                <th style={{fontSize:'1.3rem'}}>시간</th>
               </tr>
             </thead>
  
@@ -211,18 +211,18 @@ class TransInfo extends Component {
             <link to='board'></link>
             <Table responsive>
             <thead>
-            <tr style={{marginBottom: '2px',  fontSize: '1.5vw', rowspan : '1', width:'100%', color:'black', fontSize: '1.3rem', fontFamily: 'monospace'}} >
-            <h6 style={{color:'black', fontSize: '1.3rem', fontFamily: 'monospace'}}>의왕역 버스 정류장</h6>
+            <tr style={{marginBottom: '2px',   rowspan : '1', width:'100%', color:'black', fontSize: '1.3rem', }} >
+            <h6 style={{color:'black', fontSize: '1.3rem', }}>의왕역 버스 정류장</h6>
  
           </tr>
-              <tr style={{marginBottom: '2px',  fontSize: '20px'}}>
-                <th>운행 버스</th>
-                <th>남은 정거장 버스1</th>
-                <th>운행 번호1</th>
-                <th>도착 예상 시간 버스 1</th>
-                <th>남은 정거장 버스2</th>
-                <th>운행 번호2</th>
-                <th>도착 예상 시간 버스 2</th>
+              <tr style={{color:'black', marginBottom: '2px',  fontSize: '20px'}}>
+                <th style={{fontSize:'1rem'}}>운행 버스</th>
+                <th style={{fontSize:'1.3rem'}}>남은 정거장 버스1</th>
+                <th style={{fontSize:'1.3rem'}}>운행 번호1</th>
+                <th style={{fontSize:'1.3rem'}}>도착 예상 시간 버스 1</th>
+                <th style={{fontSize:'1.3rem'}}>남은 정거장 버스2</th>
+                <th style={{fontSize:'1.3rem'}}>운행 번호2</th>
+                <th style={{fontSize:'1.3rem'}}>도착 예상 시간 버스 2</th>
  
               </tr>
             </thead>
@@ -234,19 +234,19 @@ class TransInfo extends Component {
           <div style={{height:'400px'}}>
           <Table responsive>
             <thead>
-             <tr style={{marginBottom: '2px',  fontSize: '1.5vw', rowspan : '1'}}>
-             <h6 style={{color:'black', fontSize: '1.3rem', fontFamily: 'monospace'}}>한국교통대학교 버스 정류장</h6>
+             <tr style={{marginBottom: '2px',   rowspan : '1'}}>
+             <h6 style={{color:'black', fontSize: '1.3rem', }}>한국교통대학교 버스 정류장</h6>
             
             </tr>
  
-              <tr style={{marginBottom: '2px',  fontSize: '20px'}}>
-                <th>운행 버스</th>
-                <th>남은 정거장 버스1</th>
-                <th>운행 번호1</th>
-                <th>도착 예상 시간 버스 1</th>
-                <th>남은 정거장 버스2</th>
-                <th>운행 번호2</th>
-                <th>도착 예상 시간 버스 2</th>
+              <tr style={{color:'black', marginBottom: '2px',  fontSize: '20px'}}>
+                <th style={{fontSize:'1rem'}}>운행 버스</th>
+                <th style={{fontSize:'1.3rem'}}>남은 정거장 버스1</th>
+                <th style={{fontSize:'1.3rem'}}>운행 번호1</th>
+                <th style={{fontSize:'1.3rem'}}>도착 예상 시간 버스 1</th>
+                <th style={{fontSize:'1.3rem'}}>남은 정거장 버스2</th>
+                <th style={{fontSize:'1.3rem'}}>운행 번호2</th>
+                <th style={{fontSize:'1.3rem'}}>도착 예상 시간 버스 2</th>
  
               </tr>
             </thead>
@@ -270,12 +270,12 @@ class TransInfo extends Component {
             <link to='board'></link>
             <Table responsive>
             <thead> 
-              <tr style={{marginBottom: '2px',  fontSize: '1.5vw'}}>
-                <th>#</th>
-                <th>제목</th>
-                <th>열차정보</th>
-                <th>현재역</th>
-                <th>시간</th>
+              <tr style={{color:'black', marginBottom: '2px',  fontSize: '1.5vw'}}>
+                <th style={{fontSize:'1rem'}}>#</th>
+                <th style={{fontSize:'1.3rem'}}>제목</th>
+                <th style={{fontSize:'1.3rem'}}>열차정보</th>
+                <th style={{fontSize:'1.3rem'}}>현재역</th>
+                <th style={{fontSize:'1.3rem'}}>시간</th>
               </tr>
             </thead>
             <tbody>
@@ -325,7 +325,7 @@ class TransInfo extends Component {
                     board_contents={data[19].data} 
                     board_user_name ={data[20].data} 
                     board_date ={data[18].data}
-                    key={i}/>
+                    key={i} />
                 );
                 }
                 }
@@ -340,14 +340,14 @@ class TransInfo extends Component {
             <link to='board'></link>
             <Table responsive>
             <thead>
-              <tr style={{marginBottom: '2px',  fontSize: '20px'}}>
-                <th>운행 버스</th>
-                <th>남은 정거장 버스1</th>
-                <th>운행 번호1</th>
-                <th>도착 예상 시간 버스 1</th>
-                <th>남은 정거장 버스2</th>
-                <th>운행 번호2</th>
-                <th>도착 예상 시간 버스 2</th>
+              <tr style={{color:'black', marginBottom: '2px',  fontSize: '20px'}}>
+                <th style={{fontSize:'1rem'}}>운행 버스</th>
+                <th style={{fontSize:'1.3rem'}}>남은 정거장 버스1</th>
+                <th style={{fontSize:'1.3rem'}}>운행 번호1</th>
+                <th style={{fontSize:'1.3rem'}}>도착 예상 시간 버스 1</th>
+                <th style={{fontSize:'1.3rem'}}>남은 정거장 버스2</th>
+                <th style={{fontSize:'1.3rem'}}>운행 번호2</th>
+                <th style={{fontSize:'1.3rem'}}>도착 예상 시간 버스 2</th>
                 
               </tr>
             </thead>
@@ -417,7 +417,7 @@ class TransInfo extends Component {
                       bus_time1 ={data[7].data}
                        bus_time2 ={data[8] === undefined? "배차 정보가 없습니다." : data[8].data}
 
-                      key={i}/>
+                      key={i} />
                   )
                 }
               )
@@ -428,14 +428,14 @@ class TransInfo extends Component {
           <div style={{height:'400px'}}>
           <Table responsive>
             <thead>
-              <tr style={{marginBottom: '2px',  fontSize: '20px'}}>
-                <th>운행 버스</th>
-                <th>남은 정거장 버스1</th>
-                <th>운행 번호1</th>
-                <th>도착 예상 시간 버스 1</th>
-                <th>남은 정거장 버스2</th>
-                <th>운행 번호2</th>
-                <th>도착 예상 시간 버스 2</th>
+              <tr style={{color:'black',marginBottom: '2px',  fontSize: '20px'}}>
+                <th style={{fontSize:'1rem'}}>운행 버스</th>
+                <th style={{fontSize:'1.3rem'}}>남은 정거장 버스1</th>
+                <th style={{fontSize:'1.3rem'}}>운행 번호1</th>
+                <th style={{fontSize:'1.3rem'}}>도착 예상 시간 버스 1</th>
+                <th style={{fontSize:'1.3rem'}}>남은 정거장 버스2</th>
+                <th style={{fontSize:'1.3rem'}}>운행 번호2</th>
+                <th style={{fontSize:'1.3rem'}}>도착 예상 시간 버스 2</th>
                 
               </tr>
             </thead>
