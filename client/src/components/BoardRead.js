@@ -87,7 +87,7 @@ class BoradRead extends Component {
                 <div className="listStyle">
                 <form>
                     <div className="edittitle">
-                        <p>수정하기</p>
+                        <h3>수정하기</h3>
                         <span>내용을 수정합니다.</span>
                     </div>
                 <div className="formspace">
