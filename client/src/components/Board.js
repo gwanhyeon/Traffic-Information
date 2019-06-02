@@ -150,7 +150,7 @@ class Board extends Component {
                 <Fragment>
                 <div className="listStyle">
                     <div className="title">
-                        <p>자유게시판</p>
+                        <h3>자유게시판</h3>
                         <span>한국교통대학교 의왕캠퍼스 학생들의 자유로운 이야기 공간입니다.</span>
                     </div>
                     
@@ -183,7 +183,7 @@ class Board extends Component {
                 <Fragment>
                 <div className="listStyle">
                     <div className="title">
-                        <p>자유게시판</p>
+                        <h3>자유게시판</h3>
                         <span>한국교통대학교 의왕캠퍼스 학생들의 자유로운 이야기 공간입니다.</span>
                     </div>
                     
