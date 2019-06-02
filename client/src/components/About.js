@@ -21,9 +21,11 @@ class About extends Component{
               <h2 >김 관 현<h6>Kim Gwan-hyeon</h6> </h2> <br/>
               <p style={{fontSize:'1rem'}}>한국교통대학교<br/>컴퓨터정보공학과</p>
               </div>
+
               <div style={{padding:'0px 20px 20px 20px'}}>
               <Link to="/AboutInfo/jun" type="button" class="btn btn-primary" style={{width:'50%', fontSize:'0.7rem', fontWeight: '400',float:'left'}} >자세히보기</Link>
               <a href="https://github.com/kgh940525" class="btn btn-danger" style={{width:'50%', fontSize:'0.7rem', float:'left'}}>Github</a>
+
               </div>
             </div>
             <div class="card shadow-lg" style={{height: 'auto', width: '300px', marginTop: '1rem',  marginRight:'20px', textAlign:'center', float:'left'}}>
