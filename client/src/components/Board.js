@@ -1,9 +1,6 @@
 import React, { Fragment,Component } from 'react';
 import BoardItem from './BoardItem';
-import {Table} from 'react-bootstrap'
-import BoardForm from './BoardForm';
-import {BootstrapTable, TableHeaderColumn} from 'react-bootstrap-table';
-import {Link} from 'react-router-dom';
+import {Table} from 'react-bootstrap';
 import axios from 'axios';
 import { loginUser } from '../actions/authentication';
 import { updateCurrPage, updateStartEndPage} from "../actions/pagenation"
@@ -53,7 +50,6 @@ class Board extends Component {
     }
 
     handleClickChange = (e) =>{
-        const {board_id,board_title,board_contents,board_author,date} = this.state;
         this.setState({
             [e.target.name]: e.target.value
         })
@@ -77,7 +73,7 @@ class Board extends Component {
     render() {
         // <Route render={props => <BoardForm onCreate={this.handleCreate}/>}></Route>
         const {boards} = this.state; 
-        const {auth,pagenation} = this.props;
+        const {auth} = this.props;
 
 
         // ##### 페이지네이션 사용하기
@@ -113,38 +109,13 @@ class Board extends Component {
         const renderPageNumbers = pageNumbers.map(number => {
             return (
                 
-                <li className="page-item" style={{float:'left'}}><a className="page-link" key={number}
-                id={number}
-                onClick={this.handleClick}>{number}</a></li>
+                <li className="page-item" style={{float:'left'}}>
+                    <p className="page-link" key={number} id={number} onClick={this.handleClick}>{number}</p>
+                </li>
             
             );
           });
-        // // ##### 페이지네이션 사용하기
-        // let check = null;
-        // if(id >= 0){
-        //     check = <tbody>
-        //       {boards.map((board, i) => {
-        //             if(i>=0){
-        //             console.log("key=>",i);
-                    
-        //                      return (
-        //                         <BoardItem
-        //                         board_id={board.board_id}
-        //                         board_title={board.board_title} 
-        //                         // board_contents={board.board_contents} 
-        //                         board_author ={board.board_author} 
-        //                         board_date ={formatDate(board.board_date)}
-        //                         // onRemove={this.handleRemove}
-        //                         onRead={this.handleRead}
-        //                         key={i}/>
-        //                     );
-        //             }
-        //         }
-        //         ).reverse()//게시글 역순으로 출력
-        //       }
-        //     </tbody>
-        // }
-    
+       
         if(auth.isAuthenticated) {
             return (
                 <Fragment>

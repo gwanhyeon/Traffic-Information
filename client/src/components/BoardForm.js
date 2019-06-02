@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Board from './Board';
 import axios from 'axios';
 import { loginUser } from '../actions/authentication';
 import { connect } from 'react-redux';
@@ -19,9 +18,8 @@ class BoradForm extends Component {
         });
     }
     handleSubmit = (e) => {
-        const {auth} = this.props;
         let board_id = null;
-        const {board_title, board_contents, board_author} = this.state;
+        const {board_title, board_contents} = this.state;
 
         // 페이지 리로딩 방지
         e.preventDefault();

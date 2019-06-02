@@ -4,9 +4,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { logoutUser } from '../actions/authentication';
 import { withRouter } from 'react-router-dom';
-import TransInfo from './TransInfo';
-
-import { Navbar, Nav, Form } from 'react-bootstrap'
+import { Navbar, Form } from 'react-bootstrap'
 
 import main_image from './images/photo.png'
 import hambug from './images/bug.jpeg'
@@ -25,22 +23,23 @@ class Navbar1 extends Component {
 
     render() {
            
-        const {isAuthenticated, user} = this.props.auth;
-        const {onLogout, onMyPage} = this;
+        const {isAuthenticated} = this.props.auth;
+        const {onLogout} = this;
         // 인증된 경우 이미지 보여줌 
         const authLinks = (
             <ul className="nav ml-auto" style={{height:'50px'}}>
               <li>
                   <Link className="nav-link " to="/Mypage">
-                    <img src={githubimg} style={{marginTop:'-10px',height:'3rem', maxWidth:'3rem',marginLeft:'1px'}} />
+                    <img src={githubimg} style={{marginTop:'-10px',height:'3rem', maxWidth:'3rem',marginLeft:'1px'}} alt=""/>
                     <p style={{marginTop:'-25px'}}></p>
                     <h style={{fontSize: '1px'}}>mypage</h>
                   </Link>
               </li>
               <li>
-              <a href="" className="nav-link" onClick={onLogout}>
+              <Link className="nav-link " onClick={onLogout} to="/signin" style={{marginRight:'15px', marginTop:''}}>Logout</Link>
+              {/* <p href="" className="nav-link" onClick={onLogout}>
                 <h style={{marginTop:''}}>Logout</h>
-              </a>
+              </p> */}
               </li>
             </ul>
         )
@@ -61,11 +60,11 @@ class Navbar1 extends Component {
           {/* <p style={{color:'white',msUserSelect:'none',WebkitTouchCallout:'none',WebkitUserSelect:'none',MozUserSelect:'none',userSelect:'none'}}>4444</p> */}
 
             <Link to="/"> {/* 메인 페이지 */}
-              <img src={main_image} className="navbar-brand" alt="image" style={{maxWidth:'70px',height:'auto', borderRadius: '20%'}}/>
+              <img src={main_image} className="navbar-brand" alt="" style={{maxWidth:'70px',height:'auto', borderRadius: '20%'}}/>
             </Link>
             
             <Navbar.Toggle className="navbar-default"  aria-controls="responsive-navbar-nav" style={{border: 'none'}}>
-                <img src={hambug} className=" rounded float-right" alt="image" style={{maxWidth:'60px', borderRadius: ''}}/>
+                <img src={hambug} className=" rounded float-right" alt="" style={{maxWidth:'60px', borderRadius: ''}}/>
             </Navbar.Toggle>
           
             <Navbar.Collapse id="responsive-navbar-nav" style={{fontSize: '20px'}}>

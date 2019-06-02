@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { withRouter,Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { loginUser } from '../actions/authentication';
 import classnames from 'classnames';
 
@@ -42,7 +41,7 @@ class Signin extends Component {
     }
 
     componentWillReceiveProps(nextProps) {
-        const {auth,history} = this.props;
+        const {history} = this.props;
         if(nextProps.auth.isAuthenticated) {
             history.push('/')
         }

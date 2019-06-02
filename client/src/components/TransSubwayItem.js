@@ -1,4 +1,4 @@
-import React, { Component,Fragment } from 'react';
+import React, { Fragment } from 'react';
 
 const TransSubwayItem = ({
     board_id, board_title,board_contents,board_date,board_user_name

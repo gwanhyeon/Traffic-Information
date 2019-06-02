@@ -1,10 +1,7 @@
 import React, { Component,Fragment} from 'react';
 import axios from 'axios';
-import { createLogger } from 'redux-logger';
 import TransSubwayItem from './TransSubwayItem'
 import {Table} from 'react-bootstrap'
-import { callbackify } from 'util';
-import Error from './Error';
 import TransUiwangBusItem from './TransUiwangBusItem';
 import TransKnutBusItem from './TransKnutBusItem';
 import main_image from './images/photo.png'
@@ -36,9 +33,9 @@ class TransInfo extends Component {
             xmlDoc = parser.parseFromString(res.data,'text/xml');
             row_length = xmlDoc.getElementsByTagName('row').length;
             // console.log(row_length)
-            const parsing_data = new Array();
+            const parsing_data = [];
             for(var i=0; i< row_length; i++){
-                var sub = new Array();
+                var sub = [];
                 for(var j=0; j<attribute_length; j++){
                      sub.push(xmlDoc.getElementsByTagName('row')[i]
                     .childNodes[j].childNodes[0])
@@ -175,9 +172,6 @@ class TransInfo extends Component {
     }
     render() {
         const {subway_data,uiwang_bus_data,knut_bus_data} = this.state;
-        // console.log("data.lengh => ",data.length)   
-        const ErrorPage = <Error></Error>
-
         console.log("subway_data : ", subway_data.length );
         if(subway_data.length === 0 && uiwang_bus_data.length === 0 && knut_bus_data.length === 0){
             return(
@@ -202,7 +196,7 @@ class TransInfo extends Component {
             </thead>
  
             <tbody>
-            <img src={main_image} className="" alt="image" style={{maxWidth:'10rem'}}/>
+            <img src={main_image} className="" alt="" style={{maxWidth:'10rem'}}/>
             </tbody>
           </Table>
             </div>
@@ -227,7 +221,7 @@ class TransInfo extends Component {
               </tr>
             </thead>
             <tbody>
-            <img src={main_image} className="" alt="image" style={{maxWidth:'10rem'}}/>
+            <img src={main_image} className="" alt="" style={{maxWidth:'10rem'}}/>
             </tbody>
           </Table>
           </div>
@@ -251,7 +245,7 @@ class TransInfo extends Component {
               </tr>
             </thead>
             <tbody>
-            <img src={main_image} className="" alt="image" style={{maxWidth:'10rem'}}/>
+            <img src={main_image} className="" alt="" style={{maxWidth:'10rem'}}/>
             </tbody>
           </Table>
           </div>
@@ -280,14 +274,7 @@ class TransInfo extends Component {
             </thead>
             <tbody>
             {subway_data.map((data, i) => {
-            //   console.log("key=>",data[0]);
-            //   console.log("key=>",data[1]);
-            //   console.log("key=>",data[2]);
-            //   console.log("key=>",data[3]);
-            //   console.log("key8=>",data[15]);
-            //   console.log("key9=>",data[14].data);
               if(data[14].data === "급행"){
-                // console.log("급행확인");
                 if(subway_data.length === 0){
                     return (<p>정보가 없습니다.</p>)
                 }
@@ -335,7 +322,6 @@ class TransInfo extends Component {
           </Table>
             </div>      
 
-            {/* <div class='right-box'> */}
             <div style={{height:'400px'}}>
             <link to='board'></link>
             <Table responsive>
@@ -353,17 +339,6 @@ class TransInfo extends Component {
             </thead>
             <tbody>
             {uiwang_bus_data.map((data, i) => {
-
-            //   console.log("bus_data_all", uiwang_bus_data);
-                
-                // if(data[2] === undefined
-                // || data[6] === undefined
-                // || data[8] === undefined){
-                    
-                //     data[2] = "배차 정보가 없습니다."
-                //     data[6] = "배차 정보가 없습니다."
-                //     data[8] = "배차 정보가 없습니다."
-                // }
                 console.log(typeof(data[11]));
                 if(data[11].data==="208000021"){
                     data[11].data= "1-2번"
@@ -378,35 +353,6 @@ class TransInfo extends Component {
                 }else if(data[11].data==="225000005"){
                     data[11].data= "100-1번"
                 }
-                
-//     <routeId>208000021</routeId>
-//    <routeName>1-2</routeName>
-// <routeId>208000016</routeId>
-// <routeName>5</routeName>
-// <routeId>208000015</routeId>
-// <routeName>5-2</routeName>
-// <routeId>208000035</routeId>
-// <routeName>52-1</routeName>
-// <routeId>225000004</routeId>
-// <routeName>100</routeName>
-// <routeId>225000005</routeId>
-// <routeName>100-1</routeName>
-            //     console.log("bus.data[0]=>",data[0].data);
-            //   console.log("bus.data[1]",data[1]);
-            //   console.log("bus.data[2]",data[2]);
-            //   console.log("bus.data[3]",data[3]);
-            //   console.log("bus.data[4]",data[4]);
-            //   console.log("bus.data[5]",data[5]);
-            //   console.log("bus.data[6]",data[6]);
-            //   console.log("bus.data[7]",data[7]);
-            //   console.log("bus.data[8]",data[8]);
-            //   console.log("bus.data[9]",data[9]);
-            //   console.log("bus.data[10]",data[10]);
-            //   console.log("bus.data[11]",data[11]);
-            //   console.log("bus.data[12]",data[12]);
-            //   console.log("bus.data[13]",data[13]);
-            //     // console.log("급행확인");
-             
                   return(
                       <TransUiwangBusItem
                       bus_state={data[11].data}

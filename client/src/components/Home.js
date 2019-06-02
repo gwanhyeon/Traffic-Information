@@ -1,10 +1,5 @@
 import React, { Component } from 'react';
-import TransInfo from './TransInfo';
-import ContactForm from './ContactForm';
-// import PageHeader from './PageHeader';
-
 import main_image from './images/no3.jpeg'
-
 
 export default class Home extends Component {
 

@@ -1,4 +1,4 @@
-import React, { Component,Fragment } from 'react';
+import React, { Fragment } from 'react';
 
 const TransUiwangBusItem = ({bus_state,
     bus_location1,

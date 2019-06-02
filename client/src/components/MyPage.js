@@ -1,11 +1,6 @@
 import React, { Fragment,Component } from 'react';
-import { Container, TabContent, TabPane, Nav, NavItem, NavLink } from "reactstrap";
-import classnames from 'classnames';
-import { registerUser } from '../actions/authentication';
-import Signup from './Signup';
 import { connect } from 'react-redux';
 import { loginUser } from '../actions/authentication';
-import ji from './images/ji.jpg';
 import blankuser from './images/blankuser.png';
 class MyPage extends Component {
    

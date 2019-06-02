@@ -1,12 +1,9 @@
-
 import React, { Component } from 'react'
 import gwan from './images/gwan.jpg'
-import image1 from './images/photo.png'
 import jun from './images/jun.jpg';
 import so from './images/so.jpg';
 import ji from './images/ji.jpg';
 import { Link } from 'react-router-dom';
-import AboutInfo from './AboutInfo';
 class About extends Component{
     render(){
         return(
