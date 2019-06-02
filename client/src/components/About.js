@@ -11,8 +11,8 @@ class About extends Component{
     render(){
         return(
           <div style={{display:'table',marginRight:'auto',marginLeft:'auto', maxWidth:'1400px', paddingTop:'70px'}}>
-            <div className="title" style={{marginTop:'-20px'}}>
-                        <p>개발자</p>
+            <div className="title" style={{marginTop:'-40px'}}>
+                        <h3>개발자</h3>
                         <span>서비스를 개발한 영웅들입니다.</span>
                     </div>
             <div class="card shadow-lg" style={{ height: 'auto', width: '300px', marginTop: '1rem', marginRight:'20px', textAlign:'center', float:'left'}}>

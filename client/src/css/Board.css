@@ -23,7 +23,7 @@ body{
     margin-top:3rem;
     margin-bottom: 3rem;
 }
-.title, p {
+.title, h3 {
     color:black;
     font-size: 2rem;
 }

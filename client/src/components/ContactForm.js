@@ -33,7 +33,7 @@ class ContactForm extends Component {
                 <Fragment>
                 <div className="contactStyle" id="contact">
                     <div className="title">
-                        <p>CONTACT</p>
+                        <h3>CONTACT</h3>
                         <span>문의 사항이 있다면 남겨주세요.</span>
                     </div>
                     <div>
