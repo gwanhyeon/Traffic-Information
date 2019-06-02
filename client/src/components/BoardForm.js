@@ -54,6 +54,7 @@ class BoradForm extends Component {
 
     render () {
         return(
+
             <div className="listStyle">
             <form onSubmit={this.handleSubmit} className="formStyle">
                 <div className="formtitle">
@@ -79,8 +80,10 @@ class BoradForm extends Component {
                     onChange={this.handleChange}
                     required name="board_contents"
                     className="form-control"
+
                     id="formContents"
                     style = {{maxWidth:'1000px', height: '300px', fontSize:'1rem'}}
+
                 />
                 {/* 유저명 <input
                     // placeholder="유저명"

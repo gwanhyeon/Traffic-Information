@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import store from './store';
 import jwt_decode from 'jwt-decode';
@@ -16,11 +16,10 @@ import Contact from './components/ContactForm';
 import './bootstrap.min.css';
 import TransInfo from './components/TransInfo';
 import About from './components/About';
-import MainForm from './components/MainForm';
 
 import './css/contactform.css'
 import MyPage from './components/MyPage';
-
+import AboutInfo from './components/AboutInfo';
 
 if(localStorage.jwtToken) {
   setAuthToken(localStorage.jwtToken);
@@ -41,15 +40,15 @@ class App extends Component {
         <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"/>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway"/>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
-                
+        
         <Router>
-            <div>
+            <div >
               <Navbar1 />
                 <Route exact path="/" component={ Home } />
                 
                 <div className="container-fluid"> 
                   <Route exact path="/board" component={Board}/>
-                  <Route exact path="/transportation" component={TransInfo}/>
+                  <Route exact path="/transinfo" component={TransInfo}/>
                   <Route exact path="/about" component={About}/>
                   <Route exact path="/contact" component={Contact}/>
                   <Route exact path="/signup" component={ Signup } />
@@ -57,8 +56,10 @@ class App extends Component {
                   <Route exact path = "/BoardForm" component = {BoardForm} />
                   <Route exact path = "/BoardRead" component = {BoardRead} />
                   <Route exact path = "/MyPage" component = {MyPage} />
-                  <Route exact path = "/MainForm" component = {MainForm} />
-
+                  <Switch>
+                    <Route path = "/AboutInfo/:name" component = {AboutInfo} /> 
+                    <Route path = "/AboutInfo/" component = {AboutInfo} /> 
+                  </Switch>
                 </div>
             </div>
           </Router>

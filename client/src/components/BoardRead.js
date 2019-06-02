@@ -83,6 +83,7 @@ class BoradRead extends Component {
             // 수정할때
             if (editing) {
             return (
+
                 <div className="listStyle">
                 <form>
                     <div className="edittitle">
@@ -91,6 +92,7 @@ class BoradRead extends Component {
                     </div>
                 <div className="formspace">
                 <h4 className="formh4">제목</h4>
+
                 {/* 글 제목 수정 */}
                 <input
                     value={this.state.board_title}
@@ -101,8 +103,10 @@ class BoradRead extends Component {
                     onChange={this.handleChange}
                     style={{maxWidth:'1000px', fontSize:'1rem'}}
                   />
+
                 </div>
                 <h4 className="formh4">내용</h4>
+
                 {/* 글 내용 수정 */}
                 <input
                     value={this.state.board_contents}
@@ -113,7 +117,9 @@ class BoradRead extends Component {
                     onChange={this.handleChange}
                     style={{maxWidth:'1000px', height:'300px', fontSize:'1rem'}}
                   />
+
                 <button onClick={this.handleToggleEdit} className="btn btn-primary" style={{float: 'right',  fontSize: '1rem', margin:'30px 100px'}}>적용</button>
+
                
                 </form> 
                 </div> 
@@ -121,9 +127,11 @@ class BoradRead extends Component {
           }
           // 수정 아닐때
         return(
+
             <form className="read">
                 <h4 id="readh4" style={{margin:'0'}}>내용</h4>
                 <p name="board_contents" className="form-control" id="readContents">
+
                 {/* 글 내용 */}
                 {this.state.board_contents}
                 </p>
@@ -136,10 +144,12 @@ class BoradRead extends Component {
     // 글쓴이 != 로그인 유저
     } else if(auth.isAuthenticated) {
         return(
+
             <div>
             <form className="read">
                 <h4 id="readh4"style={{margin:'0'}}>내용</h4>
                 <p name="board_contents" className="form-control" id="readContents">
+
                 {/* 글 내용 */}
                 {this.state.board_contents}
                 </p>
@@ -149,6 +159,7 @@ class BoradRead extends Component {
     // 서비스 이용 불가 (로그인 X)
     } else {
         return(
+
             <div className="read">
                 <p id="noread">로그인 후 서비스 이용 가능합니다.</p>
             </div>

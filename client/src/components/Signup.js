@@ -117,6 +117,7 @@ class Signup extends Component {
     }
 
     componentDidMount() {
+        
         console.log("this.props=>",this.props);
         const {auth,history} = this.props;
         
@@ -135,11 +136,10 @@ class Signup extends Component {
         const {handleInputChange,handleSubmit,fileChangedHandler} = this;
         const {user_name,user_id,user_password,user_password_confirm,errors } = this.state;
         return(
-        <div className="container form-control shadow-lg" style={{marginTop:'100px', maxWidth:'400px', height:'auto'}}>
-            <h1 class="text-center" style={{marginTop: '15px', marginBottom: '20px' , fontSize:"2.5rem"}}>Signup</h1>
+        <div className="container form-control shadow-lg" style={{ marginTop: '100px', maxWidth:'400px', height:'auto'}}>
+            <h1 class="text-center" style={{marginTop: '15px', marginBottom: '20px' ,  fontSize:"2.5rem"}}>Signup</h1>
             <form onSubmit={ handleSubmit } style={{margin:'auto', maxWidth:'330px'}}>
-            
-                <div className="form-group " style={{borderStyle:'solid',borderWidth: '3px 3px'}}>
+                <div className="form-group" style={{borderStyle:'solid',borderWidth: '3px 3px'}}>
                     <input
                     type="text"
                     style={{ fontSize: '1.3rem'}}
@@ -162,7 +162,7 @@ class Signup extends Component {
                         'is-invalid': errors.user_id
                     })}
                     name="user_id"
-                    onChange={ handleInputChange }
+                    onChange={handleInputChange }
                     value={ user_id }
                     />
                     {errors.user_id && (<div className="invalid-feedback">{user_id}</div>)}
@@ -170,7 +170,7 @@ class Signup extends Component {
                 <div className="form-group" style={{borderStyle:'solid',borderWidth: '3px 3px'}}>
                     <input
                     type="password"
-                    style={{fontSize: '1.3rem'}}
+                    style={{ fontSize: '1.3rem'}}
                     placeholder="Password"
                     className={classnames('form-control form-control-sm', {
                         'is-invalid': errors.user_password
@@ -185,7 +185,7 @@ class Signup extends Component {
                 <div className="form-group" style={{borderStyle:'solid',borderWidth: '3px 3px'}}>
                     <input
                     type="password"
-                    style={{fontSize: '1.3rem'}}
+                    style={{ fontSize: '1.3rem'}}
                     placeholder="Confirm Password"
                     className={classnames('form-control form-control-sm', {
                         'is-invalid': errors.user_password_confirm
@@ -197,11 +197,9 @@ class Signup extends Component {
                     {errors.user_password_confirm && (<div className="invalid-feedback">{errors.user_password_confirm}</div>)}
                    
                 </div>
-                
-
-                <div className="form-group">
-                    <button type="submit" className="btn btn-primary" style={{width: '100%', fontSize: '1.5rem'}}>
-                        Signup
+                <div className="form-group" >
+                    <button type="submit" className="btn btn-primary" style={{width: '100%',  fontSize: '1.5rem'}}>
+                        Register User
                     </button>
                 </div>
             </form>

@@ -22,7 +22,7 @@ export const registerUser = (user, history) => dispatch => {
     
     
             .then(res => {
-                history.push('/signin')
+                this.props.history.push('/signin');
             })
             .catch(err => {
                 // console.log("signup err => ",err);
