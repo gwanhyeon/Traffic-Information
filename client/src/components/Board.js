@@ -8,6 +8,7 @@ import axios from 'axios';
 import { loginUser } from '../actions/authentication';
 import { updateCurrPage, updateStartEndPage} from "../actions/pagenation"
 import { connect } from 'react-redux';
+import '../css/Board.css';
 
 
 
@@ -148,50 +149,80 @@ class Board extends Component {
     
         if(auth.isAuthenticated) {
             return (
+
+                <div className="listStyle">
+                <div className="title">
+                    <p>자유게시판</p>
+                    <span>한국교통대학교 의왕캠퍼스 통학생들의 자유로운 이야기 공간입니다.</span>
+                </div>
+                <link to='board'></link>
+                <Table responsive >
+                <thead>
+                  <tr>
+                    <th id="th-style">no.</th>
+                    <th id="th-style">제목</th>
+                    <th id="th-style">이름</th>
+                    <th id="th-style">날짜</th>
+
                 <div>
                 
-                <link to='board'></link>
+               
                 
-                <Table responsive>
-                <thead>
-                  <tr style={{marginBottom: '2px', color:'black'}}>
-                    <th style={{fontSize: '1rem'}}>no.</th>
-                    <th style={{fontSize: '1.3rem'}}>제목</th>
-                    <th style={{fontSize: '1.3rem'}}>이름</th>
-                    <th style={{fontSize: '1.3rem'}}>날짜</th>
+               
+
                   </tr>
                 </thead>
           
                 {renderBoards}
           
               </Table>
-              
-              <p><strong>Pagination</strong></p>
-                    <ul className="pagination text-center" style={{alignContent: "center"}}>
+
+                <div className="btnClass">
+                            <p><strong>Pagination</strong></p>
+               <ul className="pagination text-center" style={{alignContent: "center"}}>
                     {renderPageNumbers}
                 </ul>
+                <button onClick={this.handleChange} className="btn btn-primary" id="btnSubmit" style={{float:"right"}}>글쓰기</button>
+                </div>
+
+              
+      
 
                 <button onClick={this.handleChange} className="btn btn-primary" style={{float: 'left', fontFamily: 'sans-serif', fontSize: '1.5rem'}}>글쓰기</button>
-                
-
+           
                 </div>
             );
         } else {
             return (
+
+                <div className="listStyle">
+                <div className="title">
+                    <p>자유게시판</p>
+                    <span>한국교통대학교 의왕캠퍼스 통학생들의 자유로운 이야기 공간입니다.</span>
+                </div>
+
                 <Fragment>
                 <div>
+
                 <link to='board'></link>
                 <Table style={{tableLayout:"fixed"}} height="1000px">
                 <thead>
-                  <tr style={{marginBottom: '2px', color:'black'}}>
-                    <th style={{fontSize: '1rem'}}>no.</th>
-                    <th style={{fontSize: '1.3rem'}}>제목</th>
-                    <th style={{fontSize: '1.3rem'}}>이름</th>
-                    <th style={{fontSize: '1.3rem'}}>날짜</th>
+
+                    <tr>
+                    <th id="th-style">no.</th>
+                    <th id="th-style">제목</th>
+                    <th id="th-style">이름</th>
+                    <th id="th-style">날짜</th>
+
+
                   </tr>
                 </thead>
             
               </Table>
+
+              <div className="btnClass">
+              </div>
+              
               </div>
               <div >
               <p><strong>Pagination</strong></p>
