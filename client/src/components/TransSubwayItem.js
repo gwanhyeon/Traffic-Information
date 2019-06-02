@@ -9,11 +9,11 @@ const TransSubwayItem = ({
             
             <Fragment>
             <tr>
-            <td>{board_id}</td>
-            <td> {board_title} </td>
-            <td> {board_contents} </td>
-            <td> {board_user_name}</td>
-            <td> {board_date} </td>
+            <td style={{color:'black'}}>{board_id}</td>
+            <td style={{color:'black'}}> {board_title} </td>
+            <td style={{color:'black'}}> {board_contents} </td>
+            <td style={{color:'black'}}> {board_user_name}</td>
+            <td style={{color:'black'}}> {board_date} </td>
             </tr>
             </Fragment>
             
