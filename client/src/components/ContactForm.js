@@ -40,6 +40,7 @@ class ContactForm extends Component {
                         <div className="left-box" >
                             <br/><br/>
                         <p className="contacth4"><i class="fa fa-map-marker fa-fw w3-xlarge w3-margin-right"></i> Seoul, KOREA</p>
+                        <p className="contacth4"><i class="fa fa-user fa-fw w3-xlarge w3-margin-right"></i> Name: Kim Gwan-hyeon</p>
                         <p className="contacth4"><i class="fa fa-phone fa-fw w3-xlarge w3-margin-right"></i> Phone: +82 010-4879-3997</p>
                         <p className="contacth4"><i class="fa fa-envelope fa-fw w3-xlarge w3-margin-right"> </i> Email: kgh940525@gmail.com</p>
                         </div>
