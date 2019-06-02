@@ -56,7 +56,7 @@ class BoradForm extends Component {
             <div className="listStyle">
             <form onSubmit={this.handleSubmit} className="formStyle">
                 <div className="formtitle">
-                    <p>글쓰기</p>
+                    <h3>글쓰기</h3>
                     <span>자유롭게 의견을 남겨주세요.</span>
                 </div>
                 <div className="formspace">

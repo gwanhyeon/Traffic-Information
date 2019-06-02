@@ -12,7 +12,7 @@ class About extends Component{
                         <h3>개발자</h3>
                         <span>서비스를 개발한 영웅들입니다.</span>
                     </div>
-            <div class="card shadow-lg" style={{ height: 'auto', width: '300px', marginTop: '1rem', marginRight:'20px', textAlign:'center', float:'left'}}>
+            <div class="card shadow-lg" style={{ height: 'auto', width: '300px', marginTop: '1rem', marginRight:'20px',marginLeft:'20px', textAlign:'center', float:'left'}}>
             <img src={gwan} class="card-img-top " alt="..." style={{height: '240px', width:'240px', borderRadius:'50%', margin:'30px'}} />
             <div class="card-body" >
               <h2 >김 관 현<h6>Kim Gwan-hyeon</h6> </h2> <br/>
@@ -25,7 +25,7 @@ class About extends Component{
 
               </div>
             </div>
-            <div class="card shadow-lg" style={{height: 'auto', width: '300px', marginTop: '1rem',  marginRight:'20px', textAlign:'center', float:'left'}}>
+            <div class="card shadow-lg" style={{height: 'auto', width: '300px', marginTop: '1rem',  marginRight:'20px',marginLeft:'20px', textAlign:'center', float:'left'}}>
             <img src={jun} class="card-img-top" alt="..." style={{height: '240px', width:'240px', borderRadius:'50%', margin:'30px'}} />
             <div class="card-body" >
               <h2>이 준 석<h6>Lee Jun-seok</h6></h2><br/>
@@ -37,7 +37,7 @@ class About extends Component{
               </div>
             
             </div>
-            <div class="card shadow-lg" style={{height: 'auto', width: '300px', marginTop: '1rem',  marginRight:'20px', textAlign:'center', float:'left'}}>
+            <div class="card shadow-lg" style={{height: 'auto', width: '300px', marginTop: '1rem',  marginRight:'20px',marginLeft:'20px', textAlign:'center', float:'left'}}>
             <img src={so} class="card-img-top" alt="..."  style={{height: '240px', width:'240px', borderRadius:'50%', margin:'30px'}}/>
             <div class="card-body">
               <h2>김 소 의<h6>Kim So-ui</h6></h2><br/>
@@ -48,7 +48,7 @@ class About extends Component{
               <a href="https://github.com/so2ming" class="btn btn-danger" style={{width:'50%', fontSize:'0.7rem', float:'left'}}>Github</a>
               </div>
             </div>
-            <div class="card shadow-lg" style={{height: 'auto', width: '300px', marginTop: '1rem',  marginRight:'20px', textAlign:'center', float:'left'}}>
+            <div class="card shadow-lg" style={{height: 'auto', width: '300px', marginTop: '1rem',  marginRight:'20px',marginLeft:'20px', textAlign:'center', float:'left'}}>
             <img src={ji} class="card-img-top" alt="..." style={{height: '240px', width:'240px', borderRadius:'50%', margin:'30px'}}/>
             <div class="card-body">
               <h2 >이 지 현<h6>Lee Ji-hyeon</h6></h2><br/>
