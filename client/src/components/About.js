@@ -23,7 +23,7 @@ class About extends Component{
               </div>
 
               <div style={{padding:'0px 20px 20px 20px'}}>
-              <Link to="/AboutInfo/jun" type="button" class="btn btn-primary" style={{width:'50%', fontSize:'0.7rem', fontWeight: '400',float:'left'}} >자세히보기</Link>
+              <Link to="/AboutInfo/gwan" type="button" class="btn btn-primary" style={{width:'50%', fontSize:'0.7rem', fontWeight: '400',float:'left'}} >자세히보기</Link>
               <a href="https://github.com/kgh940525" class="btn btn-danger" style={{width:'50%', fontSize:'0.7rem', float:'left'}}>Github</a>
 
               </div>
@@ -58,7 +58,7 @@ class About extends Component{
               <p style={{fontSize:'1rem'}}>한국교통대학교<br/>컴퓨터정보공학과</p>
               </div>
               <div style={{padding:'0px 20px 20px 20px'}}>
-              <Link to="/AboutInfo/so" type="button" class="btn btn-primary" style={{width:'50%', fontSize:'0.7rem', fontWeight: '400',float:'left'}} >자세히보기</Link>
+              <Link to="/AboutInfo/ji" type="button" class="btn btn-primary" style={{width:'50%', fontSize:'0.7rem', fontWeight: '400',float:'left'}} >자세히보기</Link>
               <a href="https://github.com/easy0319" class="btn btn-danger" style={{width:'50%', fontSize:'0.7rem', float:'left'}}>Github</a>
               </div>
             
