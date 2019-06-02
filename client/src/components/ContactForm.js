@@ -1,5 +1,6 @@
 import React, { Fragment, Component } from 'react';
 import axios from 'axios';
+import '../css/Contact.css';
 
 class ContactForm extends Component {
     state ={
@@ -30,27 +31,33 @@ class ContactForm extends Component {
     render() {
         return (
                 <Fragment>
-                <div class="w3-container w3-light-grey" style={{padding:'128px 16px'}} id="contact">
-                    <h3 class="w3-center">CONTACT</h3>
-                    <p class="w3-center w3-large">Lets get in touch. Send us a message:</p>
-                    <div style={{marginTop : "48px"}}>
-                        <p><i class="fa fa-map-marker fa-fw w3-xxlarge w3-margin-right"></i> Seoul, KOREA</p>
-                        <p><i class="fa fa-phone fa-fw w3-xxlarge w3-margin-right"></i> Phone: +82 01000000000</p>
-                        <p><i class="fa fa-envelope fa-fw w3-xxlarge w3-margin-right"> </i> Email: wnstjrdlrj@gmail.com</p>
-                        <br/>
+                <div className="contactStyle" id="contact">
+                    <div className="title">
+                        <p>CONTACT</p>
+                        <span>문의 사항이 있다면 남겨주세요.</span>
+                    </div>
+                    <div>
+                        <div className="left-box" >
+                            <br/><br/>
+                        <p className="contacth4"><i class="fa fa-map-marker fa-fw w3-xlarge w3-margin-right"></i> Seoul, KOREA</p>
+                        <p className="contacth4"><i class="fa fa-phone fa-fw w3-xlarge w3-margin-right"></i> Phone: +82 010-4879-3997</p>
+                        <p className="contacth4"><i class="fa fa-envelope fa-fw w3-xlarge w3-margin-right"> </i> Email: kgh940525@gmail.com</p>
+                        </div>
+                        <div class="card shadow-lg" id="left-box" style={{padding:'50px'}}>
                         <form onSubmit={this.handleSubmit} >
-                        <p><input onChange={this.handleChange} class="w3-input w3-border" type="text" placeholder="Name" required name="Name"/></p>
-                        <p><input onChange={this.handleChange} class="w3-input w3-border" type="text" placeholder="Email" required name="Email"/></p>
-                        <p><input onChange={this.handleChange} class="w3-input w3-border" type="text" placeholder="Subject" required name="Subject"/></p>
+                        <p><input onChange={this.handleChange} class="form-control" type="text" placeholder="Name" required name="Name"/></p>
+                        <p><input onChange={this.handleChange} class="form-control" type="text" placeholder="Email" required name="Email"/></p>
+                        <p><input onChange={this.handleChange} class="form-control" type="text" placeholder="Subject" required name="Subject"/></p>
                         <p>
-                        <textarea onChange={this.handleChange} class="w3-input w3-border" type="text" placeholder="Message" required name="Message"/></p>
+                        <textarea onChange={this.handleChange} class="form-control" type="text" placeholder="Message" required name="Message"
+                        style={{height:'250px'}}/></p>
                         <p>
-                            <button class="w3-button w3-black" type="submit">
+                            <button class="btn btn-primary" style={{float: 'right', fontWeight:'100', fontSize: '1rem', marginTop:'10px',marginRight:'30px'}} type="submit">
                             <i class="fa fa-paper-plane"></i> SEND MESSAGE
                             </button>
                         </p>
                         </form>
-                        
+                        </div>
                         {/* <img src="/w3images/map.jpg" class="w3-image w3-greyscale" style={{width:'100%', marginTop:'48px'}}/> */}
                     </div>
                     

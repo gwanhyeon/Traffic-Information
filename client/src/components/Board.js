@@ -44,10 +44,8 @@ class Board extends Component {
         })
         ,1000);
     }
-    componentDidMount = () => {
-        
+    componentDidMount = () => {        
         this.async_list();
-       
     }
     
     componentWillUnmount(){
@@ -172,8 +170,7 @@ class Board extends Component {
                 </Table>
 
                 <div className="btnClass">
-                            <p><strong>Pagination</strong></p>
-               <ul className="pagination text-center" style={{alignContent: "center"}}>
+               <ul className="pagination text-center" style={{display:'table',marginRight:'auto',marginLeft:'auto'}} >
                     {renderPageNumbers}
                 </ul>
                 <button onClick={this.handleChange} className="btn btn-primary" id="btnSubmit" style={{float:"right"}}>글쓰기</button>
@@ -206,8 +203,8 @@ class Board extends Component {
                 </Table>
 
                 <div className="btnClass">
-                            <p><strong>Pagination</strong></p>
-               <ul className="pagination text-center" style={{alignContent: "center"}}>
+
+               <ul className="pagination text-center" style={{display:'table',marginRight:'auto',marginLeft:'auto'}} >
                     {renderPageNumbers}
                 </ul>
 
