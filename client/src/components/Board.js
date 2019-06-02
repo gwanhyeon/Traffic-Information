@@ -113,7 +113,7 @@ class Board extends Component {
         const renderPageNumbers = pageNumbers.map(number => {
             return (
                 
-                <li className="page-item" ><a className="page-link" key={number}
+                <li className="page-item" style={{float:'left'}}><a className="page-link" key={number}
                 id={number}
                 onClick={this.handleClick}>{number}</a></li>
             
@@ -151,7 +151,7 @@ class Board extends Component {
                 <div className="listStyle">
                     <div className="title">
                         <p>자유게시판</p>
-                        <span>한국교통대학교 의왕캠퍼스 학색들의 자유로운 이야기 공간입니다.</span>
+                        <span>한국교통대학교 의왕캠퍼스 학생들의 자유로운 이야기 공간입니다.</span>
                     </div>
                     
                 <link to='board'></link>
@@ -184,7 +184,7 @@ class Board extends Component {
                 <div className="listStyle">
                     <div className="title">
                         <p>자유게시판</p>
-                        <span>한국교통대학교 의왕캠퍼스 통학생들의 자유로운 이야기 공간입니다.</span>
+                        <span>한국교통대학교 의왕캠퍼스 학생들의 자유로운 이야기 공간입니다.</span>
                     </div>
                     
                 <link to='board'></link>
