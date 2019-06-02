@@ -92,7 +92,7 @@ class Board extends Component {
         const {id} = this;
         let renderBoards = null;
         if(id >= 0){
-        currentBoards.board_id.sort();
+        
         renderBoards = <tbody>{currentBoards.map((board, i) => {
             return(
             <BoardItem
@@ -149,33 +149,27 @@ class Board extends Component {
     
         if(auth.isAuthenticated) {
             return (
-
+                <Fragment>
                 <div className="listStyle">
-                <div className="title">
-                    <p>자유게시판</p>
-                    <span>한국교통대학교 의왕캠퍼스 통학생들의 자유로운 이야기 공간입니다.</span>
-                </div>
+                    <div className="title">
+                        <p>자유게시판</p>
+                        <span>한국교통대학교 의왕캠퍼스 통학생들의 자유로운 이야기 공간입니다.</span>
+                    </div>
+                    
                 <link to='board'></link>
-                <Table responsive >
-                <thead>
-                  <tr>
-                    <th id="th-style">no.</th>
-                    <th id="th-style">제목</th>
-                    <th id="th-style">이름</th>
-                    <th id="th-style">날짜</th>
+                    <Table responsive >
+                        <thead>
+                        <tr>
+                            <th id="th-style">no.</th>
+                            <th id="th-style">제목</th>
+                            <th id="th-style">이름</th>
+                            <th id="th-style">날짜</th>
 
-                <div>
-                
-               
-                
-               
-
-                  </tr>
-                </thead>
-          
-                {renderBoards}
-          
-              </Table>
+                        </tr>
+                        </thead>
+            
+                    {renderBoards}
+                </Table>
 
                 <div className="btnClass">
                             <p><strong>Pagination</strong></p>
@@ -184,56 +178,43 @@ class Board extends Component {
                 </ul>
                 <button onClick={this.handleChange} className="btn btn-primary" id="btnSubmit" style={{float:"right"}}>글쓰기</button>
                 </div>
-
-              
-      
-
-                <button onClick={this.handleChange} className="btn btn-primary" style={{float: 'left', fontFamily: 'sans-serif', fontSize: '1.5rem'}}>글쓰기</button>
-           
                 </div>
+                </Fragment>
             );
         } else {
             return (
-
-                <div className="listStyle">
-                <div className="title">
-                    <p>자유게시판</p>
-                    <span>한국교통대학교 의왕캠퍼스 통학생들의 자유로운 이야기 공간입니다.</span>
-                </div>
-
                 <Fragment>
-                <div>
-
+                <div className="listStyle">
+                    <div className="title">
+                        <p>자유게시판</p>
+                        <span>한국교통대학교 의왕캠퍼스 통학생들의 자유로운 이야기 공간입니다.</span>
+                    </div>
+                    
                 <link to='board'></link>
-                <Table style={{tableLayout:"fixed"}} height="1000px">
-                <thead>
+                    <Table responsive >
+                        <thead>
+                        <tr>
+                            <th id="th-style">no.</th>
+                            <th id="th-style">제목</th>
+                            <th id="th-style">이름</th>
+                            <th id="th-style">날짜</th>
 
-                    <tr>
-                    <th id="th-style">no.</th>
-                    <th id="th-style">제목</th>
-                    <th id="th-style">이름</th>
-                    <th id="th-style">날짜</th>
-
-
-                  </tr>
-                </thead>
+                        </tr>
+                        </thead>
             
-              </Table>
+                    {renderBoards}
+                </Table>
 
-              <div className="btnClass">
-              </div>
-              
-              </div>
-              <div >
-              <p><strong>Pagination</strong></p>
-              <ul className="pagination text-center" style={{alignContent: "center"}}>
+                <div className="btnClass">
+                            <p><strong>Pagination</strong></p>
+               <ul className="pagination text-center" style={{alignContent: "center"}}>
                     {renderPageNumbers}
                 </ul>
 
-              </div>
-              </Fragment>
-              
-              )
+                </div>
+                </div>
+                </Fragment>
+            );
         }
     }
 }
@@ -254,19 +235,3 @@ const mapStateToProps = (state) => ({
 })
 
 export default connect(mapStateToProps, { loginUser,updateCurrPage, updateStartEndPage })(Board)
-// export default Board;
-// <div class="container">
-// 			<div class="row">
-// 				<div class="col">
-// 					<p><strong>Pagination</strong></p>
-// 					<ul class="pagination">
-// 						<li class="page-item"><a class="page-link" href="#">Previous</a></li>
-// 						<li class="page-item"><a class="page-link" href="#">1</a></li>
-// 						<li class="page-item"><a class="page-link" href="#">2</a></li>
-// 						<li class="page-item"><a class="page-link" href="#">3</a></li>
-// 						<li class="page-item"><a class="page-link" href="#">4</a></li>
-// 						<li class="page-item"><a class="page-link" href="#">5</a></li>
-// 						<li class="page-item"><a class="page-link" href="#">Next</a></li>
-// 					</ul>
-// 				</div>
-// 			</div>
