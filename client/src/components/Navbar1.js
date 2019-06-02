@@ -8,7 +8,7 @@ import { Navbar, Form } from 'react-bootstrap'
 
 import main_image from './images/photo.png'
 import hambug from './images/bug.jpeg'
-import githubimg from './images/githubimg.png'
+import userImage from './images/blankuser.png'
 
 class Navbar1 extends Component {
 
@@ -30,7 +30,7 @@ class Navbar1 extends Component {
             <ul className="nav ml-auto" style={{height:'50px'}}>
               <li>
                   <Link className="nav-link " to="/Mypage">
-                    <img src={githubimg} style={{marginTop:'-10px',height:'3rem', maxWidth:'3rem',marginLeft:'1px'}} alt=""/>
+                    <img src={userImage} style={{marginTop:'-10px',height:'3rem', maxWidth:'3rem',marginLeft:'1px', borderRadius:'50%'}} alt=""/>
                     <p style={{marginTop:'-25px'}}></p>
                     <h style={{fontSize: '1px'}}>mypage</h>
                   </Link>
