@@ -5,6 +5,8 @@ import { withRouter,Link } from 'react-router-dom';
 import { loginUser } from '../actions/authentication';
 import classnames from 'classnames';
 
+import main_image from './images/no3.jpeg';
+
 class Signin extends Component {
 
     
@@ -58,7 +60,9 @@ class Signin extends Component {
         const {handleInputChange,handleSubmit} = this;
         
         return(
-        <div className="container form-control shadow-lg" style={{marginTop:'100px', maxWidth:'400px', height:'auto'}}>
+            <div className="container-fluid iron-image-preload" style={{maxWidth:'100%',maxHeight:'100%',bottom:'0',left:'0',margin:'auto',overflow:'auto',position:'fixed',right:'0',top:'0',backgroundImage: `url('${main_image}')`,backgroundSize:'cover'}}>
+
+        <div className="container form-control shadow-lg" style={{marginTop:'300px', maxWidth:'400px', height:'auto'}}>
             <h1 class="text-center" style={{marginTop: '15px', marginBottom: '20px',  fontSize:"2.5rem"}}>Signin</h1>
             <form onSubmit={ handleSubmit } style={{margin:'auto', maxWidth:'330px'}}>
                 <div className="form-group" style={{borderStyle:'solid',borderWidth: '3px 3px'}}>
@@ -97,6 +101,7 @@ class Signin extends Component {
                     <Link className="nav-link" to="/signup" style={{textAlign: 'right', width: '100%',  fontSize: '1rem'}}>Signup</Link>
                 </div>
             </form>
+        </div>
         </div>
         )
     }

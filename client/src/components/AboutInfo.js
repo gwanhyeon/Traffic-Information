@@ -327,13 +327,13 @@ const AboutInfo = ({match}) => {
                     <p className="w3-large"><b><i className="fa fa-asterisk fa-fw w3-margin-right w3-text-teal"></i>Skills</b></p>
                     
                     <div className="w3-light-grey w3-round-xlarge w3-small">
-                        <div className="w3-container w3-center w3-round-xlarge w3-teal" style={{width:"60%"}}>70%</div>
+                        <div className="w3-container w3-center w3-round-xlarge w3-teal" style={{width:"60%"}}>60%</div>
                     </div>
                     <p>C, Java</p>
 
                     <div className="w3-light-grey w3-round-xlarge w3-small">
                         <div className="w3-container w3-center w3-round-xlarge w3-teal" style={{width:"80%"}}>
-                        <div className="w3-center w3-text-white">60%</div>
+                        <div className="w3-center w3-text-white">80%</div>
                         </div>
                     </div>
                     <p>Python, mongoDB</p>
@@ -344,7 +344,7 @@ const AboutInfo = ({match}) => {
                     <p>React, HTML, Css</p>
 
                     <div className="w3-light-grey w3-round-xlarge w3-small">
-                        <div className="w3-container w3-center w3-round-xlarge w3-teal" style={{width:"50%"}}>40%</div>
+                        <div className="w3-container w3-center w3-round-xlarge w3-teal" style={{width:"50%"}}>50%</div>
                     </div>
                     <p>JavaScript, LightRoom CC</p>
                     <br/>
@@ -362,14 +362,14 @@ const AboutInfo = ({match}) => {
                     <h5 className="w3-opacity"><b>Front End Developer</b></h5>
                     <h6 className="w3-text-teal"><i className="fa fa-calendar fa-fw w3-margin-right"></i>Mar 2019 - <span className="w3-tag w3-teal w3-round">Current</span></h6>
                     <p>
-                        Signin, Signup, About, Mainpage, 전체적인 UI 폼 작업 
+                        Signin, Signup, About, Mainpage, 전체적인 UI 디자인 (CSS)
                     </p>
                     <hr/>
                     </div>
                     <div className="w3-container">
-                    <h5 className="w3-opacity"><b>Front End Developer</b></h5>
+                    <h5 className="w3-opacity"><b>Back End Developer</b></h5>
                     <h6 className="w3-text-teal"><i className="fa fa-calendar fa-fw w3-margin-right"></i>Mar 2019 - <span className="w3-tag w3-teal w3-round">Current</span></h6>
-                    <p> Client의 Signin, Signup, BoardForm 설계</p>
+                    <p> Client의 Signin, Signup, BoardForm, Navbar, About, Mainpage 설계 및 구현 (React)</p>
                     <hr/>
                     </div>
                 </div>
