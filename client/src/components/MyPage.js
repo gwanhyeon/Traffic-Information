@@ -18,19 +18,23 @@ class MyPage extends Component {
                 <div class="w3-container w3-light-grey" style={{padding:'128px 16px'}} id="contact">
                     <h3 class="w3-center">MY PAGE</h3>
                     <p class="w3-center w3-large">회원가입 정보를 확인하세요!</p>
-                    <div style={{marginTop : "48px"}}>
+                    <div style={{marginTop : "48px" ,textAlign:'center'}}>
                     
-                    <img src={ji} class="w3-image w3-greyscale" style={{width:'10%', marginTop:'48px'}}/>
+                    <img src={ji} class="w3-image w3-center" style={{width:'10%', marginTop:'48px'}}/>
+                    </div>
+                    <div style={{marginTop : "10px" ,textAlign:'center'}}>
                     <br/>
-                        <p><i class="fa fa-envelope fa-fw w3-xxlarge w3-margin-right"></i> Email {this.props.auth.user.user_id}</p>
+                    <p><i class="fa fa-user fa-fw w3-xxlarge w3-center"></i> USER NAME: {this.props.auth.user.user_name}</p>
                     <br/>
-                        <p><i class="fa fa-phone fa-fw w3-xxlarge w3-margin-right"></i> USER NAME {this.props.auth.user.user_name}</p>
+                        <p><i class="fa fa-envelope fa-fw w3-xxlarge w3-center"></i> Email: {this.props.auth.user.user_id}</p>
+                    </div>
+                        
                         
                         
                         
         
                         
-                    </div>
+                    
                     
                 </div>
              
