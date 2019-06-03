@@ -26,7 +26,7 @@ class TransInfo extends Component {
         // ,{responseType : 'xml'}
         const sub_url = `${url}/${subway_id}/${stain_id}/${location}`;
         console.log(sub_url);
-        // this.lookupInterval_subway = setInterval(() => {
+        this.lookupInterval_subway = setInterval(() => {
         axios.get(`${url}/${subway_id}/${stain_id}/${location}`)
         .then(res =>{
             var parser = new DOMParser(),
@@ -60,8 +60,8 @@ class TransInfo extends Component {
                 console.log(err);
             })
 
-        // }
-        // , 1000);
+         }
+         , 5000);
 
     }
 
@@ -76,7 +76,7 @@ class TransInfo extends Component {
         // # 2위치 - 교통대
         let knut_msgBody_data = null;
 
-        //  this.lookupInterval_knut_station = setInterval(() => {
+        this.lookupInterval_knut_station = setInterval(() => {
              axios.get(`${bus_url}serviceKey=${serviceKey}&stationId=${knut_stationId}`)
         .then(res => {
 
@@ -108,8 +108,8 @@ class TransInfo extends Component {
         }).catch( err => {
             console.log(err);
         });
-    // }
-    // ,1000);
+     }
+     ,5000);
 
     
     }
@@ -124,7 +124,7 @@ class TransInfo extends Component {
         // # 2위치 - 교통대
         
         // 의왕역 버스 데이터 request , serviceKey =encodeURIComponent(serviceKey); //인코딩한 값 넣어주기
-        // this.lookupInterval_uiwang_station = setInterval(() => {
+        this.lookupInterval_uiwang_station = setInterval(() => {
             axios.get(`${bus_url}serviceKey=${serviceKey}&stationId=${uiwang_stationId}`)
         .then(res =>{
                 var parser = new DOMParser(),
@@ -154,8 +154,8 @@ class TransInfo extends Component {
             }).catch( err =>{
                 console.log(err);
             })
-        // }
-        // ,1000);
+         }
+         ,5000);
     }
 
     componentDidMount(){
