@@ -177,7 +177,7 @@ class TransInfo extends Component {
             return(
             <Fragment>
                 <div style={{overflowX:'hidden'}}>
-            <div style={{height:'400px'}}>
+            <div style={{height:'600px'}}>
             <link to='board'></link>
             <Table>
             <thead>
@@ -201,7 +201,7 @@ class TransInfo extends Component {
           </Table>
             </div>
  
-            <div style={{height:'400px'}}>
+            <div style={{height:'600px'}}>
             <link to='board'></link>
             <Table responsive>
             <thead>
@@ -225,7 +225,7 @@ class TransInfo extends Component {
             </tbody>
           </Table>
           </div>
-          <div style={{height:'400px'}}>
+          <div style={{height:'600px'}}>
           <Table responsive>
             <thead>
              <tr style={{marginBottom: '2px',   rowspan : '1'}}>
@@ -260,7 +260,7 @@ class TransInfo extends Component {
             <Fragment>
             {/* <div class='left-box'> */}
             <div style={{overflowX:'hidden'}}>
-            <div style={{height:'400px'}}>
+            <div style={{height:'600px'}}>
             <link to='board'></link>
             <Table responsive>
             <thead> 
@@ -322,7 +322,7 @@ class TransInfo extends Component {
           </Table>
             </div>      
 
-            <div style={{height:'400px'}}>
+            <div style={{height:'600px'}}>
             <link to='board'></link>
             <Table responsive>
             <thead>
@@ -371,7 +371,7 @@ class TransInfo extends Component {
             </tbody>
           </Table>
           </div>
-          <div style={{height:'400px'}}>
+          <div style={{height:'600px'}}>
           <Table responsive>
             <thead>
               <tr style={{color:'black',marginBottom: '2px',  fontSize: '20px'}}>
