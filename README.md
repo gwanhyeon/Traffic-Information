@@ -68,7 +68,7 @@
 |mail_send|사용자 메일 발송|200|DB 메일 인증 발송 성공|
 |mail_send|사용자 메일 발송|404|DB 메일 인증 발송 실패|
 
-## JWT Authorization Processing
+## JWT Authorization of Processing
 
 ![01](./image/01.png)
 
@@ -76,7 +76,7 @@
 
 ![02](./image/02.png)
 
-## Information architecture
+## Information Architecture
 
 ![03](./image/03.png)
 
