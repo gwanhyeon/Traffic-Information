@@ -24,7 +24,7 @@
 |9주차 19.04.29 ~ 19.05.05|React&Redux 게시판 Front-End 및 Back-End 개발(추가,삭제,수정,페이지네이션)|
 |10주차 19.05.06 ~ 19.05.12|React&Redux 게시판 Front-End 문의 사항 페이지 및 개인 소개/상세페이지 개발|
 |11주차 19.05.13 ~ 19.05.19|클라이언트 및 서버 연동 테스트|
-|12주차 19.05.20 ~ 19.05.26|AWS EC2,S3,Cloud-Front,AMI 서비스 Auto 배포(Deploy) 및 최종 개발|
+|12주차 19.05.20 ~ 19.05.26|AWS EC2,S3,Cloud-Front,AMI 서비스 자동화 배포(Deploy) 및 최종 개발|
 |12주차 19.05.27 ~ 19.06.03|프로젝트 완료|
 
 ## REST API 구조
@@ -68,7 +68,7 @@
 |mail_send|사용자 메일 발송|200|DB 메일 인증 발송 성공|
 |mail_send|사용자 메일 발송|404|DB 메일 인증 발송 실패|
 
-## JWT Authorization Processing
+## JWT Authorization of Processing
 
 ![01](./image/01.png)
 
@@ -76,7 +76,7 @@
 
 ![02](./image/02.png)
 
-## Information architecture
+## Information Architecture
 
 ![03](./image/03.png)
 
@@ -88,7 +88,7 @@
 
 ![05](./image/05.png)
 
-## Skill
+## Development Skills
 
 ![06](./image/06.png)
 ![07](./image/07.png)
