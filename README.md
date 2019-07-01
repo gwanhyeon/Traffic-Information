@@ -29,7 +29,7 @@
 
 ## REST API 구조
 | Routes | CRUD | Routes Path | module_function| 
-|:--------:|:--------:|:--------:|:--------:|:--------:|
+|:--------:|:--------:|:--------:|:--------:|
 |Board|read|GET:/board/all|게시판 모든 유저 조회|
 |Board|delete|DELETE:/board_delete/:board_id|게시판 게시글 삭제|
 |Board|update|PUT:/board_edit/:board_id|게시판 수정|
